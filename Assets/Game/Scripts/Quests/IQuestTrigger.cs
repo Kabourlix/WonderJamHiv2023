@@ -3,5 +3,6 @@
     public interface IQuestTrigger
     {
         public void TriggerCondition(Quest quest);
+        
     }
 }
