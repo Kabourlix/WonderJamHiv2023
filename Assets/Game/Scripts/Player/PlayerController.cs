@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CartoonFX;
+using Game.Inputs;
 using Game.Scripts.Interaction;
 using UnityEngine;
 using UnityEngine.Serialization;

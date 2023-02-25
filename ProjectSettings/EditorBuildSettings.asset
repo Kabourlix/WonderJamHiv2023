@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scene/Proto/Hugo/HugoQuete.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Game/Scene/Finale/MainMenu.unity
+    guid: d7b9c536f9514874584e4cfd89d1c36d
+  - enabled: 1
+    path: "Assets/Game/Scene/Proto/J\xE9r\xE9my/SidekickTest.unity"
+    guid: be9bd0da67d81b84e8402b815bf483a1
   m_configObjects: {}
