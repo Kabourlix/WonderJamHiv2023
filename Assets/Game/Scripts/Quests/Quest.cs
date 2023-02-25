@@ -32,6 +32,10 @@ namespace Game.Scripts.Quests
         
         public Condition[] conditions;
 
+        [SerializeField] private QuestType questType;
+        public QuestType QuestType => questType;
+        
+        
         public void IsCompleted()
         {
             Debug.Log($"Checking if quest {title} is completed");

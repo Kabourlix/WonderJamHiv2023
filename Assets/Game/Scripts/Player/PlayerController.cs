@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts.Interaction;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -41,6 +42,10 @@ public class PlayerController : MonoBehaviour
     private float _gravityTerminalVelocity;
     private float _gravityMultiplier;
 
+    [Header("Interaction")]
+    [SerializeField] private CapsuleCollider interactCollider;
+    [SerializeField] private LayerMask interactLayerMask;
+    
     public Forms CurrentForm { get => _currentForm; set {
             _currentForm = value;
             OnSwitchForm(_currentForm);
@@ -102,7 +107,14 @@ public class PlayerController : MonoBehaviour
 
     void OnInteract()
     {
-
+        Debug.Log("Interact");
+        var bounds = interactCollider.bounds;
+        var colliders = Physics.OverlapCapsule(bounds.center, bounds.center + new Vector3(0, interactCollider.height, 0), interactCollider.radius, interactLayerMask);
+        foreach (var c in colliders)
+        {
+            Debug.Log($"{name} interacted with {c.name}");
+            c.GetComponent<IInteractable>()?.Interact();
+        }
     }
 
     void OnSwitchForm(Forms newForm)

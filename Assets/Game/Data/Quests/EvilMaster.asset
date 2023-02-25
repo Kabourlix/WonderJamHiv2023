@@ -19,3 +19,4 @@ MonoBehaviour:
     target: 3
   - stat: {fileID: 11400000, guid: 7a918e6b7dfdadb439a5a675d4388b2a, type: 2}
     target: 1
+  questType: 1

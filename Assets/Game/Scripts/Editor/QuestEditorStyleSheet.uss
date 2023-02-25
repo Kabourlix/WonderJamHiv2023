@@ -1,6 +1,9 @@
-TemplateContainer {
-    flex-grow: 1;
+#main {
+    flex-grow: 2;
     flex-direction: row;
+    min-height: 200px;
+    height: auto;
+    margin-bottom: 40px;
 }
 
 #list {
@@ -19,4 +22,9 @@ TemplateContainer {
 #questData {
     max-width: 70%;
     min-width: 60%;
+}
+
+#AddQuest {
+    align-items: center;
+    justify-content: flex-end;
 }
