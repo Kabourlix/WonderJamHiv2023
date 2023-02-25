@@ -15,6 +15,7 @@ namespace MBTExample
         
         [Range(0,180f)]
         public float angle = 45;
+        public TransformReference playerSeen;
 
         public override NodeResult Execute()
         {
@@ -31,11 +32,13 @@ namespace MBTExample
                     {
                         if (hit.collider.gameObject == colliders[0].gameObject)
                         {
+                            playerSeen.Value = hit.collider.gameObject.transform;
                             return NodeResult.success;
                         }
                     }
                 }
             }
+            playerSeen.Value = null;
             return NodeResult.failure;
         }
     }
