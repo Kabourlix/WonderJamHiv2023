@@ -3,11 +3,20 @@ using UnityEngine;
 
 namespace Game.Scripts.Quests
 {
-    [CreateAssetMenu(fileName = "Condition", menuName = "K/QuestSystem/Condition", order = 0)]
+    [CreateAssetMenu(fileName = "Property", menuName = "K/QuestSystem/Property", order = 0)]
     public class QuestStat : ScriptableObject
     {
         [SerializeField] private string title;
         public string Title => title;
+
+        [Tooltip("Add a condition to fulfill before incrementing the stat (if needed, can be null)")]
+        [SerializeField] private Condition priorCondition;
+
+        public void Link()
+        {
+            if(priorCondition.Stat is not null) 
+                priorCondition.LinkEvent();
+        }
 
         public int count { get; private set; }
         
@@ -15,9 +24,9 @@ namespace Game.Scripts.Quests
 
         public void Increment()
         {
+            if(priorCondition.Stat != null && !priorCondition.IsCompleted) return;
             count++;
             OnCountChanged?.Invoke();
-            //Debug.Log($"{title} has been incremented to {count}");
         }
         
         public void Reset() => count = 0;

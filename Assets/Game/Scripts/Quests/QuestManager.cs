@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Scripts.UI;
 using UnityEditor;
 using UnityEngine;
 using Game.Scripts.Utility;
@@ -39,6 +40,7 @@ namespace Game.Scripts.Quests
         private void Start()
         {
             ResetAllStats(); // Reset at the beginning of the game
+            
             InitUnusedQuests();
             SampleQuests(activeQuestSample);
             Debug.Log($"<color=orange>{_activeQuests.Count} quests active.</color>");
@@ -47,6 +49,7 @@ namespace Game.Scripts.Quests
         public void AddQuest(Quest quest)
         {
             _activeQuests.Add(quest);
+            HUDManager.Instance.AddQuest(quest);
         }
 
         public void RemoveQuest(Quest quest)
@@ -82,6 +85,7 @@ namespace Game.Scripts.Quests
                 var questStat = AssetDatabase.LoadAssetAtPath<QuestStat>(path);
                 //Reset the stat
                 questStat.Reset();
+                questStat.Link();
             }
         }
         

@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Game.Scripts.Quests
 {
-    public class StatTriggerComponent : MonoBehaviour
+    public class StatTriggerComponent : QuestTrigger
     {
         [SerializeField] private QuestStat statTargeted;
         
         [ContextMenu("Trigger Stat")]
-        public void TriggerStat()
+        public override void Trigger()
         {
             if (statTargeted == null) throw new NullReferenceException("StatTargeted is null");
                 
