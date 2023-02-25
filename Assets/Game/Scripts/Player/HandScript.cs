@@ -1,3 +1,4 @@
+using Game.Inputs;
 using Game.Scripts.Interaction;
 using System.Collections;
 using System.Collections.Generic;

@@ -31,7 +31,7 @@ namespace Aurore.MainMenu
         public void Start()
         {
             _isPaused = _pauseMenu.gameObject.activeSelf;
-            Aurore.MainMenu.InputManager.OnPauseEvent += SwitchPauseState;
+            Game.Inputs.InputManager.OnPauseEvent += SwitchPauseState;
         }
 
         public void SwitchPauseState()
