@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Inputs;
 using Game.Scripts;
 using Game.Scripts.UI;
 using UnityEngine;
@@ -11,6 +12,7 @@ using UnityEngine.Serialization;
 public enum GameState
 {
     PlayState,
+    EndLevel,
     WinState,
     EvolveState,
     PauseState,
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
         
         //Instantiate the dictionary
         _linksDict = new Dictionary<GameState, GameState[]>();
-        foreach (var link in links)
+        foreach (var link in transitions.Transitions)
         {
             _linksDict.Add(link.DestinationState, link.ParentStates);
         }
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     #region Serialized properties and their public accessors
 
-    [SerializeField] private GameStateLink[] links;
+    [SerializeField] private StateTransitions transitions ;
     private Dictionary<GameState, GameState[]> _linksDict;
     
     [SerializeField] private Transform player;
@@ -69,27 +71,30 @@ public class GameManager : MonoBehaviour
     {
         if(_linksDict[newState].Contains(CurrentState) == false) //Prevent forbidden transitions
             throw new Exception($"Cannot transition from {CurrentState} to {newState}.");
-        
+        var old = CurrentState;
         CurrentState = newState;
         switch (newState)
         {
             case GameState.PlayState:
-                HandlePlayState();
+                HandlePlayState(old);
                 break;
             case GameState.WinState:
-                HandleWinState();
+                HandleWinState(old);
                 break;
             case GameState.GameOverState:
-                HandleGameOverState();
+                HandleGameOverState(old);
                 break;
             case GameState.CaughtState:
-                HandleCaughtState();
+                HandleCaughtState(old);
                 break;
             case GameState.EvolveState:
-                HandleEvolveState();
+                HandleEvolveState(old);
                 break;
             case GameState.PauseState:
-                HandlePauseState();
+                HandlePauseState(old);
+                break;
+            case GameState.EndLevel:
+                HandleEndLevelState(old);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -98,48 +103,69 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
 
-    #region State
-
-    private void HandlePauseState()
+    private void HandleEndLevelState(GameState old)
     {
-        Time.timeScale = 0;
-        //Hide Common UI
-        //Display the pause menu
-        //Switch controls to pause menu
+        //Check if the player has fully evolved or not
+        //If not, go to game over state
+        //If yes, go to win state
+        ChangeState(player.GetComponent<XPManager>().IsFullyEvolved 
+            ? GameState.WinState 
+            : GameState.GameOverState);
     }
 
-    private void HandleEvolveState()
+    #region State
+
+    private void HandlePauseState(GameState oldState)
+    {
+        Time.timeScale = 0;
+        hud.ShowPause();
+        InputManager.Instance.EnableControls(false);
+    }
+
+    private void HandleEvolveState(GameState oldState)
     {
         //Nothing really
     }
 
-    private void HandleCaughtState()
+    private void HandleCaughtState(GameState oldState)
     {
         var hpPercentage = stats.CaughtSuspicious();
         if(hud is not null) hud.UpdateSuspiciousBar(hpPercentage);
+        if(hpPercentage <= 0)
+            ChangeState(GameState.GameOverState);
         
     }
 
-    private void HandleGameOverState()
+    private void HandleGameOverState(GameState oldState)
     {
-        throw new NotImplementedException();
+        if (hud is not null) hud.ShowGameOver();
+        //Disable controls or switch to ui controls 
+        InputManager.Instance.EnableControls(false);
     }
 
-    private void HandleWinState()
+    private void HandleWinState(GameState oldState)
     {
-        throw new NotImplementedException();
+        if(hud is not null) hud.ShowWin();
+        //Disable controls or switch to ui controls
+        InputManager.Instance.EnableControls(false);
     }
 
-    private void HandlePlayState()
+    private void HandlePlayState(GameState oldState)
     {
-        throw new NotImplementedException();
+        if(oldState == GameState.CaughtState) //Respawn
+            player.position = stats.SpawnPosition.position;
+        
+        Time.timeScale = 1;
+        //Enable controls
+        InputManager.Instance.EnableControls(true);
+        
     }
 
     #endregion
 }
 
 [Serializable]
-public struct GameStateLink
+public struct StateTransitionsStruct
 {
     public GameState DestinationState;
     public GameState[] ParentStates;

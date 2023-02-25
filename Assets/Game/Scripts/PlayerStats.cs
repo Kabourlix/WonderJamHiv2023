@@ -4,6 +4,8 @@ namespace Game.Scripts
 {
     public class PlayerStats : MonoBehaviour
     {
+        [SerializeField] private Transform spawnPosition;
+        public Transform SpawnPosition => spawnPosition;
         [SerializeField] private int maxHealth = 5;
         private int _currentHealth;
         public int CurrentHealth => _currentHealth;
@@ -18,13 +20,7 @@ namespace Game.Scripts
         public float CaughtSuspicious()
         {
             _currentHealth--;
-            if (_currentHealth <= 0)
-            {
-                _gameManager.ChangeState(GameState.GameOverState);
-                return 0;
-            }
-
-            return Mathf.InverseLerp(0, (float) maxHealth, (float)_currentHealth);
+            return _currentHealth <= 0 ? 0 : Mathf.InverseLerp(0, maxHealth, _currentHealth);
         }
     }
 }

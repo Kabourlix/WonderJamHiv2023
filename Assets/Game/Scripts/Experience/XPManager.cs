@@ -73,4 +73,6 @@ public class XPManager : MonoBehaviour
             _ => _playerController.CurrentForm
         };
     }
+    
+    public bool IsFullyEvolved => _level >= 3;
 }

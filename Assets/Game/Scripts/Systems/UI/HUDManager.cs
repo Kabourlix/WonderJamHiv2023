@@ -124,5 +124,23 @@ namespace Game.Scripts.UI
         }
 
         #endregion
+
+        public void ShowGameOver()
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
+
+        public void ShowWin()
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
+
+        public void ShowPause()
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
     }
 }
