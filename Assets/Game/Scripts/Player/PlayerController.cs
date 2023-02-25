@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
         [Range(0f, 1f)]
         public float gravityMultiplier;
     }
+
     #endregion
     public enum Forms { bat, spider, humanoid}
     [SerializeField] Forms _baseForm = Forms.bat;
@@ -24,17 +25,18 @@ public class PlayerController : MonoBehaviour
     [Tooltip("If the player is standing on collider in this mask, he falls. Must not contain the layer of the player, else it won't work")]
     [SerializeField] LayerMask _layersForGravity;
     private Vector3 _movementInput;
-    private Rigidbody _rigidbody;
+    private CharacterController _characterController;
+    private Collider _collider;
     private Forms _currentForm;
     private float _accelerationRate;
-    private float _height;
     private Vector3 _movementVelocity;
     private Vector3 _targetMovementVelocity;
+    float _speed=10;
+
     private float _gravityVelocity;
     private Vector3 _gravityVelocityVector;
     private float _gravityTerminalVelocity;
     private float _gravityMultiplier;
-    float _speed=10;
 
     public Forms CurrentForm { get => _currentForm; set {
             _currentForm = value;
@@ -44,7 +46,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();    
+        _characterController = GetComponent<CharacterController>();  
+        _collider = GetComponent<Collider>();
         CurrentForm= _baseForm;
     }
 
@@ -54,14 +57,13 @@ public class PlayerController : MonoBehaviour
         InputManager.OnInteractEvent += OnInteract;
         InputManager.OnTest1Event += () => { CurrentForm = Forms.bat; };
         InputManager.OnTest2Event += () => { CurrentForm = Forms.spider; };
-        _height = GetComponent<Collider>().bounds.size.y;
     }
 
     void FixedUpdate()
     {
         ApplyMovement();
         ApplyGravity();
-        _rigidbody.velocity = _movementVelocity + _gravityVelocityVector;      
+        _characterController.Move((_movementVelocity+_gravityVelocityVector)*Time.fixedDeltaTime);
     }
 
     void ApplyMovement()
@@ -72,11 +74,11 @@ public class PlayerController : MonoBehaviour
 
     void ApplyGravity()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 0.5f * _height + 0.01f, _layersForGravity)) return;
-        Debug.Log("PIPI");
-        _gravityVelocity = Mathf.Clamp(_gravityVelocity+_gravityMultiplier*10*Time.fixedDeltaTime, -_gravityTerminalVelocity, _gravityTerminalVelocity);
-        _gravityVelocityVector=new Vector3(0,-_gravityVelocity,0);
+        if (_characterController.isGrounded) return;
+        _gravityVelocity = Mathf.Clamp(_gravityVelocity + _gravityMultiplier * 10 * Time.fixedDeltaTime, -_gravityTerminalVelocity, _gravityTerminalVelocity);
+        _gravityVelocityVector = new Vector3(0, -_gravityVelocity, 0);
     }
+
 
     void OnInteract()
     {
@@ -88,6 +90,7 @@ public class PlayerController : MonoBehaviour
         FormStat formStat = _formStats.Find(x => x.form == newForm);
         _accelerationRate = formStat.accelerationRate;
         _speed= formStat.speed;
+
         _gravityMultiplier = formStat.gravityMultiplier;
         _gravityTerminalVelocity = formStat.gravityTerminalVelocity;
     }
@@ -95,8 +98,6 @@ public class PlayerController : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Vector3.down * (0.5f * _height + 0.01f));
     }
 #endif
 }
