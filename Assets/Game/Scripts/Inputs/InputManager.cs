@@ -20,9 +20,11 @@ namespace Game.Inputs
             }
 
             Instance = this;
+            _player = GetComponent<PlayerInput>();
         }
         #endregion
-
+        
+        private PlayerInput _player;
         public static event Action OnPauseEvent;
         public static event Action<Vector2> OnMoveEvent;
         public static event Action OnInteractEvent;
@@ -33,6 +35,11 @@ namespace Game.Inputs
         public static event Action OnTest2Event;
         public static event Action OnTest3Event;
 
+        public void EnableControls(bool b)
+        {
+            _player.enabled = b;
+        }
+        
         private void OnPause()
         {
             OnPauseEvent.Invoke();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CartoonFX;
@@ -58,6 +59,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CapsuleCollider interactCollider;
     [SerializeField] private LayerMask interactLayerMask;
 
+    public bool IsSuspect { get; private set; }
+    
+    
     public Forms CurrentForm
     {
         get => _currentForm;
@@ -133,10 +137,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public static event Action OnEvolve; 
+    public static event Action OnEvolveEnd;
+    public void EvolveBegin()
+    {
+        OnEvolve?.Invoke();
+        InputManager.Instance.EnableControls(false);
+    }
+    
+    public void EvolveEnd()
+    {
+        OnEvolveEnd?.Invoke();
+        //Controls are enabled back by EvolveViewSwitch
+    }
+    
     void OnSwitchForm(Forms newForm)
     {
         ClearPreviousForm();
-
         FormStat formStat = _formStats.Find(x => x.form == newForm);
         _accelerationRate = formStat.accelerationRate;
         _speed = formStat.speed;

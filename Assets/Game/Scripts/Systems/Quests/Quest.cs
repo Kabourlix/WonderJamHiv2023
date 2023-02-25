@@ -38,6 +38,10 @@ namespace Game.Scripts.Quests
         [SerializeField] private QuestType questType;
         public QuestType QuestType => questType;
         
+        [Min(0)]
+        [SerializeField] private int rewardXp;
+        public int RewardXp => rewardXp;
+        
         private HUDManager hud => HUDManager.Instance;
 
         #endregion
