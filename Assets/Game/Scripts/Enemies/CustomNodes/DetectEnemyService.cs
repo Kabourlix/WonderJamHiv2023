@@ -27,5 +27,12 @@ namespace MBTExample
                 variableToSet.Value = null;
             }
         }
+        
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, range);
+            Gizmos.color = Color.white;
+        }
     }
 }
