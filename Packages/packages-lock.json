@@ -9,15 +9,6 @@
       },
       "hash": "91ca4364f5ea06f8e4c25af68df6018007aaec9b"
     },
-    "com.aurore.few-ui": {
-      "version": "https://github.com/Kabourlix/few-ui.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.inputsystem": "1.4.4"
-      },
-      "hash": "9d52c27f1536854cadad889a2c3ad471fa9a509a"
-    },
     "com.github.siccity.xnode": {
       "version": "https://github.com/siccity/xNode.git",
       "depth": 0,

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.UI;
-using UnityEditor;
 using UnityEngine;
 using Game.Scripts.Utility;
 
@@ -35,6 +34,8 @@ namespace Game.Scripts.Quests
         private List<Quest> _activeQuests;
         private List<Quest> _unusedQuests; 
         //public Quest[] baseQuest;
+        [SerializeField] private Quest[] allQuests;
+        [SerializeField] private QuestStat[] allQuestStats;
 
 
         private void Start()
@@ -75,17 +76,11 @@ namespace Game.Scripts.Quests
         private void ResetAllStats()
         {
             Debug.LogWarning("All stats have been reset.");
-            //Look for every QuestStat in the project
-            var stats = AssetDatabase.FindAssets("t:QuestStat");
-            foreach (var stat in stats)
+            foreach (var stat in allQuestStats)
             {
-                //Get the path of the asset
-                var path = AssetDatabase.GUIDToAssetPath(stat);
-                //Load the asset
-                var questStat = AssetDatabase.LoadAssetAtPath<QuestStat>(path);
                 //Reset the stat
-                questStat.Reset();
-                questStat.Link();
+                stat.Reset();
+                stat.Link();
             }
         }
         
@@ -101,27 +96,27 @@ namespace Game.Scripts.Quests
                 return;
             }
 
-            _unusedQuests = GetAllQuests().ToList();
+            _unusedQuests = allQuests.ToList();
             Debug.Log($"<color=orange>{_unusedQuests.Count} quests found.</color>");
         }
     
-        /// <summary>
-        /// Get all the existing quests in the project
-        /// </summary>
-        /// <returns>An array of all existing quests</returns>
-        public static Quest[] GetAllQuests()
-        {
-            var questsNameAsset = AssetDatabase.FindAssets("t:Quest");
-            
-            var quests = new Quest[questsNameAsset.Length];
-            for (int i = 0; i < questsNameAsset.Length; i++)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(questsNameAsset[i]);
-                quests[i] = AssetDatabase.LoadAssetAtPath<Quest>(path);
-            }
-
-            return quests;
-        }
+        // /// <summary>
+        // /// Get all the existing quests in the project
+        // /// </summary>
+        // /// <returns>An array of all existing quests</returns>
+        // public static Quest[] GetAllQuests()
+        // {
+        //     var questsNameAsset = AssetDatabase.FindAssets("t:Quest");
+        //     
+        //     var quests = new Quest[questsNameAsset.Length];
+        //     for (int i = 0; i < questsNameAsset.Length; i++)
+        //     {
+        //         var path = AssetDatabase.GUIDToAssetPath(questsNameAsset[i]);
+        //         quests[i] = AssetDatabase.LoadAssetAtPath<Quest>(path);
+        //     }
+        //
+        //     return quests;
+        // }
 
         private void SampleQuests(int amount)
         {

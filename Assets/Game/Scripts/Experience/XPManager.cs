@@ -27,7 +27,7 @@ public class XPManager : MonoBehaviour
     {
         _questManager??= QuestManager.Instance;
         _hud??= HUDManager.Instance;
-        _questManager.OnQuestCompleted += UpdateXPCallback;
+        if(_questManager is not null) _questManager.OnQuestCompleted += UpdateXPCallback;
         PlayerController.OnEvolveEnd += Evolve;
     }
 
@@ -39,7 +39,7 @@ public class XPManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _questManager.OnQuestCompleted -= UpdateXPCallback;
+        if(_questManager is not null) _questManager.OnQuestCompleted -= UpdateXPCallback;
     }
 
    private void UpdateXPCallback(Quest quest)

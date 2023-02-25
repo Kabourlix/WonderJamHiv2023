@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "com.aurore.dialogue-system": "https://github.com/Kabourlix/dialogue-system.git",
-    "com.aurore.few-ui": "https://github.com/Kabourlix/few-ui.git",
     "com.github.siccity.xnode": "https://github.com/siccity/xNode.git",
     "com.qriva.monobehaviourtree": "https://github.com/Qriva/MonoBehaviourTree.git#upm",
     "com.unity.collab-proxy": "1.17.7",
