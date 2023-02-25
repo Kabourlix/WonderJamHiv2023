@@ -1,0 +1,22 @@
+TemplateContainer {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+#list {
+    flex-grow: 1;
+    flex-direction: column;
+    width: 60px;
+    max-width: 30%;
+    min-width: 15%;
+}
+
+.header {
+    -unity-font-style: bold;
+    font-size: 20px;
+}
+
+#questData {
+    max-width: 70%;
+    min-width: 60%;
+}
