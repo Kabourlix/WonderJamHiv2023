@@ -57,7 +57,8 @@ public class PlayerController : MonoBehaviour
 
     public Forms CurrentForm
     {
-        get => _currentForm; set
+        get => _currentForm;
+        set
         {
             _currentForm = value;
             OnSwitchForm(_currentForm);
@@ -86,18 +87,18 @@ public class PlayerController : MonoBehaviour
         CurrentForm = _baseForm;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         ApplyMovement();
         ApplyGravity();
         AnimateMovement();
-        _characterController.Move((_movementVelocity + _gravityVelocityVector) * Time.fixedDeltaTime);
+        _characterController.Move((_movementVelocity + _gravityVelocityVector) * Time.deltaTime);
     }
 
     void ApplyMovement()
     {
         _targetMovementVelocity = _movementInput * _speed;
-        _movementVelocity = Vector3.Lerp(_movementVelocity, _targetMovementVelocity, Time.fixedDeltaTime * _accelerationRate);
+        _movementVelocity = Vector3.Lerp(_movementVelocity, _targetMovementVelocity, Time.deltaTime * _accelerationRate);
     }
 
     void AnimateMovement()
@@ -105,14 +106,14 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool(_isWalkingHash, _characterController.isGrounded && _movementInput.sqrMagnitude > 0.001f);
         _animator.SetFloat(_walkingSpeedHash, _movementInput.magnitude);
         if (_movementInput.sqrMagnitude <= 0.01f) return;
-        _orientation = Mathf.MoveTowardsAngle(_orientation, Vector2.SignedAngle(new Vector2(_movementInput.x, _movementInput.z), Vector2.up), 1000 * Time.fixedDeltaTime);
-        _animator.gameObject.transform.rotation = Quaternion.Euler(0, _orientation, 0);
+        _orientation = Mathf.MoveTowardsAngle(_orientation, Vector2.SignedAngle(new Vector2(_movementInput.x, _movementInput.z), Vector2.up), 1000 * Time.deltaTime);
+        gameObject.transform.rotation = Quaternion.Euler(0, _orientation, 0);
     }
 
     void ApplyGravity()
     {
         if (_characterController.isGrounded) return;
-        _gravityVelocity = Mathf.Clamp(_gravityVelocity + _gravityMultiplier * 10 * Time.fixedDeltaTime, -_gravityTerminalVelocity, _gravityTerminalVelocity);
+        _gravityVelocity = Mathf.Clamp(_gravityVelocity + _gravityMultiplier * 10 * Time.deltaTime, -_gravityTerminalVelocity, _gravityTerminalVelocity);
         _gravityVelocityVector = new Vector3(0, -_gravityVelocity, 0);
     }
 
