@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using CartoonFX;
 using Game.Scripts.Interaction;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -151,6 +153,28 @@ public class PlayerController : MonoBehaviour
         {
             formStat.animator.gameObject.SetActive(false);
         }
+    }
+
+
+    [SerializeField] private ParticleSystem deathParticle;
+    [FormerlySerializedAs("renderer")] [SerializeField] private Renderer playerRenderer;
+    [ContextMenu("Die")]
+    public void HandleDeath()
+    {
+        StartCoroutine(DeathCoroutine());
+    }
+    //!BIG DEBUG DEGUEULASSE A ENLEVER PLUS TARD
+    public Vector3 spawnPoint;
+    private IEnumerator DeathCoroutine()
+    {
+        deathParticle.Play();
+        Debug.Log(deathParticle.main.duration);
+        playerRenderer.enabled = false;
+        //Disable Controls TODO
+        yield return new WaitForSeconds(deathParticle.main.duration);
+        //Enable controls TODO
+        transform.position = spawnPoint;
+        playerRenderer.enabled = true; 
     }
 
 #if UNITY_EDITOR
