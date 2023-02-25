@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CapsuleCollider interactCollider;
     [SerializeField] private LayerMask interactLayerMask;
 
+    public bool IsSuspect { get; private set; }
+    
+    
     public Forms CurrentForm
     {
         get => _currentForm;
