@@ -23,6 +23,8 @@ namespace Game.Scripts.Quests
             }
         }
 
+        #region Properties
+
         public GUID ID { get; private set; }
         
         [SerializeField] private string title;
@@ -34,6 +36,8 @@ namespace Game.Scripts.Quests
 
         [SerializeField] private QuestType questType;
         public QuestType QuestType => questType;
+
+        #endregion
         
         
         public void IsCompleted()
@@ -44,8 +48,10 @@ namespace Game.Scripts.Quests
                 if (!condition.IsCompleted)
                     return;
             }
-            QuestManager.Instance.QuestCompleted(this);
+            QuestCompleted();
         }
+        
+        public void QuestCompleted() => QuestManager.Instance.QuestCompleted(this);
         
         
     }
