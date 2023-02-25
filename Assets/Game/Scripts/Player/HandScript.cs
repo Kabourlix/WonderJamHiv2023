@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class HandScript : MonoBehaviour
 {
@@ -13,10 +14,6 @@ public class HandScript : MonoBehaviour
     [SerializeField] private GameObject _vfxHand;
     [SerializeField] private CapsuleCollider _interactCollider;
 
-
-    //Components
-    private Joint joint;
-
     private Rigidbody _currentGrabbedObject = null;
     [SerializeField] private string _grabbedObjectLayer;
     private int _grabbedObjectLayerIndex;
@@ -24,7 +21,6 @@ public class HandScript : MonoBehaviour
     
     private void Awake()
     {
-        joint = GetComponent<Joint>();
         _grabbedObjectLayerIndex=LayerMask.NameToLayer(_grabbedObjectLayer);
     }
 
@@ -53,17 +49,29 @@ public class HandScript : MonoBehaviour
         var closest = colliders.Where(x => x.GetComponent<Rigidbody>() != null).OrderBy(x => Vector3.SqrMagnitude(x.transform.position - bounds.center)).FirstOrDefault();
         if (closest == null) return;
         _currentGrabbedObject = closest.GetComponent<Rigidbody>(); ;
-        joint.connectedBody = _currentGrabbedObject;
+        
         _vfxHand.SetActive(true);
         _cachedLayerIndex=_currentGrabbedObject.gameObject.layer;
-        _currentGrabbedObject.gameObject.layer = _grabbedObjectLayerIndex;
+        _currentGrabbedObject.transform.SetParent(transform);
+        _currentGrabbedObject.transform.localPosition = Vector3.zero;
+
+        var children = GetComponentsInChildren<Transform>(includeInactive: true);
+        foreach (var child in children)
+        {
+            child.gameObject.layer = _grabbedObjectLayerIndex;
+        }
     }
 
     void UngrabObject()
     {
         _vfxHand.SetActive(false);
-        joint.connectedBody = null;
-        _currentGrabbedObject.gameObject.layer = _cachedLayerIndex;
+
+        var children = GetComponentsInChildren<Transform>(includeInactive: true);
+        foreach (var child in children)
+        {
+            child.gameObject.layer = _cachedLayerIndex;
+        }
+
         _currentGrabbedObject=null; 
     }
 }
