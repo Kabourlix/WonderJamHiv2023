@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0fe315cdd3e0148bc10b4ad6aea3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contextualInteractMenu: {fileID: 0}
+  _contextualPushMenu: {fileID: 0}
+  _leashPrefab: {fileID: 0}
 --- !u!1 &4897035602389707668
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,10 +218,14 @@ MonoBehaviour:
   _layersForGravity:
     serializedVersion: 2
     m_Bits: 1
+  _pushDistance: 5
   interactCollider: {fileID: 48718952988502342}
   interactLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  pushLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
   deathParticle: {fileID: 0}
   playerRenderer: {fileID: 0}
   spawnPoint: {x: 0, y: 0, z: 0}

@@ -1,11 +1,7 @@
 using Game.Inputs;
-using Game.Scripts.Interaction;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.XR;
+
 
 public class HandScript : MonoBehaviour
 {

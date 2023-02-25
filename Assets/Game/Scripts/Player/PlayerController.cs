@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CartoonFX;
@@ -24,6 +25,23 @@ public class PlayerController : MonoBehaviour
         public Animator animator;
     }
 
+    [System.Serializable]
+    public struct PushResolution
+    {
+        //Constructor
+        public PushResolution(GameObject target, Vector3 originalPosition, Vector3 finalPosition)
+        {
+            this.target = target;
+            this.originalPosition = originalPosition;
+            this.finalPosition = finalPosition;
+            this.progression = 0;
+        }
+        public GameObject target;
+        public Vector3 originalPosition;
+        public Vector3 finalPosition;
+        public float progression;
+    }
+
     #endregion
     public enum Forms { bat, spider, humanoid }
 
@@ -48,6 +66,10 @@ public class PlayerController : MonoBehaviour
     private float _gravityTerminalVelocity;
     private float _gravityMultiplier;
 
+    [Header("Push")]
+    [SerializeField] private float _pushDistance = 5f;
+    [SerializeField] private float _pushDuration = 0.5f;
+
     #region AnimatorHashes
     private int _isWalkingHash;
     private int _walkingSpeedHash;
@@ -57,7 +79,12 @@ public class PlayerController : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private CapsuleCollider interactCollider;
     [SerializeField] private LayerMask interactLayerMask;
+    [SerializeField] private LayerMask pushLayerMask;
+    private List<PushResolution> _pushResolutions;
 
+    public bool IsSuspect { get; private set; }
+    
+    
     public Forms CurrentForm
     {
         get => _currentForm;
@@ -77,6 +104,8 @@ public class PlayerController : MonoBehaviour
 
         _isWalkingHash = Animator.StringToHash("IsWalking");
         _walkingSpeedHash = Animator.StringToHash("WalkingSpeed");
+
+        _pushResolutions = new List<PushResolution>();
     }
 
     void Start()
@@ -84,6 +113,7 @@ public class PlayerController : MonoBehaviour
 
         InputManager.OnMoveEvent += (Vector2 value) => { _movementInput = new Vector3(value.x, 0, value.y); };
         InputManager.OnInteractEvent += OnInteract;
+        InputManager.OnPushEvent += OnPush;
         InputManager.OnTest1Event += () => { CurrentForm = Forms.bat; };
         InputManager.OnTest2Event += () => { CurrentForm = Forms.spider; };
         InputManager.OnTest3Event += () => { CurrentForm = Forms.humanoid; };
@@ -133,10 +163,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public static event Action OnEvolve; 
+    public static event Action OnEvolveEnd;
+    public void EvolveBegin()
+    {
+        OnEvolve?.Invoke();
+        InputManager.Instance.EnableControls(false);
+    }
+    
+    public void EvolveEnd()
+    {
+        OnEvolveEnd?.Invoke();
+        //Controls are enabled back by EvolveViewSwitch
+    }
+    
+    void OnPush()
+    {
+        Debug.Log("Interact");
+        var bounds = interactCollider.bounds;
+        var colliders = Physics.OverlapCapsule(bounds.center, bounds.center + new Vector3(0, interactCollider.height, 0), interactCollider.radius, pushLayerMask);
+        foreach (var c in colliders)
+        {
+            if (c.GetComponent<Pushable>() == null) continue;
+            
+            Vector3 targetPosition = c.transform.position + transform.forward * _pushDistance;
+            c.GetComponent<Pushable>().Push(targetPosition,_pushDuration);
+        }
+    }
+
     void OnSwitchForm(Forms newForm)
     {
         ClearPreviousForm();
-
         FormStat formStat = _formStats.Find(x => x.form == newForm);
         _accelerationRate = formStat.accelerationRate;
         _speed = formStat.speed;

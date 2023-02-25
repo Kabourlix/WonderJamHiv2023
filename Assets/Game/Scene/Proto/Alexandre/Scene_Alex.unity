@@ -405,104 +405,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &816210385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 816210389}
-  - component: {fileID: 816210388}
-  - component: {fileID: 816210387}
-  - component: {fileID: 816210386}
-  m_Layer: 6
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!136 &816210386
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816210385}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &816210387
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816210385}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &816210388
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816210385}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &816210389
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816210385}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.73, y: 1.15, z: 3.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893850138
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +694,7 @@ Transform:
   - {fileID: 713866333}
   - {fileID: 1001562712}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1284332818
 GameObject:
@@ -1140,6 +1042,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525840189}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1608573890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608573891}
+  - component: {fileID: 1608573892}
+  m_Layer: 9
+  m_Name: Bruit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1608573891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608573890}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -43.5, y: -3, z: 34.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1608573892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608573890}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1657705722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,29 +1378,45 @@ GameObject:
   - component: {fileID: 2059104433}
   - component: {fileID: 2059104432}
   - component: {fileID: 2059104431}
-  - component: {fileID: 2059104430}
-  - component: {fileID: 2059104429}
-  - component: {fileID: 2059104427}
   - component: {fileID: 2059104423}
   - component: {fileID: 2059104421}
   - component: {fileID: 2059104410}
-  - component: {fileID: 2059104440}
-  - component: {fileID: 2059104438}
-  - component: {fileID: 2059104436}
   - component: {fileID: 2059104435}
   - component: {fileID: 2059104443}
-  - component: {fileID: 2059104452}
-  - component: {fileID: 2059104450}
-  - component: {fileID: 2059104449}
   - component: {fileID: 2059104448}
-  - component: {fileID: 2059104447}
-  - component: {fileID: 2059104454}
-  - component: {fileID: 2059104458}
   - component: {fileID: 2059104457}
-  - component: {fileID: 2059104456}
-  - component: {fileID: 2059104455}
-  - component: {fileID: 2059104459}
-  - component: {fileID: 2059104460}
+  - component: {fileID: 2059104461}
+  - component: {fileID: 2059104465}
+  - component: {fileID: 2059104463}
+  - component: {fileID: 2059104462}
+  - component: {fileID: 2059104470}
+  - component: {fileID: 2059104468}
+  - component: {fileID: 2059104472}
+  - component: {fileID: 2059104471}
+  - component: {fileID: 2059104475}
+  - component: {fileID: 2059104474}
+  - component: {fileID: 2059104481}
+  - component: {fileID: 2059104480}
+  - component: {fileID: 2059104479}
+  - component: {fileID: 2059104478}
+  - component: {fileID: 2059104477}
+  - component: {fileID: 2059104482}
+  - component: {fileID: 2059104489}
+  - component: {fileID: 2059104488}
+  - component: {fileID: 2059104487}
+  - component: {fileID: 2059104491}
+  - component: {fileID: 2059104490}
+  - component: {fileID: 2059104495}
+  - component: {fileID: 2059104494}
+  - component: {fileID: 2059104493}
+  - component: {fileID: 2059104492}
+  - component: {fileID: 2059104498}
+  - component: {fileID: 2059104496}
+  - component: {fileID: 2059104499}
+  - component: {fileID: 2059104500}
+  - component: {fileID: 2059104501}
+  - component: {fileID: 2059104502}
+  - component: {fileID: 2059104503}
   m_Layer: 0
   m_Name: tree
   m_TagString: Untagged
@@ -1519,98 +1482,20 @@ MonoBehaviour:
   title: 'Sequence '
   rect:
     serializedVersion: 2
-    x: 600
-    y: 80
+    x: 720
+    y: 100
     width: 160
     height: 44
-  parent: {fileID: 2059104443}
+  parent: {fileID: 2059104474}
   children:
+  - {fileID: 2059104496}
   - {fileID: 2059104448}
-  - {fileID: 2059104429}
-  - {fileID: 2059104427}
+  - {fileID: 2059104490}
+  - {fileID: 2059104499}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &2059104427
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait
-  rect:
-    serializedVersion: 2
-    x: 780
-    y: 240
-    width: 160
-    height: 44
-  parent: {fileID: 2059104423}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  time:
-    useConstant: 1
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 2
-  randomDeviation: 0
-  continueOnRestart: 0
---- !u!114 &2059104429
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e9be70d5ba8c7a43b684274083ede4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Move Navmesh Agent
-  rect:
-    serializedVersion: 2
-    x: 600
-    y: 240
-    width: 160
-    height: 44
-  parent: {fileID: 2059104423}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  destination:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 2059104434}
-    key: PatrolTarget
-    constantValue: {fileID: 0}
-  agent: {fileID: 743027031}
-  stopDistance: 2
-  updateInterval: 1
---- !u!114 &2059104430
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: Target
-  val: {fileID: 0}
 --- !u!114 &2059104431
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1627,12 +1512,12 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 220
-    y: -260
+    y: -540
     width: 160
     height: 44
   parent: {fileID: 0}
   children:
-  - {fileID: 2059104443}
+  - {fileID: 2059104493}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -1661,7 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 2059104471}
   repeatOnFinish: 1
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -1678,13 +1563,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   variables:
-  - {fileID: 2059104430}
   - {fileID: 2059104421}
   - {fileID: 2059104410}
-  - {fileID: 2059104440}
-  - {fileID: 2059104438}
   - {fileID: 2059104435}
-  - {fileID: 2059104447}
+  - {fileID: 2059104463}
+  - {fileID: 2059104462}
+  - {fileID: 2059104475}
+  - {fileID: 2059104481}
+  - {fileID: 2059104479}
   masterBlackboard: {fileID: 0}
 --- !u!114 &2059104435
 MonoBehaviour:
@@ -1700,66 +1586,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: SelfGameObj
   val: {fileID: 743027030}
---- !u!114 &2059104436
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55ed1b3b734a5045af452d27c543f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: See Condition
-  rect:
-    serializedVersion: 2
-    x: 160
-    y: 100
-    width: 160
-    height: 44
-  parent: {fileID: 2059104443}
-  children:
-  - {fileID: 2059104450}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  boolean:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 2059104434}
-    key: SeeSomething
-    constantValue: 0
-  attempt: 1
---- !u!114 &2059104438
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae15c5e6bcb1714080f2e8296c3d17a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: SeeSomething
-  val: 0
---- !u!114 &2059104440
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae15c5e6bcb1714080f2e8296c3d17a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: HearSomething
-  val: 0
 --- !u!114 &2059104443
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1779,29 +1605,16 @@ MonoBehaviour:
     y: -120
     width: 160
     height: 44
-  parent: {fileID: 2059104431}
+  parent: {fileID: 2059104461}
   children:
-  - {fileID: 2059104454}
-  - {fileID: 2059104436}
-  - {fileID: 2059104423}
+  - {fileID: 2059104457}
+  - {fileID: 2059104477}
+  - {fileID: 2059104472}
+  - {fileID: 2059104474}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &2059104447
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: PatrolTarget
-  val: {fileID: 0}
 --- !u!114 &2059104448
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1817,8 +1630,8 @@ MonoBehaviour:
   title: Set Patrol Point
   rect:
     serializedVersion: 2
-    x: 420
-    y: 240
+    x: 680
+    y: 200
     width: 160
     height: 44
   parent: {fileID: 2059104423}
@@ -1836,211 +1649,6 @@ MonoBehaviour:
   - {fileID: 893850139}
   - {fileID: 713866333}
   - {fileID: 1001562712}
---- !u!114 &2059104449
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Set Boolean
-  rect:
-    serializedVersion: 2
-    x: 320
-    y: 300
-    width: 160
-    height: 44
-  parent: {fileID: 2059104450}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  source:
-    useConstant: 1
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
-  destination:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 2059104434}
-    key: SeeSomething
-    constantValue: 0
---- !u!114 &2059104450
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: 160
-    y: 180
-    width: 160
-    height: 44
-  parent: {fileID: 2059104436}
-  children:
-  - {fileID: 2059104452}
-  - {fileID: 2059104460}
-  - {fileID: 2059104449}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &2059104452
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait
-  rect:
-    serializedVersion: 2
-    x: -40
-    y: 300
-    width: 160
-    height: 44
-  parent: {fileID: 2059104450}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  time:
-    useConstant: 1
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 7
-  randomDeviation: 4
-  continueOnRestart: 0
---- !u!114 &2059104454
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 534e3ec7de6cd444e984c2e7f68e42e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Is Set Condition
-  rect:
-    serializedVersion: 2
-    x: -140
-    y: 0
-    width: 160
-    height: 44
-  parent: {fileID: 2059104443}
-  children:
-  - {fileID: 2059104457}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  abort: 3
-  invert: 0
-  type: 2
-  boolReference:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
-  objectReference:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: {fileID: 0}
-  transformReference:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 2059104434}
-    key: Target
-    constantValue: {fileID: 0}
---- !u!114 &2059104455
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea03521342a038645bcd22f68cb2539e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Rotate FOV
-  rect:
-    serializedVersion: 2
-    x: -360
-    y: 200
-    width: 160
-    height: 44
-  parent: {fileID: 2059104457}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  SelfObj:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 2059104434}
-    key: SelfGameObj
-    constantValue: {fileID: 0}
-  RotateAngle: 60
---- !u!114 &2059104456
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059104407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait
-  rect:
-    serializedVersion: 2
-    x: -180
-    y: 200
-    width: 160
-    height: 44
-  parent: {fileID: 2059104457}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  time:
-    useConstant: 1
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 7
-  randomDeviation: 4
-  continueOnRestart: 0
 --- !u!114 &2059104457
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2056,21 +1664,21 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -140
-    y: 80
+    x: -500
+    y: 20
     width: 160
     height: 44
-  parent: {fileID: 2059104454}
+  parent: {fileID: 2059104443}
   children:
-  - {fileID: 2059104458}
-  - {fileID: 2059104455}
-  - {fileID: 2059104456}
-  - {fileID: 2059104459}
+  - {fileID: 2059104501}
+  - {fileID: 2059104478}
+  - {fileID: 2059104480}
+  - {fileID: 2059104470}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &2059104458
+--- !u!114 &2059104461
 MonoBehaviour:
   m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2079,31 +1687,123 @@ MonoBehaviour:
   m_GameObject: {fileID: 2059104407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e9be70d5ba8c7a43b684274083ede4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 056841afaed742d4e909e76361b5173f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Move Navmesh Agent
+  title: Repeater
   rect:
     serializedVersion: 2
-    x: -540
-    y: 200
+    x: 220
+    y: -200
     width: 160
     height: 44
-  parent: {fileID: 2059104457}
+  parent: {fileID: 2059104493}
+  children:
+  - {fileID: 2059104443}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  loops: 1
+  infinite: 1
+--- !u!114 &2059104462
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PlayerSeen
+  val: {fileID: 0}
+--- !u!114 &2059104463
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae15c5e6bcb1714080f2e8296c3d17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: IsPatroling
+  val: 0
+--- !u!114 &2059104465
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c41ddcab224a7baf30e8b0e36a927d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DetectNoise
+  rect:
+    serializedVersion: 2
+    x: -720
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 2059104501}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+  range: 25
+  variableToSet:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 2059104434}
+    key: PlayerHear
+    constantValue: {x: 0, y: 0, z: 0}
+--- !u!114 &2059104468
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Activate Patrol
+  rect:
+    serializedVersion: 2
+    x: 380
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 2059104489}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
   destination:
     useConstant: 0
-    mode: 0
+    mode: 1
     blackboard: {fileID: 2059104434}
-    key: Target
-    constantValue: {fileID: 0}
-  agent: {fileID: 743027031}
-  stopDistance: 2
-  updateInterval: 1
---- !u!114 &2059104459
+    key: IsPatroling
+    constantValue: 0
+--- !u!114 &2059104470
 MonoBehaviour:
   m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2112,14 +1812,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2059104407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e2d6ec602a61814b95aa3966e483279, type: 3}
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Reset transform value
+  title: Desactive Patrol
   rect:
     serializedVersion: 2
-    x: -20
-    y: 200
+    x: -240
+    y: 180
     width: 160
     height: 44
   parent: {fileID: 2059104457}
@@ -2127,13 +1827,288 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  transformReference:
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 2059104434}
+    key: IsPatroling
+    constantValue: 0
+--- !u!114 &2059104471
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe525a8c9dc4e9f9647aa1272ae7960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: LookForPlayer
+  rect:
+    serializedVersion: 2
+    x: 260
+    y: 80
+    width: 160
+    height: 44
+  parent: {fileID: 2059104472}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  range: 5
+  angle: 60
+  playerSeen:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 2059104434}
-    key: Target
+    key: PlayerSeen
     constantValue: {fileID: 0}
---- !u!114 &2059104460
+--- !u!114 &2059104472
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 340
+    y: -0
+    width: 160
+    height: 44
+  parent: {fileID: 2059104443}
+  children:
+  - {fileID: 2059104471}
+  - {fileID: 2059104502}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &2059104474
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55ed1b3b734a5045af452d27c543f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Is Patroling
+  rect:
+    serializedVersion: 2
+    x: 720
+    y: 20
+    width: 160
+    height: 44
+  parent: {fileID: 2059104443}
+  children:
+  - {fileID: 2059104423}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  boolean:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: IsPatroling
+    constantValue: 0
+  attempt: 1
+--- !u!114 &2059104475
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PatrolTarget
+  val: {fileID: 0}
+--- !u!114 &2059104477
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55ed1b3b734a5045af452d27c543f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Bool Condition
+  rect:
+    serializedVersion: 2
+    x: 80
+    y: 0
+    width: 160
+    height: 44
+  parent: {fileID: 2059104443}
+  children:
+  - {fileID: 2059104489}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  boolean:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: HearSomething
+    constantValue: 0
+  attempt: 1
+--- !u!114 &2059104478
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Boolean
+  rect:
+    serializedVersion: 2
+    x: -560
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 2059104457}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 2059104434}
+    key: HearSomething
+    constantValue: 0
+--- !u!114 &2059104479
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae15c5e6bcb1714080f2e8296c3d17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: HearSomething
+  val: 0
+--- !u!114 &2059104480
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4904ea0992e210f4383f32c648773f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNavOnceVector
+  rect:
+    serializedVersion: 2
+    x: -400
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 2059104457}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: PlayerHear
+    constantValue: {x: 0, y: 0, z: 0}
+  agent: {fileID: 743027031}
+--- !u!114 &2059104481
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51272808e3662eb4286c82f38f91fae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PlayerHear
+  val: {x: 0, y: 0, z: 0}
+--- !u!114 &2059104482
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2a88e0ef279994b95d6e19dad2d18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Patrol Point
+  rect:
+    serializedVersion: 2
+    x: -240
+    y: -280
+    width: 160
+    height: 44
+  parent: {fileID: 2059104493}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  variableToSet:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 2059104434}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  waypoints:
+  - {fileID: 893850139}
+  - {fileID: 713866333}
+  - {fileID: 1001562712}
+--- !u!114 &2059104487
 MonoBehaviour:
   m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2148,11 +2123,11 @@ MonoBehaviour:
   title: Rotate FOV
   rect:
     serializedVersion: 2
-    x: 140
-    y: 300
+    x: -100
+    y: 420
     width: 160
     height: 44
-  parent: {fileID: 2059104450}
+  parent: {fileID: 2059104489}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -2163,4 +2138,569 @@ MonoBehaviour:
     blackboard: {fileID: 2059104434}
     key: SelfGameObj
     constantValue: {fileID: 0}
-  RotateAngle: 80
+  RotateAngle: 45
+--- !u!114 &2059104488
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait
+  rect:
+    serializedVersion: 2
+    x: -260
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 2059104489}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 3
+  randomDeviation: 0
+  continueOnRestart: 0
+--- !u!114 &2059104489
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 80
+    y: 60
+    width: 160
+    height: 44
+  parent: {fileID: 2059104477}
+  children:
+  - {fileID: 2059104500}
+  - {fileID: 2059104492}
+  - {fileID: 2059104488}
+  - {fileID: 2059104487}
+  - {fileID: 2059104495}
+  - {fileID: 2059104494}
+  - {fileID: 2059104468}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &2059104490
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad58dbc9b181c8438fca6e73aa3194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNav
+  rect:
+    serializedVersion: 2
+    x: 840
+    y: 200
+    width: 160
+    height: 44
+  parent: {fileID: 2059104423}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  agent: {fileID: 743027031}
+--- !u!114 &2059104491
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad58dbc9b181c8438fca6e73aa3194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNav
+  rect:
+    serializedVersion: 2
+    x: -80
+    y: -280
+    width: 160
+    height: 44
+  parent: {fileID: 2059104493}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  agent: {fileID: 743027031}
+--- !u!114 &2059104492
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Boolean
+  rect:
+    serializedVersion: 2
+    x: -420
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 2059104489}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 2059104434}
+    key: HearSomething
+    constantValue: 0
+--- !u!114 &2059104493
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: -420
+    width: 160
+    height: 44
+  parent: {fileID: 2059104431}
+  children:
+  - {fileID: 2059104482}
+  - {fileID: 2059104491}
+  - {fileID: 2059104498}
+  - {fileID: 2059104461}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &2059104494
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad58dbc9b181c8438fca6e73aa3194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNav
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 2059104489}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  agent: {fileID: 743027031}
+--- !u!114 &2059104495
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2a88e0ef279994b95d6e19dad2d18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Patrol Point
+  rect:
+    serializedVersion: 2
+    x: 60
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 2059104489}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  variableToSet:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 2059104434}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  waypoints:
+  - {fileID: 893850139}
+  - {fileID: 713866333}
+  - {fileID: 1001562712}
+--- !u!114 &2059104496
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12f4e931b66f0e47afce9dbd79ddebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DistanceBetween
+  rect:
+    serializedVersion: 2
+    x: 520
+    y: 200
+    width: 160
+    height: 44
+  parent: {fileID: 2059104423}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  comparator: 1
+  distance:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  transform1:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: Self
+    constantValue: {fileID: 0}
+  transform2:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+--- !u!114 &2059104498
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Boolean
+  rect:
+    serializedVersion: 2
+    x: 80
+    y: -280
+    width: 160
+    height: 44
+  parent: {fileID: 2059104493}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 2059104434}
+    key: IsPatroling
+    constantValue: 0
+--- !u!114 &2059104499
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait
+  rect:
+    serializedVersion: 2
+    x: 1000
+    y: 200
+    width: 160
+    height: 44
+  parent: {fileID: 2059104423}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 5
+  randomDeviation: 0
+  continueOnRestart: 0
+--- !u!114 &2059104500
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795a20763b1ff064f986f8e4f8024082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DistanceBetweenVector
+  rect:
+    serializedVersion: 2
+    x: -580
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 2059104489}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  comparator: 1
+  distance:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  transform1:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: Self
+    constantValue: {fileID: 0}
+  transform2:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: PlayerHear
+    constantValue: {x: 0, y: 0, z: 0}
+--- !u!114 &2059104501
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55ed1b3b734a5045af452d27c543f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Bool Condition
+  rect:
+    serializedVersion: 2
+    x: -720
+    y: 120
+    width: 160
+    height: 44
+  parent: {fileID: 2059104457}
+  children:
+  - {fileID: 2059104465}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  boolean:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: HearSomething
+    constantValue: 0
+  attempt: 0
+--- !u!114 &2059104502
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62974267cbf168c46992ca5cd8af743a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DeathEvent
+  rect:
+    serializedVersion: 2
+    x: 440
+    y: 80
+    width: 160
+    height: 44
+  parent: {fileID: 2059104472}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  transform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 2059104434}
+    key: PlayerSeen
+    constantValue: {fileID: 0}
+--- !u!114 &2059104503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059104407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f5eb55a5906ac4a8d32c088224a1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseForm: 1
+  _formStats: []
+  _layersForGravity:
+    serializedVersion: 2
+    m_Bits: 0
+  interactCollider: {fileID: 0}
+  interactLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  deathParticle: {fileID: 0}
+  playerRenderer: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2144496838
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897035603165216375, guid: 82a03788d718e4649b2835af7dfbbf56,
+        type: 3}
+      propertyPath: m_Name
+      value: Player (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 82a03788d718e4649b2835af7dfbbf56, type: 3}

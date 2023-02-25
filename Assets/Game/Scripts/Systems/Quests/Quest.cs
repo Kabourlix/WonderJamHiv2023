@@ -11,9 +11,6 @@ namespace Game.Scripts.Quests
 
         private void OnEnable()
         {
-            if (ID == default)
-                ID = GUID.Generate();
-
             if (conditions != null)
             {
                 foreach (var condition in conditions)
@@ -25,8 +22,7 @@ namespace Game.Scripts.Quests
         }
 
         #region Properties
-
-        public GUID ID { get; private set; }
+        
         
         [SerializeField] private string title;
         public string Title => title;
@@ -37,6 +33,10 @@ namespace Game.Scripts.Quests
 
         [SerializeField] private QuestType questType;
         public QuestType QuestType => questType;
+        
+        [Min(0)]
+        [SerializeField] private int rewardXp;
+        public int RewardXp => rewardXp;
         
         private HUDManager hud => HUDManager.Instance;
 

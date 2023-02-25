@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - FxTemporaire
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - GrabbedObject
   - Bruit
   - Interacter
-  - 
-  - 
+  - PickedObject
+  - Children
   - 
   - 
   - 
