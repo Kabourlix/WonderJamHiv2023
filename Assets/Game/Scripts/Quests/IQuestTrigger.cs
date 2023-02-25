@@ -2,7 +2,7 @@
 {
     public interface IQuestTrigger
     {
-        public void TriggerCondition(Quest quest);
+        public void TriggerStat(QuestStat stat);
         
     }
 }
