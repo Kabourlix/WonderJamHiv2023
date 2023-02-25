@@ -4,5 +4,5 @@
         <ui:ListView focusable="true" name="list" />
         <ui:ScrollView name="questData" />
     </ui:VisualElement>
-    <uie:ToolbarButton text="Add Quest" display-tooltip-when-elided="true" name="AddQuest" style="justify-content: center; -unity-text-align: upper-center; -unity-font-style: bold;" />
+    <uie:ToolbarButton text="Add Property" display-tooltip-when-elided="true" name="propButton" style="align-items: center; justify-content: center; -unity-text-align: middle-center; -unity-font-style: bold;" />
 </ui:UXML>

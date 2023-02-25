@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Quests;
+﻿using System;
+using Game.Scripts.Quests;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -22,17 +23,30 @@ namespace Game.Scripts.Editor
             TemplateContainer container = original.CloneTree();
             rootVisualElement.Add(container);
             CreateCardView();
+            
+            var createQuestButton = rootVisualElement.Q<Button>("AddQuest");
+            createQuestButton.clicked += CreateQuest;
         }
+        
+
+        private void OnDisable()
+        {
+            var createQuestButton = rootVisualElement.Q<Button>("AddQuest");
+            createQuestButton.clicked -= CreateQuest;
+        }
+
+        
+        
 
         private void CreateCardView()
         {
-            FindAllQuests(out var enemies);
+            FindAllQuests(out var quests);
 
             ListView enemiesList = rootVisualElement.Query<ListView>().First();
             enemiesList.makeItem = () => new Label();
-            enemiesList.bindItem = (element, i) => { ((Label) element).text = enemies[i].name; };
+            enemiesList.bindItem = (element, i) => { ((Label) element).text = quests[i].name; };
             
-            enemiesList.itemsSource = enemies;
+            enemiesList.itemsSource = quests;
             enemiesList.fixedItemHeight = 16;
             enemiesList.selectionType = SelectionType.Single;
             
@@ -72,6 +86,26 @@ namespace Game.Scripts.Editor
                 var path = AssetDatabase.GUIDToAssetPath(guids[i]);
                 quests[i] = AssetDatabase.LoadAssetAtPath<Quest>(path);
             }
+            questCount = quests.Length;
+        }
+        private int questCount = 0;
+        
+        private void CreateQuest()
+        {
+            var quest = ScriptableObject.CreateInstance<Quest>();
+            var assetName = "NewQuest" + questCount + ".asset";
+            var path = EditorUtility.SaveFilePanelInProject("Save Quest", assetName, "asset", "Save Quest",
+                "Assets/Game/Data/Quests/");
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new Exception("Path is empty");
+            }
+            if(path.Split('.')[^1] != "asset")
+                throw new Exception("File must be .asset");
+            
+            AssetDatabase.CreateAsset(quest, path);
+            AssetDatabase.SaveAssets();
+            CreateCardView();
         }
     }
 }
