@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts.Quests;
 using UnityEngine;
+
 
 public class XPManager : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class XPManager : MonoBehaviour
 
     [SerializeField] private MeshFilter currentModel;
     [SerializeField] private Mesh targetModelLVL1, targetModelLVL2;
+     
 
     private void Awake()
     {
@@ -26,20 +30,31 @@ public class XPManager : MonoBehaviour
         targetXP = 30;
     }
 
-    void Update()
+    private void OnEnable()
     {
-            if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("allo");
-            XPManager.instance.AddXP(10);
+        QuestManager.Instance.OnQuestCompleted += UpdateXP;
+    }
+
+    private void OnDisable()
+    {
+        QuestManager.Instance.OnQuestCompleted -= UpdateXP;
+    }
+
+    void UpdateXP(Quest quest)
+    {
+        if (level < 3 && quest.QuestType == QuestType.Evil)
+        { 
+            XPManager.instance.AddXP(10); 
+            Debug.Log("You gained 10xp !");  
         }
+
     }
     
     public void AddXP(int xp)
     {
         currentXP += xp;
 
-        if (currentXP >= targetXP)
+        if (currentXP >= targetXP )
         {
             currentXP = targetXP - currentXP;
             level++;
