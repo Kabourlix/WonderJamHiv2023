@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: ff0aa740421860141a0ca0fd9c7b785c,
+  m_Motion: {fileID: 1827226128182048838, guid: 1f435b8524aead540a012bd1f6a21956,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -70,10 +70,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25070593
+  m_TransitionDuration: 0.3661204
   m_TransitionOffset: 0
-  m_ExitTime: 0.00000000784956
-  m_HasExitTime: 0
+  m_ExitTime: 0.0000000069338735
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 0adf7f1deb7de214bb4dffe8f6915929,
+  m_Motion: {fileID: 1827226128182048838, guid: a6983a9be8c328042a72268310b502f9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -112,7 +112,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BatController
+  m_Name: HumanController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsWalking
@@ -120,7 +120,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -151,9 +151,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.27814233
+  m_TransitionDuration: 0.33879828
   m_TransitionOffset: 0
-  m_ExitTime: 0.0000000016001245
+  m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

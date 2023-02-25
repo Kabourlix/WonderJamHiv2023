@@ -18,12 +18,16 @@ public class PlayerController : MonoBehaviour
         [Range(0f, 1f)]
         public float gravityMultiplier;
         [Tooltip("The animator must come from the prefab/scene and be attached to the visual representation of this form. Do not slide it from the assets")]
-        public Animator animator;
+        public Animator redAnimator;
+        [Tooltip("The animator must come from the prefab/scene and be attached to the visual representation of this form. Do not slide it from the assets")]
+        public Animator blueAnimator;
     }
 
     #endregion
     public enum Forms { bat, spider, humanoid}
+    public enum Colors { red, blue}
     [SerializeField] Forms _baseForm = Forms.bat;
+    [SerializeField] Colors _color = Colors.red;
     [SerializeField] List<FormStat> _formStats = new List<FormStat>();
     [Tooltip("If the player is standing on collider in this mask, he falls. Must not contain the layer of the player, else it won't work")]
     [SerializeField] LayerMask _layersForGravity;
@@ -35,7 +39,9 @@ public class PlayerController : MonoBehaviour
     private float _accelerationRate;
     private Vector3 _movementVelocity;
     private Vector3 _targetMovementVelocity;
+    private float _orientation;
     float _speed=10;
+    
 
     private float _gravityVelocity;
     private Vector3 _gravityVelocityVector;
@@ -57,11 +63,6 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();  
         _collider = GetComponent<Collider>();
         
-        foreach (FormStat formStat in _formStats)
-        {
-            formStat.animator.gameObject.SetActive(false);
-        }
-
         CurrentForm = _baseForm;
     }
 
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         InputManager.OnInteractEvent += OnInteract;
         InputManager.OnTest1Event += () => { CurrentForm = Forms.bat; };
         InputManager.OnTest2Event += () => { CurrentForm = Forms.spider; };
+        InputManager.OnTest3Event += () => { CurrentForm = Forms.humanoid; };
         CurrentForm = _baseForm;
     }
 
@@ -91,10 +93,11 @@ public class PlayerController : MonoBehaviour
 
     void AnimateMovement()
     {
-        _animator.SetBool("IsWalking", _movementInput.sqrMagnitude > 0.01f);
+        _animator.SetBool("IsWalking", _characterController.isGrounded && _movementInput.sqrMagnitude > 0.001f);
+        _animator.SetFloat("WalkingSpeed", _movementInput.magnitude);
         if (_movementInput.sqrMagnitude <= 0.01f) return;
-        float orientation = Vector2.SignedAngle(Vector2.right, new Vector2(_movementInput.x,_movementInput.z));
-        _animator.gameObject.transform.rotation= Quaternion.Euler(0,orientation, 0);
+        _orientation = Mathf.MoveTowardsAngle(_orientation, Vector2.SignedAngle(new Vector2(_movementInput.x,_movementInput.z), Vector2.up), 1000*Time.fixedDeltaTime);
+        _animator.gameObject.transform.rotation= Quaternion.Euler(0,_orientation, 0);
     }
 
     void ApplyGravity()
@@ -119,6 +122,8 @@ public class PlayerController : MonoBehaviour
 
     void OnSwitchForm(Forms newForm)
     {
+        ClearPreviousForm();
+
         FormStat formStat = _formStats.Find(x => x.form == newForm);
         _accelerationRate = formStat.accelerationRate;
         _speed= formStat.speed;
@@ -126,8 +131,17 @@ public class PlayerController : MonoBehaviour
         _gravityMultiplier = formStat.gravityMultiplier;
         _gravityTerminalVelocity = formStat.gravityTerminalVelocity;
 
-        _animator = formStat.animator;
-        formStat.animator.gameObject.SetActive(true);
+        _animator = (_color==Colors.red)?formStat.redAnimator:formStat.blueAnimator;
+        _animator.gameObject.SetActive(true);
+    }
+
+    void ClearPreviousForm()
+    {
+        foreach (FormStat formStat in _formStats)
+        {
+            formStat.redAnimator.gameObject.SetActive(false);
+            formStat.blueAnimator.gameObject.SetActive(false);
+        }
     }
 
 #if UNITY_EDITOR
