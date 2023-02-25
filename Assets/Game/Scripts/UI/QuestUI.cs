@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Game.Scripts.Quests;
 using TMPro;
 using UnityEngine;
@@ -18,13 +19,18 @@ namespace Game.Scripts.UI
         
         [Header("Prefab")]
         [SerializeField] private GameObject conditionPrefab;
+        [SerializeField] private float highlightTime = 1f;
+        [SerializeField] private float highlightAlpha = 0.5f;
+        private WaitForSeconds _highlightWait;
+        private Image _highlight;
+
+        private Quest _quest;
 
         private void Awake()
         {
-            QuestManager.Instance.OnQuestCompleted += QuestCompleted;
+            _highlightWait = new WaitForSeconds(highlightTime);
+            _highlight = GetComponent<Image>();
         }
-
-        private Quest _quest;
 
         public void Init(Quest quest)
         {
@@ -44,13 +50,39 @@ namespace Game.Scripts.UI
             conditionUI.Init(c);
             
         }
-
-        private void QuestCompleted(Quest quest)
+        
+        private Coroutine _highlightCoroutine;
+        public void Highlight(bool b)
         {
-            if (quest == _quest)
+            if (_highlightCoroutine != null)
+                StopCoroutine(_highlightCoroutine);
+            _highlightCoroutine = StartCoroutine(HighlightCoroutine(b));
+        }
+        
+        private IEnumerator HighlightCoroutine(bool b)
+        {
+            var target = b ? highlightAlpha : 0;
+            while (Mathf.Abs(_highlight.color.a -target) > 0.01f)
             {
-                Destroy(gameObject);
+                var color = _highlight.color;
+                var alpha = Mathf.Lerp(color.a,  target, Time.deltaTime);
+                _highlight.color = new Color(color.r, color.g, color.b, alpha);
+                yield return typeof(WaitForEndOfFrame);
             }
+            _highlight.color = new Color(_highlight.color.r, _highlight.color.g, _highlight.color.b, target);
+            _highlightCoroutine = null;
+        }
+        
+        public IEnumerator HighlightTempCoroutine()
+        {
+            Highlight(true);
+            yield return _highlightWait;
+            Highlight(false);
+        }
+
+        public void QuestCompleted()
+        {
+            Destroy(gameObject);
         }
         
 

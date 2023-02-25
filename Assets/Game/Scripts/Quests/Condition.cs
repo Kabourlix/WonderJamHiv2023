@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Scripts.UI;
 using UnityEngine;
 
 namespace Game.Scripts.Quests
@@ -12,6 +13,9 @@ namespace Game.Scripts.Quests
         
         public Condition() => _isCompleted = false;
         public event Action OnConditionCompleted; 
+        
+        
+        
         public void LinkEvent()
         {
             IsCompleted = false;

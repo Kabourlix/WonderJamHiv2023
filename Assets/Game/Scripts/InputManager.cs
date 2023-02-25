@@ -25,6 +25,8 @@ public class InputManager : MonoBehaviour
     public static event Action<Vector2> OnMoveEvent;
     public static event Action OnInteractEvent;
     public static event Action OnGrabEvent;
+
+    public static event Action OnShowHideQuestEvent;
     public static event Action OnTest1Event;
     public static event Action OnTest2Event;
     public static event Action OnTest3Event;
@@ -62,6 +64,11 @@ public class InputManager : MonoBehaviour
     private void OnGrab()
     {
         OnGrabEvent?.Invoke();
+    }
+    
+    private void OnShowHideQuest()
+    {
+        OnShowHideQuestEvent?.Invoke();
     }
 }
 

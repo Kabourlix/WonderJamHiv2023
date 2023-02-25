@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Scripts.UI;
 using UnityEditor;
 using UnityEngine;
 
@@ -36,6 +37,8 @@ namespace Game.Scripts.Quests
 
         [SerializeField] private QuestType questType;
         public QuestType QuestType => questType;
+        
+        private HUDManager hud => HUDManager.Instance;
 
         #endregion
         
@@ -43,6 +46,7 @@ namespace Game.Scripts.Quests
         public void IsCompleted()
         {
             Debug.Log($"Checking if quest {title} is completed");
+            if(hud is not null) hud.ShowQuestTemp(this);
             foreach (var condition in conditions)
             {
                 if (!condition.IsCompleted)
