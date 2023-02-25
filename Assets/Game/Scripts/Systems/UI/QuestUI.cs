@@ -20,16 +20,15 @@ namespace Game.Scripts.UI
         
         [Header("Prefab")]
         [SerializeField] private GameObject conditionPrefab;
-        [SerializeField] private float highlightTime = 1f;
+        [FormerlySerializedAs("highlightTime")] [SerializeField] private float highlightExposedTime = 1.5f;
+        [SerializeField] private float highlightSmoothTime = 0.3f;
         [SerializeField] private float highlightAlpha = 0.5f;
-        private WaitForSeconds _highlightWait;
         private Image _highlight;
 
         private Quest _quest;
 
         private void Awake()
         {
-            _highlightWait = new WaitForSeconds(highlightTime);
             _highlight = GetComponent<Image>();
         }
 
@@ -52,34 +51,28 @@ namespace Game.Scripts.UI
             
         }
         
-        private Coroutine _highlightCoroutine;
-        public void Highlight(bool b)
-        {
-            if (_highlightCoroutine != null)
-                StopCoroutine(_highlightCoroutine);
-            _highlightCoroutine = StartCoroutine(HighlightCoroutine(b));
-        }
         
-        private IEnumerator HighlightCoroutine(bool b)
+        public void Highlight(Action callback)
         {
-            var target = b ? highlightAlpha : 0;
-            while (Mathf.Abs(_highlight.color.a -target) > 0.01f)
+            var c = _highlight.color;
+            LeanTween.value(gameObject, 0, highlightAlpha, highlightSmoothTime).setOnUpdate((float val) =>
             {
-                var color = _highlight.color;
-                var alpha = Mathf.Lerp(color.a,  target, Time.deltaTime);
-                _highlight.color = new Color(color.r, color.g, color.b, alpha);
-                yield return typeof(WaitForEndOfFrame);
-            }
-            _highlight.color = new Color(_highlight.color.r, _highlight.color.g, _highlight.color.b, target);
-            _highlightCoroutine = null;
+                _highlight.color = new Color(c.r,c.g,c.b,val);
+            }).setOnComplete(() =>
+            {
+                LeanTween.value(gameObject, 0, 1, highlightExposedTime)
+                    .setOnComplete
+                    (() =>
+                        {
+                            LeanTween.value(gameObject, highlightAlpha, 0, highlightSmoothTime)
+                                .setOnUpdate((float val) => { _highlight.color = new Color(c.r, c.g, c.b, val); });
+                        }
+                    ).setOnComplete(callback);
+            });
+            //Highligh the quest 
         }
         
-        public IEnumerator HighlightTempCoroutine()
-        {
-            Highlight(true);
-            yield return _highlightWait;
-            Highlight(false);
-        }
+        
 
         public void QuestCompleted()
         {
