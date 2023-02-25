@@ -15,10 +15,18 @@ public class CameraScript : MonoBehaviour
     {
         _offset = transform.position - _target.position;
         _initialY = transform.position.y;
+        PlayerController.OnEvolve += () => _isEvolving = true;
+        PlayerController.OnEvolveEnd += () => _isEvolving = false;
     }
 
+    private bool _isEvolving = false;
     private void LateUpdate()
     {
+        if (_isEvolving)
+        {
+            Debug.Log("Evolving");
+            return;
+        }
         Vector3 desiredPosition = _target.position + _offset;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position,desiredPosition, ref velocity, _smoothTime);
 

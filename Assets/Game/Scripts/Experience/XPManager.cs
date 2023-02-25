@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Game.Scripts.Quests;
 using Game.Scripts.UI;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Serialization;
 
 
@@ -16,6 +17,7 @@ public class XPManager : MonoBehaviour
     private QuestManager _questManager;
     private HUDManager _hud;
     
+    
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
@@ -26,6 +28,7 @@ public class XPManager : MonoBehaviour
         _questManager??= QuestManager.Instance;
         _hud??= HUDManager.Instance;
         _questManager.OnQuestCompleted += UpdateXPCallback;
+        PlayerController.OnEvolveEnd += Evolve;
     }
 
     private void OnEnable()
@@ -57,10 +60,11 @@ public class XPManager : MonoBehaviour
         
         _currentXp = targetXp - _currentXp; // Better to reset to 0 ?
         _level++;
-        Evolve();
+        _playerController.EvolveBegin();
     }
 
-    private void Evolve()
+   
+    public void Evolve()
     {
         _playerController.CurrentForm = _level switch
         {
