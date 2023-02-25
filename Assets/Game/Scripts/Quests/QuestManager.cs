@@ -38,19 +38,23 @@ namespace Game.Scripts.Quests
                 _activeQuests.Add(quest);
             }
         }
-
-
-        public void CheckActiveQuest()
+        
+        public void AddQuest(Quest quest)
         {
-            if (_activeQuests is null || _activeQuests.Count == 0) return;
-            foreach (var quest in _activeQuests)
-            {
-                if(quest.IsCompleted())
-                {
-                    Debug.Log($"quest {quest.name} is completed!");
-                    OnQuestCompleted?.Invoke(quest);
-                }
-            }
+            _activeQuests.Add(quest);
+        }
+
+        public void RemoveQuest(Quest quest)
+        {
+            _activeQuests.Remove(quest);
+        }
+
+
+        public void QuestCompleted(Quest quest)
+        {
+            Debug.Log($"<color=orange>Quest {quest.Title} completed!</color>");
+            _activeQuests.Remove(quest);
+            OnQuestCompleted?.Invoke(quest);
         }
 
 

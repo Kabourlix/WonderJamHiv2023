@@ -12,6 +12,15 @@ namespace Game.Scripts.Quests
         {
             if (ID == default)
                 ID = GUID.Generate();
+
+            if (conditions != null)
+            {
+                foreach (var condition in conditions)
+                {
+                    condition.LinkEvent();
+                    condition.OnConditionCompleted += () => IsCompleted();
+                }
+            }
         }
 
         public GUID ID { get; private set; }
@@ -22,16 +31,16 @@ namespace Game.Scripts.Quests
         public string Description => description;
         
         public Condition[] conditions;
-        
-        public bool IsCompleted()
+
+        public void IsCompleted()
         {
+            Debug.Log($"Checking if quest {title} is completed");
             foreach (var condition in conditions)
             {
-                if (!condition.IsCompleted())
-                    return false;
+                if (!condition.IsCompleted)
+                    return;
             }
-
-            return true;
+            QuestManager.Instance.QuestCompleted(this);
         }
         
         

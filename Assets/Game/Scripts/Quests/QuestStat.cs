@@ -10,10 +10,13 @@ namespace Game.Scripts.Quests
         public string Title => title;
 
         public int count { get; private set; }
+        
+        public event Action OnCountChanged; 
 
         public void Increment()
         {
             count++;
+            OnCountChanged?.Invoke();
             Debug.Log($"{title} has been incremented to {count}");
         }
         
@@ -22,15 +25,40 @@ namespace Game.Scripts.Quests
     }
 
     [Serializable]
-    public struct Condition
+    public class Condition
     {
         [SerializeField] private QuestStat stat;
         public QuestStat Stat => stat;
         [SerializeField] private int target;
         
-        public bool IsCompleted()
+        public Condition() => _isCompleted = false;
+        public event Action OnConditionCompleted; 
+        public void LinkEvent()
         {
-            return stat.count >= target;
+            IsCompleted = false;
+            stat.OnCountChanged += () =>
+            {
+                IsCompleted = stat.count >= target || IsCompleted;
+                Debug.Log($"Condition {stat.Title} has been updated and completed is now {IsCompleted}");
+            };
         }
+
+        private bool _isCompleted = false;
+        public bool IsCompleted
+        {
+            get => _isCompleted;
+            private set
+            {
+                if (!_isCompleted && value)
+                {
+                    _isCompleted = value;
+                    OnConditionCompleted?.Invoke();
+                }
+                else
+                    _isCompleted = value;
+            }
+        }
+        
+        
     }
 }

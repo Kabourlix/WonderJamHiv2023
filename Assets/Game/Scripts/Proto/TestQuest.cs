@@ -18,7 +18,7 @@ namespace Game.Scripts.Proto
         public void TriggerStat(QuestStat stat)
         {
             stat.Increment();
-            QuestManager.Instance.CheckActiveQuest();
+            //QuestManager.Instance.CheckActiveQuest();
         }
     }
 }
