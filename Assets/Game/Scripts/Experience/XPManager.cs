@@ -8,12 +8,8 @@ using UnityEngine;
 public class XPManager : MonoBehaviour
 {
     public int currentXP, targetXP, level;
-
     public static XPManager instance;
 
-    [SerializeField] private MeshFilter currentModel;
-    [SerializeField] private Mesh targetModelLVL1, targetModelLVL2;
-     
 
     private void Awake()
     {
@@ -29,7 +25,8 @@ public class XPManager : MonoBehaviour
         currentXP = 0;
         targetXP = 30;
     }
-
+    
+/* 
     private void OnEnable()
     {
         QuestManager.Instance.OnQuestCompleted += UpdateXP;
@@ -40,7 +37,7 @@ public class XPManager : MonoBehaviour
         QuestManager.Instance.OnQuestCompleted -= UpdateXP;
     }
 
-    void UpdateXP(Quest quest)
+   void UpdateXP(Quest quest)
     {
         if (level < 3 && quest.QuestType == QuestType.Evil)
         { 
@@ -49,7 +46,16 @@ public class XPManager : MonoBehaviour
         }
 
     }
-    
+    */
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && level < 2)
+        {
+             XPManager.instance.AddXP(10); 
+             Debug.Log("You gained 10xp !");   
+        }
+
+    }
     public void AddXP(int xp)
     {
         currentXP += xp;
@@ -58,21 +64,19 @@ public class XPManager : MonoBehaviour
         {
             currentXP = targetXP - currentXP;
             level++;
-            LevelUp();
+            NewSkin();
         }
     }
 
-        void LevelUp()
+    private void NewSkin()
     {
         switch (level)
         {
-            
             case 1:
-                currentModel.mesh = targetModelLVL1;
+                GetComponent<PlayerController>().CurrentForm = PlayerController.Forms.spider;
                 break;
-
             case 2:
-                currentModel.mesh = targetModelLVL2;
+                GetComponent<PlayerController>().CurrentForm = PlayerController.Forms.humanoid;
                 break;
         }
     }
