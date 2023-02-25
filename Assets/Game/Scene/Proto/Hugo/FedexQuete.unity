@@ -712,11 +712,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4897035603165216334, guid: 82a03788d718e4649b2835af7dfbbf56,
-        type: 3}
-      propertyPath: interactLayerMask.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 4897035603165216371, guid: 82a03788d718e4649b2835af7dfbbf56,
         type: 3}
       propertyPath: m_RootOrder
