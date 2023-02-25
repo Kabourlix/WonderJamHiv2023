@@ -3,6 +3,7 @@
     flex-direction: row;
     min-height: 200px;
     height: auto;
+    margin-bottom: 40px;
 }
 
 #list {
