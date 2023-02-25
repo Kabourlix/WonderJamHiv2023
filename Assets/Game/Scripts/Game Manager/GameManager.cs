@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts.UI;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
 
 public enum GameState
 {
@@ -53,22 +56,30 @@ public class GameManager : MonoBehaviour
 
     private void HandleCoteState()
     {
-        throw new NotImplementedException();
+        
     }
 
     private void HandleLoseState()
     {
-        throw new NotImplementedException();
+        Debug.Log("You lose");
     }
 
     private void HandleWinState()
     {
-        throw new NotImplementedException();
+        Debug.Log("You win");
     }
 
     private void HandlePlayState()
     {
-        throw new NotImplementedException();
+        if (/*suspicion max*/)
+        {
+            UpdateGameState(GameState.LoseState);
+        }
+
+        if (/*main quest complete*/)
+        {
+            UpdateGameState(GameState.WinState);
+        }
     }
 }
 

@@ -39,7 +39,7 @@ public class XPManager : MonoBehaviour
 
    void UpdateXP(Quest quest)
     {
-        if (level < 3 && quest.QuestType == QuestType.Evil)
+        if (level < 2 && quest.QuestType == QuestType.Evil)
         { 
             XPManager.instance.AddXP(10); 
             Debug.Log("You gained 10xp !");  
