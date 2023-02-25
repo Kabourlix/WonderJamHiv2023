@@ -18,16 +18,13 @@ public class PlayerController : MonoBehaviour
         [Range(0f, 1f)]
         public float gravityMultiplier;
         [Tooltip("The animator must come from the prefab/scene and be attached to the visual representation of this form. Do not slide it from the assets")]
-        public Animator redAnimator;
-        [Tooltip("The animator must come from the prefab/scene and be attached to the visual representation of this form. Do not slide it from the assets")]
-        public Animator blueAnimator;
+        public Animator animator;
     }
 
     #endregion
-    public enum Forms { bat, spider, humanoid}
-    public enum Colors { red, blue}
+    public enum Forms { bat, spider, humanoid }
+
     [SerializeField] Forms _baseForm = Forms.bat;
-    [SerializeField] Colors _color = Colors.red;
     [SerializeField] List<FormStat> _formStats = new List<FormStat>();
     [Tooltip("If the player is standing on collider in this mask, he falls. Must not contain the layer of the player, else it won't work")]
     [SerializeField] LayerMask _layersForGravity;
@@ -40,19 +37,29 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movementVelocity;
     private Vector3 _targetMovementVelocity;
     private float _orientation;
-    float _speed=10;
-    
+    float _speed = 10;
+
 
     private float _gravityVelocity;
     private Vector3 _gravityVelocityVector;
     private float _gravityTerminalVelocity;
     private float _gravityMultiplier;
 
+    #region AnimatorHashes
+    private int _isWalkingHash;
+    private int _walkingSpeedHash;
+    #endregion
+
+
     [Header("Interaction")]
     [SerializeField] private CapsuleCollider interactCollider;
     [SerializeField] private LayerMask interactLayerMask;
-    
-    public Forms CurrentForm { get => _currentForm; set {
+
+    public Forms CurrentForm
+    {
+        get => _currentForm;
+        set
+        {
             _currentForm = value;
             OnSwitchForm(_currentForm);
         }
@@ -60,16 +67,19 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();  
+        _characterController = GetComponent<CharacterController>();
         _collider = GetComponent<Collider>();
-        
+
         CurrentForm = _baseForm;
+
+        _isWalkingHash = Animator.StringToHash("IsWalking");
+        _walkingSpeedHash = Animator.StringToHash("WalkingSpeed");
     }
 
     void Start()
     {
-        
-        InputManager.OnMoveEvent += (Vector2 value) => { _movementInput = new Vector3(value.x,0,value.y); };
+
+        InputManager.OnMoveEvent += (Vector2 value) => { _movementInput = new Vector3(value.x, 0, value.y); };
         InputManager.OnInteractEvent += OnInteract;
         InputManager.OnTest1Event += () => { CurrentForm = Forms.bat; };
         InputManager.OnTest2Event += () => { CurrentForm = Forms.spider; };
@@ -77,33 +87,33 @@ public class PlayerController : MonoBehaviour
         CurrentForm = _baseForm;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         ApplyMovement();
         ApplyGravity();
         AnimateMovement();
-        _characterController.Move((_movementVelocity+_gravityVelocityVector)*Time.fixedDeltaTime);
+        _characterController.Move((_movementVelocity + _gravityVelocityVector) * Time.deltaTime);
     }
 
     void ApplyMovement()
     {
         _targetMovementVelocity = _movementInput * _speed;
-        _movementVelocity = Vector3.Lerp(_movementVelocity, _targetMovementVelocity, Time.fixedDeltaTime * _accelerationRate);
+        _movementVelocity = Vector3.Lerp(_movementVelocity, _targetMovementVelocity, Time.deltaTime * _accelerationRate);
     }
 
     void AnimateMovement()
     {
-        _animator.SetBool("IsWalking", _characterController.isGrounded && _movementInput.sqrMagnitude > 0.001f);
-        _animator.SetFloat("WalkingSpeed", _movementInput.magnitude);
+        _animator.SetBool(_isWalkingHash, _characterController.isGrounded && _movementInput.sqrMagnitude > 0.001f);
+        _animator.SetFloat(_walkingSpeedHash, _movementInput.magnitude);
         if (_movementInput.sqrMagnitude <= 0.01f) return;
-        _orientation = Mathf.MoveTowardsAngle(_orientation, Vector2.SignedAngle(new Vector2(_movementInput.x,_movementInput.z), Vector2.up), 1000*Time.fixedDeltaTime);
-        _animator.gameObject.transform.rotation= Quaternion.Euler(0,_orientation, 0);
+        _orientation = Mathf.MoveTowardsAngle(_orientation, Vector2.SignedAngle(new Vector2(_movementInput.x, _movementInput.z), Vector2.up), 1000 * Time.deltaTime);
+        gameObject.transform.rotation = Quaternion.Euler(0, _orientation, 0);
     }
 
     void ApplyGravity()
     {
         if (_characterController.isGrounded) return;
-        _gravityVelocity = Mathf.Clamp(_gravityVelocity + _gravityMultiplier * 10 * Time.fixedDeltaTime, -_gravityTerminalVelocity, _gravityTerminalVelocity);
+        _gravityVelocity = Mathf.Clamp(_gravityVelocity + _gravityMultiplier * 10 * Time.deltaTime, -_gravityTerminalVelocity, _gravityTerminalVelocity);
         _gravityVelocityVector = new Vector3(0, -_gravityVelocity, 0);
     }
 
@@ -126,12 +136,12 @@ public class PlayerController : MonoBehaviour
 
         FormStat formStat = _formStats.Find(x => x.form == newForm);
         _accelerationRate = formStat.accelerationRate;
-        _speed= formStat.speed;
+        _speed = formStat.speed;
 
         _gravityMultiplier = formStat.gravityMultiplier;
         _gravityTerminalVelocity = formStat.gravityTerminalVelocity;
 
-        _animator = (_color==Colors.red)?formStat.redAnimator:formStat.blueAnimator;
+        _animator = formStat.animator;
         _animator.gameObject.SetActive(true);
     }
 
@@ -139,8 +149,7 @@ public class PlayerController : MonoBehaviour
     {
         foreach (FormStat formStat in _formStats)
         {
-            formStat.redAnimator.gameObject.SetActive(false);
-            formStat.blueAnimator.gameObject.SetActive(false);
+            formStat.animator.gameObject.SetActive(false);
         }
     }
 

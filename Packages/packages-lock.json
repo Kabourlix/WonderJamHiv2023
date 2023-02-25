@@ -9,6 +9,15 @@
       },
       "hash": "91ca4364f5ea06f8e4c25af68df6018007aaec9b"
     },
+    "com.aurore.few-ui": {
+      "version": "https://github.com/Kabourlix/few-ui.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.inputsystem": "1.4.4"
+      },
+      "hash": "9d52c27f1536854cadad889a2c3ad471fa9a509a"
+    },
     "com.github.siccity.xnode": {
       "version": "https://github.com/siccity/xNode.git",
       "depth": 0,
@@ -119,7 +128,7 @@
     },
     "com.unity.searcher": {
       "version": "4.9.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -137,12 +146,22 @@
     },
     "com.unity.shadergraph": {
       "version": "12.1.8",
-      "depth": 1,
+      "depth": 0,
       "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "12.1.8",
         "com.unity.searcher": "4.9.1"
       }
+    },
+    "com.unity.terrain-tools": {
+      "version": "4.0.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.terrain": "1.0.0",
+        "com.unity.modules.terrainphysics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
       "version": "1.1.31",

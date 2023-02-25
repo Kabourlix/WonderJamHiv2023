@@ -18,7 +18,7 @@ namespace Game.Scripts.Quests
             stat.OnCountChanged += () =>
             {
                 IsCompleted = stat.count >= target || IsCompleted;
-                if(IsCompleted) Debug.Log($"Condition {stat.Title} is complete.");
+                if(IsCompleted) Debug.Log($"<color=purple>Condition {stat.Title} is complete.</color>");
             };
         }
 

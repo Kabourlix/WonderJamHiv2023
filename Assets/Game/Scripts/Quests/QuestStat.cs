@@ -12,13 +12,19 @@ namespace Game.Scripts.Quests
         [Tooltip("Add a condition to fulfill before incrementing the stat (if needed, can be null)")]
         [SerializeField] private Condition priorCondition;
 
+        public void Link()
+        {
+            if(priorCondition.Stat is not null) 
+                priorCondition.LinkEvent();
+        }
+
         public int count { get; private set; }
         
         public event Action OnCountChanged; 
 
         public void Increment()
         {
-            if(priorCondition != null && !priorCondition.IsCompleted) return;
+            if(priorCondition.Stat != null && !priorCondition.IsCompleted) return;
             count++;
             OnCountChanged?.Invoke();
         }
