@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
         [Tooltip("1: human, 0:ghost, low:chicken in minecraft")]
         [Range(0f, 1f)]
         public float gravityMultiplier;
+        [Tooltip("The animator must come from the prefab/scene and be attached to the visual representation of this form. Do not slide it from the assets")]
+        public Animator animator;
     }
 
     #endregion
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movementInput;
     private CharacterController _characterController;
     private Collider _collider;
+    private Animator _animator;
     private Forms _currentForm;
     private float _accelerationRate;
     private Vector3 _movementVelocity;
@@ -48,21 +51,30 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();  
         _collider = GetComponent<Collider>();
-        CurrentForm= _baseForm;
+        
+        foreach (FormStat formStat in _formStats)
+        {
+            formStat.animator.gameObject.SetActive(false);
+        }
+
+        CurrentForm = _baseForm;
     }
 
     void Start()
     {
+        
         InputManager.OnMoveEvent += (Vector2 value) => { _movementInput = new Vector3(value.x,0,value.y); };
         InputManager.OnInteractEvent += OnInteract;
         InputManager.OnTest1Event += () => { CurrentForm = Forms.bat; };
         InputManager.OnTest2Event += () => { CurrentForm = Forms.spider; };
+        CurrentForm = _baseForm;
     }
 
     void FixedUpdate()
     {
         ApplyMovement();
         ApplyGravity();
+        AnimateMovement();
         _characterController.Move((_movementVelocity+_gravityVelocityVector)*Time.fixedDeltaTime);
     }
 
@@ -70,6 +82,14 @@ public class PlayerController : MonoBehaviour
     {
         _targetMovementVelocity = _movementInput * _speed;
         _movementVelocity = Vector3.Lerp(_movementVelocity, _targetMovementVelocity, Time.fixedDeltaTime * _accelerationRate);
+    }
+
+    void AnimateMovement()
+    {
+        _animator.SetBool("IsWalking", _movementInput.sqrMagnitude > 0.01f);
+        if (_movementInput.sqrMagnitude <= 0.01f) return;
+        float orientation = Vector2.SignedAngle(Vector2.right, new Vector2(_movementInput.x,_movementInput.z));
+        _animator.gameObject.transform.rotation= Quaternion.Euler(0,orientation, 0);
     }
 
     void ApplyGravity()
@@ -93,6 +113,9 @@ public class PlayerController : MonoBehaviour
 
         _gravityMultiplier = formStat.gravityMultiplier;
         _gravityTerminalVelocity = formStat.gravityTerminalVelocity;
+
+        _animator = formStat.animator;
+        formStat.animator.gameObject.SetActive(true);
     }
 
 #if UNITY_EDITOR
