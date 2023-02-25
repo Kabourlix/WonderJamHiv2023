@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Quests;
+using Game.Scripts.Systems.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,17 +19,18 @@ namespace Game.Scripts.UI
             Instance = this;
             //DontDestroyOnLoad(gameObject); // Keep it alive through levels
             
-            _apparitionWait = new WaitForSeconds(apparitionTime);
+            _experienceTween = experienceBar.GetComponent<ApparitionTween>();
+            _questTween = questPanel.GetComponent<ApparitionTween>();
         }
 
         private void Start()
         {
-            InputManager.OnShowHideQuestEvent += HideQuestPanel;
-            QuestManager.Instance.OnQuestCompleted += (q) =>
-            {
-                StopAllCoroutines();
-                StartCoroutine(ShowQuestCompletedCoroutine(q));
-            };
+            InputManager.OnShowHideQuestEvent += () => ShowQuestPanel(!_questTween.IsShown);
+            QuestManager.Instance.OnQuestCompleted += (q) => ShowQuestCompleted(q);
+            
+            ShowQuestPanel(false);
+            _experienceTween.Disappear();
+            
         }
 
         
@@ -37,38 +39,27 @@ namespace Game.Scripts.UI
         [SerializeField] private GameObject questPrefab;
         [SerializeField] private Slider experienceBar;
         [SerializeField] private Slider suspiciousBar;
-        
-        [Header("Timings")]
-        [SerializeField] private float apparitionTime = 2f;
-        private WaitForSeconds _apparitionWait;
+
+        #region Tweeners
+
+        private ApparitionTween _questTween;
+        private ApparitionTween _experienceTween;
+
+        #endregion
         
         private Dictionary<Quest,QuestUI> _questUIs = new Dictionary<Quest, QuestUI>();
 
-        public void Hide(ApparitionController ctrl, bool b)
-        {
-            if (b)
-            {
-                ctrl.Disapparition();
-            }
-            else
-            {
-                ctrl.Apparition();
-            }
-        }
 
         #region Quests
 
-        private bool _questPanelActive = true;
+        public void ShowQuestPanel(bool b)
+        {
+            if(b)
+                _questTween.Appear();
+            else
+                _questTween.Disappear();
+        }
 
-        public void HideQuestPanel()
-        {
-            HideQuestPanel(_questPanelActive);
-        }
-        public void HideQuestPanel(bool b)
-        {
-            _questPanelActive = !b;
-            Hide(questPanel.GetComponent<ApparitionController>(), b);
-        }
 
         public void AddQuest(Quest quest)
         {
@@ -80,42 +71,55 @@ namespace Game.Scripts.UI
 
         #endregion
 
-        public void HideExperienceBar(bool b) => Hide(experienceBar.GetComponent<ApparitionController>(),b);
-        public void UpdateExpBar(float value) => experienceBar.value = Mathf.Clamp01(value);
+        [SerializeField] private float expBarDuration = 2f;
+        public void UpdateExpBar(float value)
+        {
+            Debug.Log("<color=red>UpdateExpBar</color>");
+            value = Mathf.Clamp01(value);
+            
+            Action c = () => LeanTween.value(experienceBar.gameObject, experienceBar.value, value, 1f)
+                .setOnUpdate((float val) =>
+                {
+                    experienceBar.value = val;
+                }).setOnComplete(() =>
+                    {
+                        LeanTween.value(gameObject, 0, 1, expBarDuration).setOnComplete(() =>
+                        {
+                            _experienceTween.Disappear();
+                        });
+
+                    });
+            
+            _experienceTween.Appear(c);
+        }
+
+        
+        
         public void UpdateSuspiciousBar(float value) => suspiciousBar.value = Mathf.Clamp01(value);
         
         #region Panel Auto Display
 
         public void ShowQuestTemp(Quest q)
         {
-            if (_questPanelActive)
-            {
-                StartCoroutine(_questUIs[q].HighlightTempCoroutine());
-                return;
-            }
-            StopAllCoroutines();
-            StartCoroutine(ShowQuestTempCoroutine(q));
-        }
-
-        private IEnumerator ShowQuestTempCoroutine(Quest q)
-        {
-            HideQuestPanel(false);
             var ui = _questUIs[q];
-            ui.Highlight(true);
-            yield return _apparitionWait;
-            ui.Highlight(false);
-            HideQuestPanel(true);
+            if(!_questTween.IsShown)
+                ShowQuestPanel(true);
+            Action c  = () => ShowQuestPanel(false);
+            ui.Highlight(c);
         }
 
-        private IEnumerator ShowQuestCompletedCoroutine(Quest quest)
+        public void ShowQuestCompleted(Quest q)
         {
-            var ui = _questUIs[quest];
-            if(!_questPanelActive) HideQuestPanel(false);
-            ui.Highlight(true);
-            yield return _apparitionWait;
-            ui.QuestCompleted();
-            yield return _apparitionWait;
-            HideQuestPanel(true);
+            var ui = _questUIs[q];
+            if(!_questTween.IsShown)
+                ShowQuestPanel(true);
+            Action c = () =>
+            {
+                ShowQuestPanel(false);
+                _questUIs[q].QuestCompleted();
+            };
+            ui.Highlight(c);
+            
         }
 
         #endregion

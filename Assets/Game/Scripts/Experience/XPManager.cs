@@ -2,82 +2,80 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Quests;
+using Game.Scripts.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class XPManager : MonoBehaviour
 {
-    public int currentXP, targetXP, level;
-    public static XPManager instance;
-
-
+    private int _currentXp, _level;
+    [SerializeField] private int targetXp = 30;
+    
+    private PlayerController _playerController;
+    private QuestManager _questManager;
+    private HUDManager _hud;
+    
     private void Awake()
     {
-        if (instance == null)
-            instance = this; 
-        else
-            Destroy(gameObject);
-    } 
-
-    void Start()
-    {
-        level = 0;
-        currentXP = 0;
-        targetXP = 30;
+        _playerController = GetComponent<PlayerController>();
     }
-    
-/* 
+
+    private void Start()
+    {
+        _questManager??= QuestManager.Instance;
+        _hud??= HUDManager.Instance;
+        _questManager.OnQuestCompleted += UpdateXPCallback;
+    }
+
     private void OnEnable()
     {
-        QuestManager.Instance.OnQuestCompleted += UpdateXP;
+        if(_questManager != null)
+            _questManager.OnQuestCompleted += UpdateXPCallback;
     }
 
     private void OnDisable()
     {
-        QuestManager.Instance.OnQuestCompleted -= UpdateXP;
+        _questManager.OnQuestCompleted -= UpdateXPCallback;
     }
 
-   void UpdateXP(Quest quest)
-    {
-        if (level < 3 && quest.QuestType == QuestType.Evil)
-        { 
-            XPManager.instance.AddXP(10); 
-            Debug.Log("You gained 10xp !");  
-        }
+   private void UpdateXPCallback(Quest quest)
+   {
+       if (_level >= 3 || quest.QuestType != QuestType.Evil) return;
+       
+       AddXP(10); 
+       Debug.Log("You gained 10xp !");
 
-    }
-    */
-    void Update()
+   }
+    
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && level < 2)
+        if (Input.GetKeyDown(KeyCode.Space) && _level < 2)
         {
-             XPManager.instance.AddXP(10); 
+             AddXP(10); 
              Debug.Log("You gained 10xp !");   
         }
 
     }
     public void AddXP(int xp)
     {
-        currentXP += xp;
+        _currentXp += xp;
+        _hud.UpdateExpBar(Mathf.InverseLerp(0, targetXp, _currentXp));
 
-        if (currentXP >= targetXP )
-        {
-            currentXP = targetXP - currentXP;
-            level++;
-            NewSkin();
-        }
+        if (_currentXp < targetXp) return;
+        
+        _currentXp = targetXp - _currentXp; // Better to reset to 0 ?
+        _level++;
+        Evolve();
     }
 
-    private void NewSkin()
+    private void Evolve()
     {
-        switch (level)
+        _playerController.CurrentForm = _level switch
         {
-            case 1:
-                GetComponent<PlayerController>().CurrentForm = PlayerController.Forms.spider;
-                break;
-            case 2:
-                GetComponent<PlayerController>().CurrentForm = PlayerController.Forms.humanoid;
-                break;
-        }
+            1 => PlayerController.Forms.spider,
+            2 => PlayerController.Forms.humanoid,
+            _ => _playerController.CurrentForm
+        };
     }
 }

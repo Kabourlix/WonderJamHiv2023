@@ -15,19 +15,27 @@ namespace Game.Scripts.UI
             _rectTransform = GetComponent<RectTransform>();
             _initPos = _rectTransform.anchoredPosition;
         }
+
+        private Coroutine _appC, _dispC;
         
         [ContextMenu("Apparition")]
         public void Apparition()
         {
-            StopAllCoroutines();
-            StartCoroutine(ApparitionCoroutine());
+            if(_dispC != null)
+                StopCoroutine(_dispC);
+            if(_appC != null)
+                StopCoroutine(_appC);
+            _appC = StartCoroutine(ApparitionCoroutine());
         }
         
         [ContextMenu("Disapparition")]
         public void Disapparition()
         {
-            StopAllCoroutines();
-            StartCoroutine(DisapparitionCoroutine());
+            if(_dispC != null)
+                StopCoroutine(_dispC);
+            if(_appC != null)
+                StopCoroutine(_appC);
+            _dispC = StartCoroutine(DisapparitionCoroutine());
         }
 
         public IEnumerator ApparitionCoroutine()
@@ -38,6 +46,7 @@ namespace Game.Scripts.UI
                 yield return typeof(WaitForEndOfFrame);
             }
             _rectTransform.anchoredPosition = _initPos;
+            _appC = null;
         }
         
         public IEnumerator DisapparitionCoroutine()
@@ -48,6 +57,7 @@ namespace Game.Scripts.UI
                 yield return typeof(WaitForEndOfFrame);
             }
             _rectTransform.anchoredPosition = hiddenPos;
+            _dispC = null;
         }
         
         
