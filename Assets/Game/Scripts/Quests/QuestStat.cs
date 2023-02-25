@@ -12,9 +12,9 @@ namespace Game.Scripts.Quests
         [Tooltip("Add a condition to fulfill before incrementing the stat (if needed, can be null)")]
         [SerializeField] private Condition priorCondition;
 
-        private void OnEnable()
+        public void Link()
         {
-            if(Application.isPlaying && priorCondition.Stat != null)
+            if(priorCondition.Stat is not null) 
                 priorCondition.LinkEvent();
         }
 
