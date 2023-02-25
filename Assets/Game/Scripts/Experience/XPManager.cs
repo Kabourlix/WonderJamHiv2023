@@ -43,21 +43,12 @@ public class XPManager : MonoBehaviour
    {
        if (_level >= 3 || quest.QuestType != QuestType.Evil) return;
        
-       AddXP(10); 
-       Debug.Log("You gained 10xp !");
+       AddXP(quest.RewardXp); 
+       Debug.Log($"You gained {quest.RewardXp} xp !");
 
    }
-    
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && _level < 2)
-        {
-             AddXP(10); 
-             Debug.Log("You gained 10xp !");   
-        }
-
-    }
-    public void AddXP(int xp)
+   
+    private void AddXP(int xp)
     {
         _currentXp += xp;
         _hud.UpdateExpBar(Mathf.InverseLerp(0, targetXp, _currentXp));

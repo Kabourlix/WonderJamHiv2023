@@ -250,6 +250,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player+Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5465841587195226770, guid: 3faa22fdca12250418efd938df762695,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3faa22fdca12250418efd938df762695, type: 3}
 --- !u!1 &493441650
@@ -565,7 +570,7 @@ MonoBehaviour:
     type: 3}
   experienceBar: {fileID: 1513741891}
   suspiciousBar: {fileID: 1961100899}
-  apparitionTime: 2
+  expBarDuration: 2
 --- !u!1 &852352440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -50}
+  m_AnchoredPosition: {x: 40, y: -10}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1961100899
