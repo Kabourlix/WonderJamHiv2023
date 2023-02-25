@@ -11,7 +11,13 @@ public class PlayerController : MonoBehaviour
         public Forms form;
         public float accelerationRate;
         public float speed;
+        [Tooltip("The maximum speed the player can fall at, along the y axis, positive if gravity is downward (like on earth)")]
+        public float gravityTerminalVelocity;
+        [Tooltip("1: human, 0:ghost, low:chicken in minecraft")]
+        [Range(0f, 1f)]
+        public float gravityMultiplier;
     }
+
     #endregion
     public enum Forms { bat, spider, humanoid}
     [SerializeField] Forms _baseForm = Forms.bat;
@@ -19,13 +25,18 @@ public class PlayerController : MonoBehaviour
     [Tooltip("If the player is standing on collider in this mask, he falls. Must not contain the layer of the player, else it won't work")]
     [SerializeField] LayerMask _layersForGravity;
     private Vector3 _movementInput;
-    private Rigidbody _rigidbody;
+    private CharacterController _characterController;
     private Collider _collider;
     private Forms _currentForm;
     private float _accelerationRate;
     private Vector3 _movementVelocity;
     private Vector3 _targetMovementVelocity;
     float _speed=10;
+
+    private float _gravityVelocity;
+    private Vector3 _gravityVelocityVector;
+    private float _gravityTerminalVelocity;
+    private float _gravityMultiplier;
 
     public Forms CurrentForm { get => _currentForm; set {
             _currentForm = value;
@@ -35,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();  
+        _characterController = GetComponent<CharacterController>();  
         _collider = GetComponent<Collider>();
         CurrentForm= _baseForm;
     }
@@ -51,28 +62,23 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         ApplyMovement();
-        _rigidbody.velocity = new Vector3(_movementVelocity.x,_rigidbody.velocity.y,_movementVelocity.z);      
+        ApplyGravity();
+        _characterController.Move((_movementVelocity+_gravityVelocityVector)*Time.fixedDeltaTime);
     }
 
     void ApplyMovement()
     {
         _targetMovementVelocity = _movementInput * _speed;
         _movementVelocity = Vector3.Lerp(_movementVelocity, _targetMovementVelocity, Time.fixedDeltaTime * _accelerationRate);
-        AvoidFlying();
     }
 
-    //Avoid player getting launched in the air after taking a ramp
-    void AvoidFlying()
+    void ApplyGravity()
     {
-        //If we're going upwards and there's no ground bellow us, we shouldn't
-        if (_rigidbody.velocity.y > 0)
-        {
-            if(!Physics.BoxCast(_collider.bounds.center,_collider.bounds.size,Vector3.down,Quaternion.identity,0.5f,_layersForGravity)){
-                Debug.Log(_collider.bounds.center.ToString());
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
-            }
-        }
+        if (_characterController.isGrounded) return;
+        _gravityVelocity = Mathf.Clamp(_gravityVelocity + _gravityMultiplier * 10 * Time.fixedDeltaTime, -_gravityTerminalVelocity, _gravityTerminalVelocity);
+        _gravityVelocityVector = new Vector3(0, -_gravityVelocity, 0);
     }
+
 
     void OnInteract()
     {
@@ -84,14 +90,14 @@ public class PlayerController : MonoBehaviour
         FormStat formStat = _formStats.Find(x => x.form == newForm);
         _accelerationRate = formStat.accelerationRate;
         _speed= formStat.speed;
+
+        _gravityMultiplier = formStat.gravityMultiplier;
+        _gravityTerminalVelocity = formStat.gravityTerminalVelocity;
     }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        _collider=GetComponent<Collider>();
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(_collider.bounds.center + Vector3.down * 0.5f, _collider.bounds.size);
     }
 #endif
 }
