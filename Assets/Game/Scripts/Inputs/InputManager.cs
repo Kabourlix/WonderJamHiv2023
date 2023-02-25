@@ -29,6 +29,7 @@ namespace Game.Inputs
         public static event Action<Vector2> OnMoveEvent;
         public static event Action OnInteractEvent;
         public static event Action OnGrabEvent;
+        public static event Action OnPushEvent;
 
         public static event Action OnShowHideQuestEvent;
         public static event Action OnTest1Event;
@@ -53,6 +54,11 @@ namespace Game.Inputs
         private void OnInteract()
         {
             OnInteractEvent?.Invoke();
+        }
+
+        private void OnPush()
+        {
+            OnPushEvent?.Invoke();
         }
 
         private void OnTest1()
