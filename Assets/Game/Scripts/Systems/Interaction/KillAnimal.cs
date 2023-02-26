@@ -1,22 +1,16 @@
 ﻿using System;
 using Game.Scripts.Enemies;
 using Game.Scripts.Quests;
+using Game.Scripts.Systems.Interaction;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Game.Scripts.Interaction
 {
     [RequireComponent(typeof(StatTriggerComponent))]
-    public class KillAnimal : MonoBehaviour, IInteractable
+    public class KillAnimal : Interactable
     {
-        private StatTriggerComponent _statTriggerComponent;
         [SerializeField] private GameObject[] vfx;
-
-        private void Awake()
-        {
-            _statTriggerComponent = GetComponent<StatTriggerComponent>();
-           
-        }
 
 
         public void VFX()
@@ -42,17 +36,12 @@ namespace Game.Scripts.Interaction
             
         }
 
-        public void Interact()
+        public override void Interact()
         {
             if (!_statTriggerComponent.Trigger()) return;
             VFX();
             OnInteractionSuccess();
 
-        }
-
-        public void OnInteractionSuccess()
-        {
-            gameObject.layer = 0;
         }
     }
 }

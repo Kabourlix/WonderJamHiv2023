@@ -1,40 +1,38 @@
 using Game.Scripts.Interaction;
 using Game.Scripts.Quests;
+using Game.Scripts.Systems.Interaction;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(StatTriggerComponent))]
-public class ItemUser : MonoBehaviour, IInteractable
+public class ItemUser : Interactable
 {
-    private StatTriggerComponent _statTriggerComponent;
 
-    [SerializeField] private string _messageOnFail;
+    [FormerlySerializedAs("_messageOnFail")] [SerializeField] private string messageOnFail;
+    [FormerlySerializedAs("_messageOnComplete")]
     [Tooltip("What the npc will say if you have everything")]
-    [SerializeField] private string _messageOnComplete = "Thank you";
-    [SerializeField] private UnityEvent _onComplete;
+    [SerializeField] private string messageOnComplete = "Thank you";
+    [FormerlySerializedAs("_onComplete")] [SerializeField] private UnityEvent onComplete;
 
 
-    private void Awake()
-    {
-        _statTriggerComponent = GetComponent<StatTriggerComponent>();
-    }
 
-    public void Interact()
+    public override void Interact()
     {
         if (!_statTriggerComponent.Trigger())
         {
-            DialogueSystem.AddMessage(_messageOnFail, 5f);
+            DialogueSystem.AddMessage(messageOnFail, 5f);
             return;
         };
 
         OnInteractionSuccess();
     }
 
-    public void OnInteractionSuccess()
+    public override void OnInteractionSuccess()
     {
-        _onComplete?.Invoke();
-        if (_messageOnComplete == null || _messageOnComplete == "") return;
-        DialogueSystem.AddMessage(_messageOnComplete, 5f);
-        gameObject.layer = 0;
+        base.OnInteractionSuccess();
+        onComplete?.Invoke();
+        if (messageOnComplete == null || messageOnComplete == "") return;
+        DialogueSystem.AddMessage(messageOnComplete, 5f);
     }
 }

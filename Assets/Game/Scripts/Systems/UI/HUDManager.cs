@@ -54,6 +54,9 @@ namespace Game.Scripts.UI
         [SerializeField] private Image isVisibleObj;
         [SerializeField] private Image isSuspectObj;
 
+        [SerializeField]
+        private GameObject interactHelper, pushHelper;
+
         //image to set
         [SerializeField] private Sprite visibleImg;
         [SerializeField] private Sprite hideImg;
@@ -83,6 +86,16 @@ namespace Game.Scripts.UI
         
         private Dictionary<Quest,QuestUI> _questUIs = new Dictionary<Quest, QuestUI>();
 
+        
+        public void ShowInteractHelper(bool b)
+        {
+            interactHelper.SetActive(b);
+        }
+        
+        public void ShowPushHelper(bool b)
+        {
+            pushHelper.SetActive(b);
+        }
 
         #region Quests
 
@@ -130,6 +143,7 @@ namespace Game.Scripts.UI
 
         public void SetVisible()
         {
+            Debug.Log("SetVisible");
             isVisibleObj.sprite = visibleImg;
             isSuspectObj.gameObject.SetActive(false);
         }
