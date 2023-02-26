@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -225,6 +225,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -944628639613478452, guid: 5aa155462dedd4b43bbc75ce3660e635,
         type: 3}
+    - target: {fileID: 5475690366429624297, guid: fc08094a5920c4342bf8323a25ebf662,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 975a0c12ccd85e04dbce614e7cd04b8c, type: 3}
     - target: {fileID: 5475690366429624298, guid: fc08094a5920c4342bf8323a25ebf662,
         type: 3}
       propertyPath: m_RootOrder
@@ -335,6 +340,11 @@ PrefabInstance:
     - target: {fileID: 1049936484056361325, guid: 34f7634b1e8f4904aa6b747d56c4e051,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049936484056361325, guid: 34f7634b1e8f4904aa6b747d56c4e051,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1049936484056361325, guid: 34f7634b1e8f4904aa6b747d56c4e051,
