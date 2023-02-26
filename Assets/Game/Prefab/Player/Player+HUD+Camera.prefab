@@ -10433,6 +10433,8 @@ MonoBehaviour:
   suspiciousBar: {fileID: 3613983813042289169}
   isVisibleObj: {fileID: 8728806726481189113}
   isSuspectObj: {fileID: 1940950221008025178}
+  interactHelper: {fileID: 0}
+  pushHelper: {fileID: 0}
   visibleImg: {fileID: 21300000, guid: 5c27fc79dd2011c4ab50f507f7cfb7af, type: 3}
   hideImg: {fileID: 21300000, guid: 2251011a5d10c124ea35f86c11f5d53b, type: 3}
   caughtImg: {fileID: 21300000, guid: 0d6fe719ca1a6304b86fd5a8d517fa48, type: 3}
@@ -33121,7 +33123,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 10
+  m_Spacing: 30
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -61801,9 +61803,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9205bc1bbacc90040a998067b5643d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearBehavior: 2
+  clearBehavior: 0
   cameraShake:
-    enabled: 0
+    enabled: 1
     useMainCamera: 1
     cameras: []
     delay: 0
