@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RS [Xbox Controller]
+  m_text: RS [Gamepad]
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 490dfcc39dab09a4ebca13fcaef9ef2e, type: 2}
   m_sharedMaterial: {fileID: -1847862649856333202, guid: 490dfcc39dab09a4ebca13fcaef9ef2e,
@@ -1817,9 +1817,9 @@ AudioSource:
   m_GameObject: {fileID: 1049936482438683003}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8057115373379207999, guid: 3257453e82c677f4fb33031ac2e26fdd,
+  OutputAudioMixerGroup: {fileID: -8057115373379207999, guid: d552497fea30b0644ae9ba5bfd9a7bd8,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 054b5cd1785838446926c59c855ff68d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 038bb7ab128fd574b81878fc47c44ff2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
