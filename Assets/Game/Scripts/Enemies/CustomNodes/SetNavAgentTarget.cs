@@ -1,4 +1,6 @@
-﻿using MBT;
+﻿using System;
+using Game.Scripts.Enemies;
+using MBT;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,14 +11,20 @@ namespace MBTExample
     public class SetNavAgentTarget : Leaf
     {
         public TransformReference targetPosition;
-        [SerializeField] private NavMeshAgent agent;
-        
+
+        private NavMeshAgent _agent;
+
+        private void Start()
+        {
+            _agent = GetComponent<MBTExecutorEnhanced>().Agent;
+        }
+
         public override NodeResult Execute()
         {
             if(targetPosition != null)
             {
                 var tf = targetPosition.Value;
-                agent.SetDestination(tf.position);
+                _agent.SetDestination(tf.position);
                 
                 return NodeResult.success;
             }

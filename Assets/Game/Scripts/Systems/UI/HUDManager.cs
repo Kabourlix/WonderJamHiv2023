@@ -49,6 +49,15 @@ namespace Game.Scripts.UI
         [SerializeField] private GameObject questPrefab;
         [SerializeField] private Slider experienceBar;
         [SerializeField] private Slider suspiciousBar;
+        [SerializeField] private Image isVisibleObj;
+        [SerializeField] private Image isSuspectObj;
+
+        //image to set
+        [SerializeField] private Sprite visibleImg;
+        [SerializeField] private Sprite hideImg;
+        [SerializeField] private Sprite caughtImg;
+        [SerializeField] private Sprite suspectImg;
+
         //khadidja updates
         [SerializeField] private GameObject winEvilScreen;
         [SerializeField] private GameObject winGoodScreen;
@@ -108,7 +117,25 @@ namespace Game.Scripts.UI
             _experienceTween.Appear(c);
         }
 
-        
+        public void SetVisible()
+        {
+            isVisibleObj.sprite = visibleImg;
+            isSuspectObj.gameObject.SetActive(false);
+        }
+        public void SetHide()
+        {
+            isVisibleObj.sprite = hideImg;
+            isSuspectObj.gameObject.SetActive(false);
+        }
+        public void SetCaught()
+        {
+            isVisibleObj.sprite = caughtImg;
+            isSuspectObj.gameObject.SetActive(true);
+        }
+        public void isSuspicious(bool state)
+        {
+            isSuspectObj.gameObject.SetActive(state);
+        }
         
         public void UpdateSuspiciousBar(float value) => suspiciousBar.value = Mathf.Clamp01(value);
         

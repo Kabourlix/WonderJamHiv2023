@@ -13,7 +13,6 @@ namespace Game.Scripts.Interaction
         {
             _statTriggerComponent = GetComponent<StatTriggerComponent>();
         }
-
         public void Interact()
         {
             Debug.Log("Interacting with" + gameObject.name);

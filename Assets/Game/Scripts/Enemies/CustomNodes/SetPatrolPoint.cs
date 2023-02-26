@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using Game.Scripts.Enemies;
 using UnityEngine;
 using MBT;
 
@@ -9,30 +9,17 @@ namespace MBTExample
     [AddComponentMenu("")]
     public class SetPatrolPoint : Leaf
     {
-        public TransformReference variableToSet = new TransformReference(VarRefMode.DisableConstant);
-        public Transform[] waypoints;
-        private int index = 0;
-        private int direction = 1;
+        public TransformReference nextPatrolPoint = new TransformReference(VarRefMode.DisableConstant);
+        private Patroller _patroller;
+
+        private void Start()
+        {
+            _patroller = GetComponent<MBTExecutorEnhanced>().Patroller;
+        }
 
         public override NodeResult Execute()
         {
-            if (waypoints.Length == 0)
-            {
-                return NodeResult.failure;
-            }
-            // Ping-pong between waypoints
-            if (direction == 1 && index == waypoints.Length-1)
-            {
-                direction = -1;
-            }
-            else if (direction == -1 && index == 0)
-            {
-                direction = 1;
-            }
-            index += direction;
-            
-            // Set blackboard variable with need waypoint (position)
-            variableToSet.Value = waypoints[index];
+            nextPatrolPoint.Value = _patroller.GetNextWaypoint();
             return NodeResult.success;
         }
     }
