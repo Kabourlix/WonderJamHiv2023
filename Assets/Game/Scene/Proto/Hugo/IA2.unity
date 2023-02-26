@@ -592,6 +592,50 @@ Transform:
   m_Father: {fileID: 122216686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1074223191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074223193}
+  - component: {fileID: 1074223192}
+  m_Layer: 0
+  m_Name: IAManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1074223192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074223191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c41e7bf8ef85b0d46b5baeadf9cec615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1074223193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074223191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.029278, y: 102.13682, z: 55.772583}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1154656190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7028800875257652965, guid: 4b269c78d1fb2b4489743658f5f9cf84,
@@ -1377,6 +1421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 1929264477}
   maxHealth: 5
+  maxKillableChildren: 5
 --- !u!1 &1743616488
 GameObject:
   m_ObjectHideFlags: 0
@@ -9588,6 +9633,7 @@ MonoBehaviour:
   _target: {fileID: 2466030593712359796}
   _smoothTime: 0.1
   _fixedY: 0
+  _rotationSpeed: 50
 --- !u!4 &2466030593448051853
 Transform:
   m_ObjectHideFlags: 0
@@ -9718,6 +9764,7 @@ MonoBehaviour:
   interactLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  _movementReferential: {fileID: 0}
   deathParticle: {fileID: 7044419613356321951}
   playerRenderer: {fileID: 5184211464333217642}
   spawnPoint: {x: 1.3, y: 1, z: 9.5}
@@ -15459,9 +15506,24 @@ MonoBehaviour:
     type: 3}
   experienceBar: {fileID: 3613983813456087588}
   suspiciousBar: {fileID: 3613983813166830084}
+  isVisibleObj: {fileID: 0}
+  isSuspectObj: {fileID: 0}
+  interactHelper: {fileID: 0}
+  pushHelper: {fileID: 0}
+  visibleImg: {fileID: 0}
+  hideImg: {fileID: 0}
+  caughtImg: {fileID: 0}
+  suspectImg: {fileID: 0}
   winEvilScreen: {fileID: 6446470087925727225}
   winGoodScreen: {fileID: 6446470086655344982}
   gameoverScreen: {fileID: 6446470086677623205}
+  gameOverSound: {fileID: 0}
+  winSound: {fileID: 0}
+  evolveSound: {fileID: 0}
+  gainXpSound: {fileID: 0}
+  questCompletedSound: {fileID: 0}
+  normalQuests: {fileID: 0}
+  finalQuest: {fileID: 0}
   expBarDuration: 2
 --- !u!224 &3613983811623370038
 RectTransform:
@@ -38256,6 +38318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLvl: 
+  audioSrc: {fileID: 0}
 --- !u!114 &7047247405617224184
 MonoBehaviour:
   m_ObjectHideFlags: 0

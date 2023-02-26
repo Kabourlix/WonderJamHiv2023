@@ -22,7 +22,7 @@ namespace Game.Scripts.Interaction
 
         public override void Interact()
         {
-            _statTriggerComponent.Trigger();
+            if (!_statTriggerComponent.Trigger()) return;
             Rigidbody rb=gameObject.GetComponent<Rigidbody>();
 
             if(rb==null) rb = gameObject.AddComponent<Rigidbody>();
@@ -36,6 +36,7 @@ namespace Game.Scripts.Interaction
             gameObject.layer = 0; //!Pas sur de moi
             _physicColliderToActivate.enabled = true;
             InteracterScript.Instance.OtherCollidersCounter = 0;
+            PlayerController.Instance.IsHoldingObject = true;
             foreach(Collider c in _additionalColliders)
             {
                 c.enabled = false;
@@ -45,6 +46,8 @@ namespace Game.Scripts.Interaction
         private void OnQuestCompleted(Quest quest)
         {
             if (quest != _usedOn) return;
+            PlayerController.Instance.IsHoldingObject = false;
+            
             _followScript.OnUse();
         }
         

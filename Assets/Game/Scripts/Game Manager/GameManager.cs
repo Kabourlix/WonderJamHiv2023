@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.EvolveState:
                 //Unfreeze enemies
+                IAManager.Instance.UnfreezeAllIa();
                 //Input already dealt with
                 break;
             case GameState.PauseState:
@@ -149,7 +150,7 @@ public class GameManager : MonoBehaviour
         //If yes, go to win state
         ChangeState(player.GetComponent<XPManager>().IsFullyEvolved 
             ? GameState.EvolveState 
-            : GameState.GameOverState);
+            : GameState.WinState);
     }
 
     #region Handlers
@@ -166,7 +167,7 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.EnableControls(false);
         Player.GetComponent<PlayerController>().EvolveBegin();
         //Nothing really
-        //Pause all IA Logic.
+        IAManager.Instance.FreezeAllIa();
     }
 
     private void HandleCaughtState(GameState oldState)
@@ -189,7 +190,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleWinState(GameState oldState)
     {
-        Player.GetComponent<PlayerController>().EvolveBegin();
+        //Player.GetComponent<PlayerController>().EvolveBegin();
         //Disable controls or switch to ui controls
         InputManager.Instance.EnableControls(false);
         //TODO : Determiner si c'est une victoire good ou evil

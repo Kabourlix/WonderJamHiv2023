@@ -84,12 +84,18 @@ public class PlayerController : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private CapsuleCollider interactCollider;
     [SerializeField] private LayerMask interactLayerMask;
-
+    
     [Header("External")]
     [SerializeField] Transform _movementReferential;
 
-    public bool IsSuspect { get; set; }
+    private bool _isSuspect;
+    public bool IsSuspect 
+    { 
+        get => _isSuspect;
+        set => _isSuspect = IsHoldingObject || value;
+    }
     
+    public bool IsHoldingObject { get; set; }
     
     public Forms CurrentForm
     {
