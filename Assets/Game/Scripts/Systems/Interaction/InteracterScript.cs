@@ -26,7 +26,7 @@ public class InteracterScript : MonoBehaviour
 
     public int OtherCollidersCounter { get => _otherCollidersCounter; set
         {
-            _otherCollidersCounter = value;
+            _otherCollidersCounter = value< 0 ? 0 : value;
             _contextualInteractMenu.SetActive(_otherCollidersCounter > 0);
         }
     }
