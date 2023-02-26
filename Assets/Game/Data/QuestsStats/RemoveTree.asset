@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0682523fd20048b08a0af235bf6acd40, type: 3}
   m_Name: RemoveTree
   m_EditorClassIdentifier: 
-  title: 
+  title: Remove dead trees from the village
   priorCondition:
     stat: {fileID: 0}
     target: 0

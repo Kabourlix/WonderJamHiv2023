@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
   m_Name: GiveBillysword
   m_EditorClassIdentifier: 
-  title: 
+  title: Take the sword to Billeye
   description: 
-  conditions: []
+  conditions:
+  - stat: {fileID: 11400000, guid: 8065999344df6c24c8577dc40cbb1d91, type: 2}
+    target: 1
+  - stat: {fileID: 11400000, guid: cc20b84b927a2354fb6be62805cfc55b, type: 2}
+    target: 1
   questType: 0
   rewardXp: 0

@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
   m_Name: FlowersForBIlly
   m_EditorClassIdentifier: 
-  title: 
+  title: Bring flowers to Billeye
   description: 
-  conditions: []
+  conditions:
+  - stat: {fileID: 11400000, guid: 9c477e9fdcaa21144aa9004eeac0e82b, type: 2}
+    target: 5
+  - stat: {fileID: 11400000, guid: f065f7b222a7892459de65843f742c48, type: 2}
+    target: 1
   questType: 0
   rewardXp: 0

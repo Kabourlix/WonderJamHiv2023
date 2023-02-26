@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0682523fd20048b08a0af235bf6acd40, type: 3}
   m_Name: GiveSword
   m_EditorClassIdentifier: 
-  title: 
+  title: Give Sword To Billeye
   priorCondition:
-    stat: {fileID: 0}
-    target: 0
+    stat: {fileID: 11400000, guid: 8065999344df6c24c8577dc40cbb1d91, type: 2}
+    target: 1

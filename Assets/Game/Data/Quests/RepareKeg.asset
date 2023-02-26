@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
   m_Name: RepareKeg
   m_EditorClassIdentifier: 
-  title: 
+  title: Repare Kegs
   description: 
-  conditions: []
+  conditions:
+  - stat: {fileID: 11400000, guid: ed6e060018d20fa4389a721fb4354d73, type: 2}
+    target: 2
   questType: 0
   rewardXp: 0
