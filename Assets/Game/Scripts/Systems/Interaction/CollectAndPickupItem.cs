@@ -47,7 +47,6 @@ namespace Game.Scripts.Interaction
         {
             if (quest != _usedOn) return;
             PlayerController.Instance.IsHoldingObject = false;
-            
             _followScript.OnUse();
         }
         

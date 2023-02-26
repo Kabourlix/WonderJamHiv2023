@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 7028800875257652881}
+  selectedEditorNode: {fileID: 7028800875257652885}
   repeatOnFinish: 0
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -893,6 +893,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  ignoreRaycastLayer:
+    serializedVersion: 2
+    m_Bits: 11702
   range: 10
   angle: 60
   playerSeen:
