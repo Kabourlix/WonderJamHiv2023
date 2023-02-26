@@ -20,10 +20,8 @@ public class InteracterScript : MonoBehaviour
     #endregion
 
     [SerializeField] GameObject _contextualInteractMenu;
-    [SerializeField] GameObject _contextualPushMenu;
     [SerializeField] GameObject _leashPrefab;
     private int _otherCollidersCounter=0;
-    private int _pushableOtherCollidersCounter;
 
     public int OtherCollidersCounter { get => _otherCollidersCounter; set
         {
@@ -32,31 +30,14 @@ public class InteracterScript : MonoBehaviour
         }
     }
 
-    public int PushableOtherCollidersCounter
-    {
-        get => _pushableOtherCollidersCounter;set
-        {
-            _pushableOtherCollidersCounter = value;
-            _contextualPushMenu.SetActive(_pushableOtherCollidersCounter > 0);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<Pushable>() != null)
-        {
-            PushableOtherCollidersCounter++;
-        }
-        if (other.gameObject.GetComponent<IInteractable>() == null) return;
+q        if (other.gameObject.GetComponent<IInteractable>() == null) return;
         OtherCollidersCounter++;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Pushable>() != null)
-        {
-            PushableOtherCollidersCounter--;
-        }
         if (other.gameObject.GetComponent<IInteractable>() == null) return;
         OtherCollidersCounter--;
     }
