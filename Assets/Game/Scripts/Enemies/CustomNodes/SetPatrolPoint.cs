@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Enemies;
+﻿using System;
+using Game.Scripts.Enemies;
 using UnityEngine;
 using MBT;
 
@@ -9,11 +10,16 @@ namespace MBTExample
     public class SetPatrolPoint : Leaf
     {
         public TransformReference nextPatrolPoint = new TransformReference(VarRefMode.DisableConstant);
-        public Patroller patroller;
+        private Patroller _patroller;
+
+        private void Start()
+        {
+            _patroller = GetComponent<MBTExecutorEnhanced>().Patroller;
+        }
 
         public override NodeResult Execute()
         {
-            nextPatrolPoint.Value = patroller.GetNextWaypoint();
+            nextPatrolPoint.Value = _patroller.GetNextWaypoint();
             return NodeResult.success;
         }
     }

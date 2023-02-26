@@ -7,20 +7,19 @@ using static MBT.DistanceCondition;
 
 namespace MBTExample
 {
-    [MBTNode("K/DistanceBetween")]
+    [MBTNode("K/DistanceBetweenMe")]
     [AddComponentMenu("")]
     public class DistanceBetween : Leaf
     {
         public Comparator comparator = Comparator.GreaterThan;
         public FloatReference distance = new FloatReference(10f);
         [Space]
-        public TransformReference transform1;
         public TransformReference transform2;
 
         public override NodeResult Execute()
         {
             //calculate distance between two transforms
-            Vector2 self = transform1.Value.position.xz();
+            Vector2 self = transform.position.xz();
             Vector2 target = transform2.Value.position.xz();
             float magnitude = (target - self).magnitude;
             float dist = distance.Value;
