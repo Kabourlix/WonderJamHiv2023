@@ -21,8 +21,11 @@ public class LeashFollowScript : MonoBehaviour
     private Vector3 _scaleWhenUsed;
     [Tooltip("The time it takes for the object to reach the target when used")]
     public float _timeToReachTarget=0.5f;
+    [Tooltip("If we get further than that from the attached object, we teleport it")]
+    [SerializeField] private float _maxDistanceBeforeTeleport = 10;
 
     public GameObject _grabVfx;
+    public GameObject _teleportVfx; 
 
     public void Init(GameObject target, Rigidbody attachedRigidbody)
     {
@@ -37,14 +40,17 @@ public class LeashFollowScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_target != null && !_used)
-        {
+        if (_target == null || _used) return;
+       
             Vector3 targetPosition = _target.transform.position;
             Vector3 deltaPosition = targetPosition - transform.position;
             _currentVelocity= Vector3.MoveTowards(_currentVelocity, deltaPosition, Time.fixedDeltaTime*_speed);
             _selfRigidbody.position += _currentVelocity*Time.fixedDeltaTime * _acceleration;
-            return;
-        }
+            if (Vector3.SqrMagnitude(_attachedRigidbody.position - _selfRigidbody.position) > Mathf.Pow(_maxDistanceBeforeTeleport, 2))
+            {
+                Teleport();
+            }
+
     }
 
     private void Update()
@@ -54,9 +60,7 @@ public class LeashFollowScript : MonoBehaviour
         _timeElapsedSinceUse += Time.deltaTime/_timeToReachTarget;
 
         Vector3 newScale=Vector3.Lerp(_scaleWhenUsed, Vector3.zero, _timeElapsedSinceUse);
-        Vector3 newPosition=Vector3.Lerp(_positionWhenUsed, _target.transform.position, _timeElapsedSinceUse);
 
-        _attachedRigidbody.gameObject.transform.position = newPosition;
         _attachedRigidbody.gameObject.transform.localScale = newScale;
         
         if(_timeElapsedSinceUse>=1)
@@ -64,16 +68,29 @@ public class LeashFollowScript : MonoBehaviour
             Destroy(_attachedRigidbody);
             Destroy(gameObject);
         }
+
+        
     }
 
-    public void OnUse(GameObject target)
+    public void OnUse()
     {
         _used = true;
-        _target = target;
 
         _positionWhenUsed = _attachedRigidbody.gameObject.transform.position;
         _scaleWhenUsed = _attachedRigidbody.gameObject.transform.localScale;
         _attachedRigidbody.isKinematic= true;
         _attachedRigidbody.GetComponent<Collider>().enabled=false;
     }
+
+    /// <summary>
+    /// If the item is too far away from the leash, we teleport it
+    /// </summary>
+    public void Teleport()
+    {
+        _attachedRigidbody.position = transform.position;
+        GameObject newGo = Instantiate(_teleportVfx);
+        newGo.transform.position = transform.position;
+        Destroy(newGo, 3);
+    }
+
 }

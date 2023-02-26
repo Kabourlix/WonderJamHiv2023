@@ -4,6 +4,6 @@ namespace Game.Scripts.Quests
 {
     public abstract class QuestTrigger : MonoBehaviour
     {
-        public abstract void Trigger();
+        public abstract bool Trigger();
     }
 }

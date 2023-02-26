@@ -5,16 +5,17 @@ using UnityEngine;
 namespace Game.Scripts.Interaction
 {
     [RequireComponent(typeof(StatTriggerComponent))]
-    public class PoisonWell : MonoBehaviour, IInteractable
+    public class InvokeMonster : MonoBehaviour, IInteractable
     {
         private StatTriggerComponent _statTriggerComponent;
-        private Collider _collider;
+        
 
         private void Awake()
         {
             _statTriggerComponent = GetComponent<StatTriggerComponent>();
-            _collider = GetComponent<Collider>();
+           
         }
+
 
         public void VFX()
         {
@@ -28,7 +29,7 @@ namespace Game.Scripts.Interaction
             if (!_statTriggerComponent.Trigger()) return;
             VFX();
             OnInteractionSuccess();
-            
+
         }
 
         public void OnInteractionSuccess()

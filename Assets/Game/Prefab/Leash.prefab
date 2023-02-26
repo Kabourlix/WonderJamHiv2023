@@ -63,10 +63,10 @@ SpringJoint:
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
-  m_Spring: 40
+  m_Spring: 100
   m_Damper: 10
   m_MinDistance: 0
-  m_MaxDistance: 4
+  m_MaxDistance: 2
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -93,5 +93,8 @@ MonoBehaviour:
   _currentVelocity: {x: 0, y: 0, z: 0}
   _pickedObjectLayer: PickedObject
   _timeToReachTarget: 2
+  _maxDistanceBeforeTeleport: 10
   _grabVfx: {fileID: 4537129038300800225, guid: ed45411414eed1f4a921b0f19d171593,
+    type: 3}
+  _teleportVfx: {fileID: 4537129038300800225, guid: 78d9698698e2a2c4eb777fa7a6cbf275,
     type: 3}

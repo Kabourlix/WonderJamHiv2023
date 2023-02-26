@@ -189,16 +189,17 @@ namespace Game.Scripts.UI
             PauseManager.Instance.EnablePause();
         }
 
-        public void BackToMenuButton()
+        
+        
+        public void Home()
         {
             //Go back to menu scene
             SceneManager.LoadScene("MainMenu");
         }
 
-        public void RetryButton()
+        public void Retry()
         {
-            // directly go to playing scene --- A CHANGER AVEC LA SCENE FINALE
-            SceneManager.LoadScene("Game/Scene/Proto/Léane/Level");
+            SceneManager.LoadScene("Level 1");
         }
     }
 }

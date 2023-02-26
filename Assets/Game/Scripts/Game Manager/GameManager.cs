@@ -11,8 +11,7 @@ public enum GameState
 {
     PlayState,
     EndLevel,
-    WinGoodState,
-    WinEvilState,
+    WinState,
     EvolveState,
     PauseState,
     GameOverState,
@@ -61,50 +60,14 @@ public class GameManager : MonoBehaviour
     
     
     public GameState CurrentState { get; private set; }
-    public static event Action<GameState> OnGameStateChanged;
     private PlayerController _playerController;
     private void Start()
     {
-        PlayerController.OnEvolveEnd += () => ChangeState(player.GetComponent<XPManager>().IsFullyEvolved ? GameState.WinGoodState : GameState.PlayState);
+        PlayerController.OnEvolveEnd += () => ChangeState(player.GetComponent<XPManager>().IsFullyEvolved ? GameState.WinState : GameState.PlayState);
         ChangeState(GameState.PlayState);
         
     }
-
-    private void Update()
-    {
-
-        #region Win/Lose Debug
-        //pause
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            Debug.Log("pause");
-            hud.ShowPause();
-        }
-        //win good
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            Debug.Log("win good");
-            if(hud is not null) hud.ShowWinGood();
-        }
-        //win evil
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            Debug.Log("win evil");
-            if(hud is not null) hud.ShowWinEvil();
-        }
-        //lose
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            Debug.Log("lose");
-            if(hud is not null) hud.ShowGameOver();
-        }
-
-        #endregion    
-        
-        //TODO - change state conditions
-        //if()
-    }
-
+    
     public void ChangeState(GameState newState)
     {
         if(_linksDict[newState].Contains(CurrentState) == false) //Prevent forbidden transitions
@@ -117,11 +80,8 @@ public class GameManager : MonoBehaviour
             case GameState.PlayState:
                 HandlePlayState(old);
                 break;
-            case GameState.WinGoodState:
-                HandleWinGoodState(old);
-                break;
-            case GameState.WinEvilState:
-                HandleWinEvilState(old);
+            case GameState.WinState:
+                HandleWinState(old);
                 break;
             case GameState.GameOverState:
                 HandleGameOverState(old);
@@ -141,8 +101,6 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
-
-        OnGameStateChanged?.Invoke(newState);
     }
     
     private void ExitState(GameState old)
@@ -152,7 +110,7 @@ public class GameManager : MonoBehaviour
             case GameState.PlayState:
                 
                 break;
-            case GameState.WinGoodState:
+            case GameState.WinState:
                 
                 break;
             case GameState.GameOverState:
@@ -221,19 +179,17 @@ public class GameManager : MonoBehaviour
         if (hud is not null) hud.ShowGameOver();
     }
 
-    private void HandleWinGoodState(GameState oldState)
+    private void HandleWinState(GameState oldState)
     {
         Player.GetComponent<PlayerController>().EvolveBegin();
         //Disable controls or switch to ui controls
         InputManager.Instance.EnableControls(false);
-        if(hud is not null) hud.ShowWinGood();
-    }
-    private void HandleWinEvilState(GameState oldState)
-    {
-        Player.GetComponent<PlayerController>().EvolveBegin();
-        //Disable controls or switch to ui controls
-        InputManager.Instance.EnableControls(false);
-        if(hud is not null) hud.ShowWinEvil();
+        //TODO : Determiner si c'est une victoire good ou evil
+        if (hud is null) return;
+        if(player.GetComponent<XPManager>().IsFullyEvolved)
+            hud.ShowWinEvil();
+        else
+            hud.ShowWinGood();
     }
 
     private void HandlePlayState(GameState oldState)

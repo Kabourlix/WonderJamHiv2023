@@ -11,16 +11,18 @@ namespace Game.Scripts.Quests
 
 
         [ContextMenu("Trigger Stat")]
-        public override void Trigger()
+        public override bool Trigger()
         {
             if (statTargeted == null) throw new NullReferenceException("StatTargeted is null");
                 
-            statTargeted.Increment();
+            var success = statTargeted.Increment();
 
             if (_audioSource != null)
             {
                 _audioSource.Play();
             }
+
+            return success;
         }
     }
 }

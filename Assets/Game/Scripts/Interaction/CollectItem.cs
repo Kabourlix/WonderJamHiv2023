@@ -19,5 +19,10 @@ namespace Game.Scripts.Interaction
             Debug.Log("Interacting with" + gameObject.name);
             _statTriggerComponent.Trigger();
         }
+
+        public void OnInteractionSuccess()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
