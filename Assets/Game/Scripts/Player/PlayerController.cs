@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask pushLayerMask;
     private List<PushResolution> _pushResolutions;
 
-    public bool IsSuspect { get; private set; }
+    public bool IsSuspect { get; set; }
     
     
     public Forms CurrentForm

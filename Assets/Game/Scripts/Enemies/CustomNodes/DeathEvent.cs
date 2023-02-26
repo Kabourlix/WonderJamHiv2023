@@ -1,6 +1,7 @@
 using MBT;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace MBTExample
@@ -9,16 +10,17 @@ namespace MBTExample
     [AddComponentMenu("")]
     public class DeathEvent : Leaf
     {
-        public TransformReference transform;
         private PlayerController playerControl;
-
+        private void Start()
+        {
+            playerControl = GameManager.Instance.Player.GetComponent<PlayerController>();
+        }
         public override NodeResult Execute()
         {
-            playerControl = transform.Value.GetComponent<PlayerController>();
-            if (playerControl == null) { Debug.Log("No PlayerComponent FOUND"); return NodeResult.failure; }
+            if (playerControl == null) { throw new System.Exception("No playerController found"); }
             if (playerControl.IsSuspect)
             {
-                Debug.Log("VU");
+                Debug.Log("<color=red>Player has been caught</color>");
                 return NodeResult.success;
             }
             else

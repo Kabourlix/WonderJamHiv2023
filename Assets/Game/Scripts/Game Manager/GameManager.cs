@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Inputs;
 using Game.Scripts;
 using Game.Scripts.UI;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
-using UnityEngine.Serialization;
+
 
 public enum GameState
 {
@@ -113,7 +111,7 @@ public class GameManager : MonoBehaviour
             : GameState.GameOverState);
     }
 
-    #region State
+    #region Handlers
 
     private void HandlePauseState(GameState oldState)
     {
@@ -125,6 +123,7 @@ public class GameManager : MonoBehaviour
     private void HandleEvolveState(GameState oldState)
     {
         //Nothing really
+        //Pause all IA Logic.
     }
 
     private void HandleCaughtState(GameState oldState)
@@ -133,7 +132,9 @@ public class GameManager : MonoBehaviour
         if(hud is not null) hud.UpdateSuspiciousBar(hpPercentage);
         if(hpPercentage <= 0)
             ChangeState(GameState.GameOverState);
-        
+        player.GetComponent<PlayerController>().IsSuspect = false;
+        ChangeState(GameState.PlayState); // Respawn
+
     }
 
     private void HandleGameOverState(GameState oldState)
