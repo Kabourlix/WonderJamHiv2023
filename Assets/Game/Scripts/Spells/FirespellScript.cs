@@ -19,7 +19,7 @@ public class FirespellScript : MonoBehaviour
 
     private void Start()
     {
-        float timeUntilNextSpawn = Random.Range(_minTimeBetweenSpawn, _maxTimeBetweenSpawn);
+        float timeUntilNextSpawn = Random.Range(_minTimeBetweenSpawn/2, _maxTimeBetweenSpawn/2);
         StartCoroutine(TimedSpawn(timeUntilNextSpawn));
     }
 

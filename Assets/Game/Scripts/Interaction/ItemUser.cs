@@ -3,6 +3,7 @@ using Game.Scripts.Quests;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [RequireComponent(typeof(StatTriggerComponent))]
 public class ItemUser : MonoBehaviour, IInteractable
@@ -18,6 +19,8 @@ public class ItemUser : MonoBehaviour, IInteractable
         public string messageIfNotPickedUp;
     }
     [SerializeField] RequiredItem[] _requiredItems;
+    [Tooltip("What the npc will say if you have everything")]
+    [SerializeField] private string _messageOnComplete="Thank you";
 
     private void Awake()
     {
@@ -31,6 +34,7 @@ public class ItemUser : MonoBehaviour, IInteractable
             CollectAndPickupItem itemScript=item.itemGo.GetComponent<CollectAndPickupItem>();
             if (!itemScript.PickedUp)
             {
+                DialogueSystem.AddMessage(item.messageIfNotPickedUp, 5f);
                 return;
             }
         }
@@ -40,5 +44,8 @@ public class ItemUser : MonoBehaviour, IInteractable
             CollectAndPickupItem itemScript = item.itemGo.GetComponent<CollectAndPickupItem>();
             itemScript.Use(gameObject);
         }
+
+        if (_messageOnComplete == null || _messageOnComplete == "") return;
+        DialogueSystem.AddMessage(_messageOnComplete, 5f);
     }
 }

@@ -30,6 +30,7 @@ namespace Game.Inputs
         public static event Action OnInteractEvent;
         public static event Action OnGrabEvent;
         public static event Action OnPushEvent;
+        public static event Action OnSkipDialogueEvent;
 
         public static event Action OnShowHideQuestEvent;
         public static event Action OnTest1Event;
@@ -79,6 +80,11 @@ namespace Game.Inputs
         private void OnGrab()
         {
             OnGrabEvent?.Invoke();
+        }
+
+        private void OnSkipDialogue()
+        {
+            OnSkipDialogueEvent?.Invoke();
         }
 
         private void OnShowHideQuest()

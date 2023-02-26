@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
   m_Name: Poisoncollected
   m_EditorClassIdentifier: 
-  title: FedexPoison
-  description: Put poison in the well
+  title: Poison the water
+  description: Poison 3 wells
   conditions:
   - stat: {fileID: 11400000, guid: 145b98098f8c2d342b6578e5070ae722, type: 2}
     target: 1
   - stat: {fileID: 11400000, guid: 7b493863232ccfe4cbd6252a06e92a74, type: 2}
-    target: 1
+    target: 3
   questType: 1
   rewardXp: 10

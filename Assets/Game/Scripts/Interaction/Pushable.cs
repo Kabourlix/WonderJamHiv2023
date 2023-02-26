@@ -15,6 +15,8 @@ public class Pushable : MonoBehaviour
     [SerializeField] private UnityEngine.Events.UnityEvent _onPushedStart;
     [SerializeField] private UnityEngine.Events.UnityEvent _onPushedEnd;
 
+    [HideInInspector] public bool CanBePushed=true;
+
     public bool IsPushed { get => _isPushed; 
         set 
         { 
@@ -48,7 +50,7 @@ public class Pushable : MonoBehaviour
 
     public void Push(Vector3 finalPosition, float pushDuration=0.5f)
     {
-        if(IsPushed ) { return; }
+        if(IsPushed || !CanBePushed) { return; }
         IsPushed = true;
         _finalPosition = finalPosition;
         _pushDuration = pushDuration;

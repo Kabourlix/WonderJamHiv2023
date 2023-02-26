@@ -88,7 +88,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _attachedRigidbody: {fileID: 0}
-  speed: 10
-  _currentVelcocity: {x: 0, y: 0, z: 0}
+  _speed: 10
+  _acceleration: 10
+  _currentVelocity: {x: 0, y: 0, z: 0}
   _pickedObjectLayer: PickedObject
   _timeToReachTarget: 2
+  _grabVfx: {fileID: 4537129038300800225, guid: ed45411414eed1f4a921b0f19d171593,
+    type: 3}
