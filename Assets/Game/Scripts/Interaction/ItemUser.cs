@@ -3,6 +3,7 @@ using Game.Scripts.Quests;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using static UnityEditor.Progress;
 
 [RequireComponent(typeof(StatTriggerComponent))]
@@ -21,6 +22,7 @@ public class ItemUser : MonoBehaviour, IInteractable
     [SerializeField] RequiredItem[] _requiredItems;
     [Tooltip("What the npc will say if you have everything")]
     [SerializeField] private string _messageOnComplete="Thank you";
+    [SerializeField] private UnityEvent _onComplete;
 
     private void Awake()
     {
@@ -45,6 +47,7 @@ public class ItemUser : MonoBehaviour, IInteractable
             itemScript.Use(gameObject);
         }
 
+        _onComplete?.Invoke();
         if (_messageOnComplete == null || _messageOnComplete == "") return;
         DialogueSystem.AddMessage(_messageOnComplete, 5f);
     }

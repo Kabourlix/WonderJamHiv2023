@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 public class XPManager : MonoBehaviour
 {
-    private int _currentXp, _level;
+    private int _currentXp, _level = 0;
     [SerializeField] private int[] targetLvl;
     
     private PlayerController _playerController;
@@ -53,6 +53,7 @@ public class XPManager : MonoBehaviour
    
     private void AddXP(int xp)
     {
+        Debug.Log("OOOOOOO" + _level);
         var targetXp = targetLvl[_level];
         _currentXp += xp;
         _hud.UpdateExpBar(Mathf.InverseLerp(0, targetXp, _currentXp));

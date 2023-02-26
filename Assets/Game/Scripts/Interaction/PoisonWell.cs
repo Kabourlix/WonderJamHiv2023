@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Scripts.Interaction
 {
     [RequireComponent(typeof(StatTriggerComponent))]
-    public class PoisonWell : MonoBehaviour, IInteractable
+    public class PoisonWell : MonoBehaviour
     {
         private StatTriggerComponent _statTriggerComponent;
 
@@ -14,7 +14,7 @@ namespace Game.Scripts.Interaction
             _statTriggerComponent = GetComponent<StatTriggerComponent>();
         }
 
-        public void Interact()
+        public void OnInteract()
         {
             Debug.Log("Interacting with" + gameObject.name);
             _statTriggerComponent.Trigger();
