@@ -33,6 +33,11 @@ public class AIChild : MonoBehaviour
     private int _isStunNameHash;
     private float _orientation;
 
+    private bool IsDead=false;
+
+    [Header("Dialogues")]
+    [SerializeField] private List<string> _possibleDialoguesOnDeath;
+
     void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -81,7 +86,6 @@ public class AIChild : MonoBehaviour
     void AnimateMovement()
     {
         float magnitude = _targetMovementVelocity.magnitude;
-        Debug.Log(magnitude);
         _animatorOfWizard.SetFloat(_walkingSpeedHash, magnitude);
         if (magnitude <= 0.01f) return;
         _orientation = Mathf.MoveTowardsAngle(_orientation, Vector2.SignedAngle(new Vector2(_targetMovementVelocity.x, _targetMovementVelocity.z), Vector2.up), 1000 * Time.deltaTime);
@@ -106,12 +110,17 @@ public class AIChild : MonoBehaviour
 
     private void Die()
     {
+        if(IsDead) return;
+        IsDead = true;
         _onDie.Invoke();
         _animatorOfWizard.SetTrigger(_burnTriggerHash);
         _animatorWithFire.SetTrigger(_burnTriggerHash);
 
         StunTime= _timeFromBurnToDestroy+1;
-        Destroy(gameObject, _timeFromBurnToDestroy);
+
+        DialogueSystem.AddMessage("Villager: " + _possibleDialoguesOnDeath[Random.Range(0,_possibleDialoguesOnDeath.Count)],10);
+
+        Destroy(gameObject, _timeFromBurnToDestroy);    
     }
 
     public void Stun(float time)

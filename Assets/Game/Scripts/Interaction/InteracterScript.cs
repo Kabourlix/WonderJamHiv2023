@@ -32,7 +32,7 @@ public class InteracterScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<IInteractable>() == null) return;
+q        if (other.gameObject.GetComponent<IInteractable>() == null) return;
         OtherCollidersCounter++;
     }
 

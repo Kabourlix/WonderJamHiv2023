@@ -912,6 +912,11 @@ PrefabInstance:
       propertyPath: _contextualInteractMenu
       value: 
       objectReference: {fileID: 3968954586320271398}
+    - target: {fileID: 7742701855872299933, guid: 3faa22fdca12250418efd938df762695,
+        type: 3}
+      propertyPath: _contextualPushMenu
+      value: 
+      objectReference: {fileID: 3968954586320271398}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3faa22fdca12250418efd938df762695, type: 3}
 --- !u!4 &863507991807319998 stripped

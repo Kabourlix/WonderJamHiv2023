@@ -31,6 +31,7 @@ public class ItemUser : MonoBehaviour, IInteractable
             CollectAndPickupItem itemScript=item.itemGo.GetComponent<CollectAndPickupItem>();
             if (!itemScript.PickedUp)
             {
+                DialogueSystem.AddMessage(item.messageIfNotPickedUp, 5f);
                 return;
             }
         }

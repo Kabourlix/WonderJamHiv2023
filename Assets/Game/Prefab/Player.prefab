@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3239435798119582240}
   - component: {fileID: 744996751770705547}
-  - component: {fileID: 3940405548365112839}
+  - component: {fileID: 1470739071432907800}
   m_Layer: 13
   m_Name: Pusher
   m_TagString: Untagged
@@ -269,7 +269,7 @@ CapsuleCollider:
   m_Height: 4.56
   m_Direction: 1
   m_Center: {x: 0, y: -1.12, z: 1.94}
---- !u!114 &3940405548365112839
+--- !u!114 &1470739071432907800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,10 +278,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4100575466563418537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0fe315cdd3e0148bc10b4ad6aea3b0, type: 3}
+  m_Script: {fileID: 11500000, guid: b3f238d3b3960b741a9d769915ffe2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contextualInteractMenu: {fileID: 0}
+  _contextualPushMenu: {fileID: 0}
   _leashPrefab: {fileID: 6531735552456267250, guid: cc6f9fc6748decf4b9ffbd50d3ca5a0f,
     type: 3}
 --- !u!1 &4897035602389707668

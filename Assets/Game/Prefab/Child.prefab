@@ -76,7 +76,12 @@ MonoBehaviour:
   _animatorOfWizard: {fileID: 9211173503378504607}
   _burnTriggerName: Burn
   _walkingSpeedName: WalkingSpeed
+  _isStunName: IsStun
   _timeFromBurnToDestroy: 5
+  _possibleDialoguesOnDeath:
+  - Oh no ! My child ! How could it happen ? You're supposed to protect us !
+  - You're a pathetic hero who can't protect us.
+  - You killed my child ! You monster !
 --- !u!114 &4331652873571509695
 MonoBehaviour:
   m_ObjectHideFlags: 0
