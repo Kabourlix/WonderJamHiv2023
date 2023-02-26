@@ -1139,7 +1139,7 @@ PrefabInstance:
     - target: {fileID: 7215486323774049717, guid: 70e5d9453af4eea4b937304f34761fda,
         type: 3}
       propertyPath: m_Name
-      value: AI
+      value: Eyeball Mage
       objectReference: {fileID: 0}
     - target: {fileID: 8028051412095964943, guid: 70e5d9453af4eea4b937304f34761fda,
         type: 3}
@@ -1169,7 +1169,7 @@ PrefabInstance:
     - target: {fileID: 8028051412095964943, guid: 70e5d9453af4eea4b937304f34761fda,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.641
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8028051412095964943, guid: 70e5d9453af4eea4b937304f34761fda,
         type: 3}
