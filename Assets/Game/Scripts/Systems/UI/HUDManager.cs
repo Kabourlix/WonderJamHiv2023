@@ -220,19 +220,23 @@ namespace Game.Scripts.UI
         #region PlayAudio
         private void PlayGameOver()
         {
-            audioSrc.PlayOneShot(gameOverSound);
+            audioSrc.clip = gameOverSound;
+            audioSrc.Play();
         }
         private void PlayWinGame()
         {
-            audioSrc.PlayOneShot(winSound);
+            audioSrc.clip = winSound;
+            audioSrc.Play();
         }
         private void PlayGainExp()
         {
-            audioSrc.PlayOneShot(gainXpSound);
+            audioSrc.clip = gainXpSound;
+            audioSrc.Play();
         }
         private void PlayquestComplete()
         {
-            audioSrc.PlayOneShot(questCompletedSound);
+            audioSrc.clip = questCompletedSound;
+            audioSrc.Play();
         }
         #endregion
 
