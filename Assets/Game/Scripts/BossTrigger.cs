@@ -88,6 +88,8 @@ public class BossTrigger : MonoBehaviour
             item.SetActive(true);
         }
 
+        GetComponentInChildren<Animator>().SetTrigger("Repair");
+
         Destroy(bossGo.GetComponentInChildren<MBTExecutorEnhanced>().gameObject);
     }
 
