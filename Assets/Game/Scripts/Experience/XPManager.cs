@@ -12,11 +12,12 @@ public class XPManager : MonoBehaviour
 {
     private int _currentXp, _level = 0;
     [SerializeField] private int[] targetLvl;
+    [SerializeField] private AudioSource audioSrc;
     
     private PlayerController _playerController;
     private QuestManager _questManager;
     private HUDManager _hud;
-    
+
     
     private void Awake()
     {
@@ -67,6 +68,7 @@ public class XPManager : MonoBehaviour
    
     public void Evolve()
     {
+        audioSrc.Play();
         _playerController.CurrentForm = _level switch
         {
             1 => PlayerController.Forms.spider,

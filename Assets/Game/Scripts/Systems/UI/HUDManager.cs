@@ -15,6 +15,7 @@ namespace Game.Scripts.UI
     public class HUDManager : MonoBehaviour
     {
         public static HUDManager Instance;
+        private AudioSource audioSrc;
         
         private void Awake()
         {
@@ -40,6 +41,7 @@ namespace Game.Scripts.UI
             gameoverScreen.SetActive(false);
             winEvilScreen.SetActive(false);
             winGoodScreen.SetActive(false);
+            audioSrc = GetComponent<AudioSource>();
             
         }
 
@@ -62,7 +64,15 @@ namespace Game.Scripts.UI
         [SerializeField] private GameObject winEvilScreen;
         [SerializeField] private GameObject winGoodScreen;
         [SerializeField] private GameObject gameoverScreen;
-        
+
+        //Son
+        [SerializeField] private AudioClip gameOverSound;
+        [SerializeField] private AudioClip winSound;
+        [SerializeField] private AudioClip evolveSound;
+        [SerializeField] private AudioClip gainXpSound;
+        [SerializeField] private AudioClip questCompletedSound;
+
+
         #region Tweeners
 
         private ApparitionTween _questTween;
@@ -98,6 +108,7 @@ namespace Game.Scripts.UI
         [SerializeField] private float expBarDuration = 2f;
         public void UpdateExpBar(float value)
         {
+            PlayGainExp();
             Debug.Log("<color=red>UpdateExpBar</color>");
             value = Mathf.Clamp01(value);
             
@@ -161,7 +172,7 @@ namespace Game.Scripts.UI
                 _questUIs[q].QuestCompleted();
             };
             ui.Highlight(c);
-            
+            PlayquestComplete();
         }
 
         #endregion
@@ -169,17 +180,20 @@ namespace Game.Scripts.UI
         public void ShowGameOver()
         {
             //TODO
+            PlayGameOver();
             gameoverScreen.SetActive(true);
         }
 
         public void ShowWinEvil()
         {
             //TODO
+            PlayWinGame();
             winEvilScreen.SetActive(true);
         }
         public void ShowWinGood()
         {
             //TODO
+            PlayWinGame();
             winGoodScreen.SetActive(true);
         }
 
@@ -189,8 +203,25 @@ namespace Game.Scripts.UI
             PauseManager.Instance.EnablePause();
         }
 
-        
-        
+        #region PlayAudio
+        private void PlayGameOver()
+        {
+            audioSrc.PlayOneShot(gameOverSound);
+        }
+        private void PlayWinGame()
+        {
+            audioSrc.PlayOneShot(winSound);
+        }
+        private void PlayGainExp()
+        {
+            audioSrc.PlayOneShot(gainXpSound);
+        }
+        private void PlayquestComplete()
+        {
+            audioSrc.PlayOneShot(questCompletedSound);
+        }
+        #endregion
+
         public void Home()
         {
             //Go back to menu scene
