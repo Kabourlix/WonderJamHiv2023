@@ -1,5 +1,1129 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5289709749592191247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5289709749592191232}
+  - component: {fileID: 5289709749592191274}
+  - component: {fileID: 5289709749592191273}
+  - component: {fileID: 5289709749592191272}
+  - component: {fileID: 5289709749592191287}
+  - component: {fileID: 5289709749592191295}
+  - component: {fileID: 5289709749592191293}
+  - component: {fileID: 5289709749592191234}
+  - component: {fileID: 5289709749592191267}
+  - component: {fileID: 5289709749592191320}
+  - component: {fileID: 5289709749592191313}
+  - component: {fileID: 5289709749592191317}
+  - component: {fileID: 5289709749592191305}
+  - component: {fileID: 5289709749592191319}
+  - component: {fileID: 5289709749592191318}
+  - component: {fileID: 5289709749592191310}
+  - component: {fileID: 5289709749592191308}
+  - component: {fileID: 5289709749592191296}
+  - component: {fileID: 5289709749592191311}
+  - component: {fileID: 5289709749592191299}
+  - component: {fileID: 5289709749592191298}
+  - component: {fileID: 5289709749592191353}
+  - component: {fileID: 5289709749592191352}
+  - component: {fileID: 5289709749592191303}
+  - component: {fileID: 5289709749592191302}
+  - component: {fileID: 5289709749592191301}
+  - component: {fileID: 5289709749592191354}
+  - component: {fileID: 5289709749592191345}
+  - component: {fileID: 5289709749592191347}
+  - component: {fileID: 5289709749592191346}
+  - component: {fileID: 5289709749592191351}
+  - component: {fileID: 5289709749592191350}
+  - component: {fileID: 5289709749592191349}
+  - component: {fileID: 5289709749592191348}
+  - component: {fileID: 5289709749592191338}
+  - component: {fileID: 5289709749592191336}
+  - component: {fileID: 5289709749592191340}
+  - component: {fileID: 5289709749592191342}
+  - component: {fileID: 5289709749592191334}
+  m_Layer: 0
+  m_Name: tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5289709749592191232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.17071381, y: 2.6263, z: 11.339615}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7384961448565987305}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5289709749592191274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables:
+  - {fileID: 5289709749592191293}
+  - {fileID: 5289709749592191234}
+  - {fileID: 5289709749592191319}
+  - {fileID: 5289709749592191318}
+  - {fileID: 5289709749592191299}
+  - {fileID: 5289709749592191353}
+  - {fileID: 5289709749592191303}
+  masterBlackboard: {fileID: 0}
+--- !u!114 &5289709749592191273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedEditorNode: {fileID: 0}
+  repeatOnFinish: 1
+  maxExecutionsPerTick: 1000
+  parent: {fileID: 0}
+--- !u!114 &5289709749592191272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5f392bbea2fa2499665ed8b604ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monoBehaviourTree: {fileID: 5289709749592191273}
+  freez: 0
+--- !u!114 &5289709749592191287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538645f2f9090fd43bc6154b2e89e2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Root
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: -540
+    width: 160
+    height: 44
+  parent: {fileID: 0}
+  children:
+  - {fileID: 5289709749592191349}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &5289709749592191295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 'Sequence '
+  rect:
+    serializedVersion: 2
+    x: 720
+    y: 100
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191298}
+  children:
+  - {fileID: 5289709749592191336}
+  - {fileID: 5289709749592191320}
+  - {fileID: 5289709749592191346}
+  - {fileID: 5289709749592191334}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &5289709749592191293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Self
+  val: {fileID: 7384961448565987305}
+--- !u!114 &5289709749592191234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: SelfObj
+  val: {fileID: 7869890694839176531}
+--- !u!114 &5289709749592191267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: -120
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191317}
+  children:
+  - {fileID: 5289709749592191313}
+  - {fileID: 5289709749592191301}
+  - {fileID: 5289709749592191296}
+  - {fileID: 5289709749592191298}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &5289709749592191320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2a88e0ef279994b95d6e19dad2d18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Patrol Point
+  rect:
+    serializedVersion: 2
+    x: 720
+    y: 200
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191295}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  variableToSet:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &5289709749592191313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -680
+    y: -0
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191267}
+  children:
+  - {fileID: 5289709749592191305}
+  - {fileID: 5289709749592191302}
+  - {fileID: 5289709749592191352}
+  - {fileID: 5289709749592191310}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &5289709749592191317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056841afaed742d4e909e76361b5173f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Repeater
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: -300
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191349}
+  children:
+  - {fileID: 5289709749592191267}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  loops: 1
+  infinite: 1
+--- !u!114 &5289709749592191305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c41ddcab224a7baf30e8b0e36a927d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DetectNoise
+  rect:
+    serializedVersion: 2
+    x: -980
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191313}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+  range: 25
+  variableToSet:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: PlayerHear
+    constantValue: {x: 0, y: 0, z: 0}
+--- !u!114 &5289709749592191319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae15c5e6bcb1714080f2e8296c3d17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: IsPatroling
+  val: 0
+--- !u!114 &5289709749592191318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PlayerSeen
+  val: {fileID: 0}
+--- !u!114 &5289709749592191310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Desactive Patrol
+  rect:
+    serializedVersion: 2
+    x: -500
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191313}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: IsPatroling
+    constantValue: 0
+--- !u!114 &5289709749592191308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Activate Patrol
+  rect:
+    serializedVersion: 2
+    x: 380
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191345}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: IsPatroling
+    constantValue: 0
+--- !u!114 &5289709749592191296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 340
+    y: -20
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191267}
+  children:
+  - {fileID: 5289709749592191311}
+  - {fileID: 5289709749592191342}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &5289709749592191311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe525a8c9dc4e9f9647aa1272ae7960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: LookForPlayer
+  rect:
+    serializedVersion: 2
+    x: 260
+    y: 60
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191296}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  range: 10
+  angle: 100
+  playerSeen:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: PlayerSeen
+    constantValue: {fileID: 0}
+--- !u!114 &5289709749592191299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PatrolTarget
+  val: {fileID: 0}
+--- !u!114 &5289709749592191298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55ed1b3b734a5045af452d27c543f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Is Patroling
+  rect:
+    serializedVersion: 2
+    x: 720
+    y: 20
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191267}
+  children:
+  - {fileID: 5289709749592191295}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  boolean:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: IsPatroling
+    constantValue: 0
+  attempt: 1
+--- !u!114 &5289709749592191353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51272808e3662eb4286c82f38f91fae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PlayerHear
+  val: {x: 0, y: 0, z: 0}
+--- !u!114 &5289709749592191352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4904ea0992e210f4383f32c648773f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNavOnceVector
+  rect:
+    serializedVersion: 2
+    x: -660
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191313}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: PlayerHear
+    constantValue: {x: 0, y: 0, z: 0}
+  agent: {fileID: 0}
+--- !u!114 &5289709749592191303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae15c5e6bcb1714080f2e8296c3d17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: HearSomething
+  val: 0
+--- !u!114 &5289709749592191302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Boolean
+  rect:
+    serializedVersion: 2
+    x: -820
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191313}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: HearSomething
+    constantValue: 0
+--- !u!114 &5289709749592191301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55ed1b3b734a5045af452d27c543f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Bool Condition
+  rect:
+    serializedVersion: 2
+    x: 80
+    y: -0
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191267}
+  children:
+  - {fileID: 5289709749592191345}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  boolean:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: HearSomething
+    constantValue: 0
+  attempt: 1
+--- !u!114 &5289709749592191354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2a88e0ef279994b95d6e19dad2d18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Patrol Point
+  rect:
+    serializedVersion: 2
+    x: -320
+    y: -280
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191349}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  variableToSet:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &5289709749592191345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 80
+    y: 60
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191301}
+  children:
+  - {fileID: 5289709749592191340}
+  - {fileID: 5289709749592191348}
+  - {fileID: 5289709749592191351}
+  - {fileID: 5289709749592191350}
+  - {fileID: 5289709749592191308}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &5289709749592191347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad58dbc9b181c8438fca6e73aa3194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNav
+  rect:
+    serializedVersion: 2
+    x: -160
+    y: -280
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191349}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  agent: {fileID: 0}
+--- !u!114 &5289709749592191346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad58dbc9b181c8438fca6e73aa3194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNav
+  rect:
+    serializedVersion: 2
+    x: 880
+    y: 200
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191295}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  agent: {fileID: 0}
+--- !u!114 &5289709749592191351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2a88e0ef279994b95d6e19dad2d18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Patrol Point
+  rect:
+    serializedVersion: 2
+    x: 60
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191345}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  variableToSet:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &5289709749592191350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad58dbc9b181c8438fca6e73aa3194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: SetNav
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191345}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+  agent: {fileID: 0}
+--- !u!114 &5289709749592191349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: -420
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191287}
+  children:
+  - {fileID: 5289709749592191354}
+  - {fileID: 5289709749592191347}
+  - {fileID: 5289709749592191338}
+  - {fileID: 5289709749592191317}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &5289709749592191348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Boolean
+  rect:
+    serializedVersion: 2
+    x: -100
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191345}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: HearSomething
+    constantValue: 0
+--- !u!114 &5289709749592191338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a491dc0bc41ade74e85756aea423797c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set Boolean
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: -280
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191349}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  source:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  destination:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5289709749592191274}
+    key: IsPatroling
+    constantValue: 0
+--- !u!114 &5289709749592191336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12f4e931b66f0e47afce9dbd79ddebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DistanceBetween
+  rect:
+    serializedVersion: 2
+    x: 560
+    y: 200
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191295}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  comparator: 1
+  distance:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  transform1:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: Self
+    constantValue: {fileID: 0}
+  transform2:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: PatrolTarget
+    constantValue: {fileID: 0}
+--- !u!114 &5289709749592191340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795a20763b1ff064f986f8e4f8024082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DistanceBetweenVector
+  rect:
+    serializedVersion: 2
+    x: -260
+    y: 420
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191345}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  comparator: 1
+  distance:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  transform1:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: Self
+    constantValue: {fileID: 0}
+  transform2:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5289709749592191274}
+    key: PlayerHear
+    constantValue: {x: 0, y: 0, z: 0}
+--- !u!114 &5289709749592191342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62974267cbf168c46992ca5cd8af743a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: DeathEvent
+  rect:
+    serializedVersion: 2
+    x: 440
+    y: 60
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191296}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &5289709749592191334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289709749592191247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait
+  rect:
+    serializedVersion: 2
+    x: 1040
+    y: 200
+    width: 160
+    height: 44
+  parent: {fileID: 5289709749592191295}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0.25
+  randomDeviation: 0
+  continueOnRestart: 0
 --- !u!1001 &654703610301989094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15,7 +1139,7 @@ PrefabInstance:
     - target: {fileID: 7215486323774049717, guid: 70e5d9453af4eea4b937304f34761fda,
         type: 3}
       propertyPath: m_Name
-      value: Eyeball Mage
+      value: AI
       objectReference: {fileID: 0}
     - target: {fileID: 8028051412095964943, guid: 70e5d9453af4eea4b937304f34761fda,
         type: 3}
@@ -94,3 +1218,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70e5d9453af4eea4b937304f34761fda, type: 3}
+--- !u!4 &7384961448565987305 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8028051412095964943, guid: 70e5d9453af4eea4b937304f34761fda,
+    type: 3}
+  m_PrefabInstance: {fileID: 654703610301989094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7869890694839176531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7215486323774049717, guid: 70e5d9453af4eea4b937304f34761fda,
+    type: 3}
+  m_PrefabInstance: {fileID: 654703610301989094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &7589638639417351377
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7869890694839176531}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
