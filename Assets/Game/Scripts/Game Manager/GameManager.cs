@@ -11,7 +11,8 @@ public enum GameState
 {
     PlayState,
     EndLevel,
-    WinState,
+    WinGoodState,
+    WinEvilState,
     EvolveState,
     PauseState,
     GameOverState,
@@ -64,8 +65,44 @@ public class GameManager : MonoBehaviour
     private PlayerController _playerController;
     private void Start()
     {
-        PlayerController.OnEvolveEnd += () => ChangeState(player.GetComponent<XPManager>().IsFullyEvolved ? GameState.WinState : GameState.PlayState);
+        PlayerController.OnEvolveEnd += () => ChangeState(player.GetComponent<XPManager>().IsFullyEvolved ? GameState.WinGoodState : GameState.PlayState);
         ChangeState(GameState.PlayState);
+        
+    }
+
+    private void Update()
+    {
+
+        #region Win/Lose Debug
+        //pause
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            Debug.Log("pause");
+            hud.ShowPause();
+        }
+        //win good
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Debug.Log("win good");
+            if(hud is not null) hud.ShowWinGood();
+        }
+        //win evil
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            Debug.Log("win evil");
+            if(hud is not null) hud.ShowWinEvil();
+        }
+        //lose
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            Debug.Log("lose");
+            if(hud is not null) hud.ShowGameOver();
+        }
+
+        #endregion    
+        
+        //TODO - change state conditions
+        //if()
     }
 
     public void ChangeState(GameState newState)
@@ -80,8 +117,11 @@ public class GameManager : MonoBehaviour
             case GameState.PlayState:
                 HandlePlayState(old);
                 break;
-            case GameState.WinState:
-                HandleWinState(old);
+            case GameState.WinGoodState:
+                HandleWinGoodState(old);
+                break;
+            case GameState.WinEvilState:
+                HandleWinEvilState(old);
                 break;
             case GameState.GameOverState:
                 HandleGameOverState(old);
@@ -112,7 +152,7 @@ public class GameManager : MonoBehaviour
             case GameState.PlayState:
                 
                 break;
-            case GameState.WinState:
+            case GameState.WinGoodState:
                 
                 break;
             case GameState.GameOverState:
@@ -176,17 +216,24 @@ public class GameManager : MonoBehaviour
 
     private void HandleGameOverState(GameState oldState)
     {
-        if (hud is not null) hud.ShowGameOver();
         //Disable controls or switch to ui controls 
         InputManager.Instance.EnableControls(false);
+        if (hud is not null) hud.ShowGameOver();
     }
 
-    private void HandleWinState(GameState oldState)
+    private void HandleWinGoodState(GameState oldState)
     {
         Player.GetComponent<PlayerController>().EvolveBegin();
-        if(hud is not null) hud.ShowWin();
         //Disable controls or switch to ui controls
         InputManager.Instance.EnableControls(false);
+        if(hud is not null) hud.ShowWinGood();
+    }
+    private void HandleWinEvilState(GameState oldState)
+    {
+        Player.GetComponent<PlayerController>().EvolveBegin();
+        //Disable controls or switch to ui controls
+        InputManager.Instance.EnableControls(false);
+        if(hud is not null) hud.ShowWinEvil();
     }
 
     private void HandlePlayState(GameState oldState)
@@ -198,22 +245,6 @@ public class GameManager : MonoBehaviour
         //Enable controls
         InputManager.Instance.EnableControls(true);
 
-        //pause
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            Debug.Log("pause");
-            ChangeState(GameState.PauseState);
-        }
-        //win
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            ChangeState(GameState.WinState);
-        }
-        //lose
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            ChangeState(GameState.GameOverState);
-        }
         
     }
 
