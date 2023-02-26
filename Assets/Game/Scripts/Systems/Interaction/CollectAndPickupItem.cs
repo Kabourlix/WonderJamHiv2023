@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Scripts.Quests;
+using Game.Scripts.Systems.Interaction;
 using UnityEngine;
 
 namespace Game.Scripts.Interaction
 {
     [RequireComponent(typeof(StatTriggerComponent))]
-    public class CollectAndPickupItem : MonoBehaviour, IInteractable
+    public class CollectAndPickupItem : Interactable
     {
-        private StatTriggerComponent _statTriggerComponent;
+        
         [HideInInspector]
         public bool PickedUp = false;
         private LeashFollowScript _followScript;
@@ -16,12 +17,10 @@ namespace Game.Scripts.Interaction
         [Tooltip("The colliders that are not used for the physic and that should be disables")]
         [SerializeField] List<Collider> _additionalColliders;
 
-        private void Awake()
-        {
-            _statTriggerComponent = GetComponent<StatTriggerComponent>();
-        }
+        [SerializeField] private Collider _physicColliderToActivate;
+        
 
-        public void Interact()
+        public override void Interact()
         {
             _statTriggerComponent.Trigger();
             Rigidbody rb=gameObject.GetComponent<Rigidbody>();
@@ -34,6 +33,8 @@ namespace Game.Scripts.Interaction
             _followScript = leash;
             PickedUp = true;
             QuestManager.Instance.OnQuestCompleted += OnQuestCompleted;
+            gameObject.layer = 0; //!Pas sur de moi
+            _physicColliderToActivate.enabled = true;
             foreach(Collider c in _additionalColliders)
             {
                 c.enabled = false;
@@ -45,11 +46,7 @@ namespace Game.Scripts.Interaction
             if (quest != _usedOn) return;
             _followScript.OnUse();
         }
-
-        public void OnInteractionSuccess()
-        {
-            throw new NotImplementedException();
-        }
+        
 
     }
 }

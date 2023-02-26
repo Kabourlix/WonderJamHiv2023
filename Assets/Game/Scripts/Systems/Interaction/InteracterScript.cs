@@ -1,6 +1,7 @@
 using Game.Scripts.Interaction;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts.Systems.Interaction;
 using UnityEngine;
 
 public class InteracterScript : MonoBehaviour
@@ -32,7 +33,7 @@ public class InteracterScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<IInteractable>() == null) return;
+        if(other.gameObject.GetComponent<Interactable>() == null) return;
         OtherCollidersCounter++;
     }
 
@@ -40,7 +41,7 @@ public class InteracterScript : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<IInteractable>() == null) return;
+        if (other.gameObject.GetComponent<Interactable>() == null) return;
         OtherCollidersCounter--;
     }
 

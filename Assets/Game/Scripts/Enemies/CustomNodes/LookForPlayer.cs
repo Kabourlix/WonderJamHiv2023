@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Scripts.UI;
 using Game.Scripts.Utility;
 using MBT;
 using UnityEngine;
@@ -13,7 +14,16 @@ namespace MBTExample
         public LayerMask playerLayer;
         [Min(0)]
         public float range = 5;
-        
+
+        private HUDManager _hud;
+
+        private void Start()
+        {
+            _hud = HUDManager.Instance;
+            if(_hud == null)
+                throw new NullReferenceException("HUDManager not found");
+        }
+
         [Range(0,180f)]
         public float angle = 45;
         public TransformReference playerSeen;
@@ -22,7 +32,6 @@ namespace MBTExample
         {
             // Find target in radius and feed blackboard variable with results
             Collider[] colliders = Physics.OverlapSphere(transform.position, range, playerLayer);
-            Debug.Log(colliders.Length);
             if (colliders.Length > 0)
             {
                 Vector2 direction = colliders[0].transform.position.xz() - transform.position.xz();
@@ -30,20 +39,21 @@ namespace MBTExample
                 float angleToPlayer = Vector2.Angle(direction, transform.forward.xz());
                 if (angleToPlayer < angle * 0.5f)
                 {
-                    Debug.Log($"{colliders[0].name} in sight");
                     var dir3 = new Vector3(direction.x, 0, direction.y);
-                    if (Physics.Raycast(transform.position, range*dir3.normalized, out var hit, range, playerLayer))
+                    if (Physics.Raycast(transform.position, range*dir3.normalized, out var hit, range))
                     {
                         if (hit.collider.gameObject == colliders[0].gameObject)
                         {
-                            Debug.Log("VU");
+                            Debug.Log($"{colliders[0].name} in sight");
                             playerSeen.Value = hit.collider.gameObject.transform;
+                            _hud.SetVisible();
                             return NodeResult.success;
                         }
                     }
                 }
             }
             playerSeen.Value = null;
+            _hud.SetHide();
             return NodeResult.failure;
         }
         private void OnDrawGizmos()

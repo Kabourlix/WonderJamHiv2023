@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Inputs;
 using Game.Scripts.Interaction;
+using Game.Scripts.Systems.Interaction;
 using UnityEngine;
 using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
@@ -100,8 +101,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public static PlayerController Instance { get; private set; }
     private void Awake()
     {
+        if(Instance != null)
+            Destroy(gameObject);
+        Instance = this;
         _characterController = GetComponent<CharacterController>();
         _collider = GetComponent<Collider>();
 
@@ -167,9 +172,10 @@ public class PlayerController : MonoBehaviour
         foreach (var c in colliders)
         {
             Debug.Log($"{name} interacted with {c.name}");
-            c.GetComponent<IInteractable>()?.Interact();
+            c.GetComponent<Interactable>()?.Interact();
         }
     }
+    
 
     public static event Action OnEvolve; 
     public static event Action OnEvolveEnd;
