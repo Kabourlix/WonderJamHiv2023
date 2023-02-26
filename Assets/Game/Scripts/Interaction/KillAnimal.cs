@@ -8,27 +8,36 @@ namespace Game.Scripts.Interaction
     public class KillAnimal : MonoBehaviour, IInteractable
     {
         private StatTriggerComponent _statTriggerComponent;
-        [SerializeField] private GameObject sound;
+        
 
         private void Awake()
         {
             _statTriggerComponent = GetComponent<StatTriggerComponent>();
+           
+        }
+
+
+        public void VFX()
+        {
+            Debug.Log("Interacting with" + gameObject.name);
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(false);
+            transform.GetChild(3).gameObject.SetActive(true);
+            transform.GetChild(4).gameObject.SetActive(true);
         }
 
         public void Interact()
         {
-            Debug.Log("Interacting with" + gameObject.name);
-            _statTriggerComponent.Trigger();
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(1).gameObject.SetActive(true);
-            transform.GetChild(2).gameObject.SetActive(true);
-            transform.GetComponent<CapsuleCollider>().isTrigger = false;
-            Instantiate(sound, transform);
+            if (!_statTriggerComponent.Trigger()) return;
+            VFX();
+            OnInteractionSuccess();
+
         }
 
         public void OnInteractionSuccess()
         {
-            throw new NotImplementedException();
+            gameObject.layer = 0;
         }
     }
 }
