@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class AIChild : MonoBehaviour
 {
@@ -33,6 +35,8 @@ public class AIChild : MonoBehaviour
     private int _isStunNameHash;
     private float _orientation;
 
+    private GameManager _gameManager;
+    
     private bool IsDead=false;
 
     [Header("Dialogues")]
@@ -44,6 +48,11 @@ public class AIChild : MonoBehaviour
         _burnTriggerHash = Animator.StringToHash(_burnTriggerName);
         _walkingSpeedHash = Animator.StringToHash(_walkingSpeedName);
         _isStunNameHash = Animator.StringToHash(_isStunName);
+    }
+
+    private void Start()
+    {
+        _gameManager = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -113,7 +122,8 @@ public class AIChild : MonoBehaviour
         if(IsDead) return;
         IsDead = true;
         GetComponent<Pushable>().CanBePushed = false;
-        _onDie.Invoke();
+        _gameManager.LostAChild(); //Loose child hp
+        _onDie.Invoke(); //Useless for now
         _animatorOfWizard.SetTrigger(_burnTriggerHash);
         _animatorWithFire.SetTrigger(_burnTriggerHash);
 
