@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
   m_Name: RemoveDeadTrees
   m_EditorClassIdentifier: 
-  title: Remove dead
+  title: Remove dead trees
   description: 
   conditions:
   - stat: {fileID: 11400000, guid: c3acd18fb885a7047a3b30759b67218a, type: 2}
