@@ -1,17 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Game.Inputs;
+using Aurore.MainMenu;
 using Game.Scripts.Quests;
 using Game.Scripts.Systems.UI;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using InputManager = Game.Inputs.InputManager;
 
 namespace Game.Scripts.UI
 {
     public class HUDManager : MonoBehaviour
     {
         public static HUDManager Instance;
+        
         private void Awake()
         {
             if(Instance != null && Instance != this)
@@ -22,6 +26,7 @@ namespace Game.Scripts.UI
             
             _experienceTween = experienceBar.GetComponent<ApparitionTween>();
             _questTween = questPanel.GetComponent<ApparitionTween>();
+            
         }
 
         private void Start()
@@ -32,6 +37,10 @@ namespace Game.Scripts.UI
             ShowQuestPanel(false);
             _experienceTween.Disappear();
             
+            gameoverScreen.SetActive(false);
+            winEvilScreen.SetActive(false);
+            winGoodScreen.SetActive(false);
+            
         }
 
         
@@ -40,11 +49,16 @@ namespace Game.Scripts.UI
         [SerializeField] private GameObject questPrefab;
         [SerializeField] private Slider experienceBar;
         [SerializeField] private Slider suspiciousBar;
-
+        //khadidja updates
+        [SerializeField] private GameObject winEvilScreen;
+        [SerializeField] private GameObject winGoodScreen;
+        [SerializeField] private GameObject gameoverScreen;
+        
         #region Tweeners
 
         private ApparitionTween _questTween;
         private ApparitionTween _experienceTween;
+        
 
         #endregion
         
@@ -128,19 +142,36 @@ namespace Game.Scripts.UI
         public void ShowGameOver()
         {
             //TODO
-            throw new NotImplementedException();
+            gameoverScreen.SetActive(true);
         }
 
-        public void ShowWin()
+        public void ShowWinEvil()
         {
             //TODO
-            throw new NotImplementedException();
+            winEvilScreen.SetActive(true);
+        }
+        public void ShowWinGood()
+        {
+            //TODO
+            winGoodScreen.SetActive(true);
         }
 
         public void ShowPause()
         {
             //TODO
-            throw new NotImplementedException();
+            PauseManager.Instance.EnablePause();
+        }
+
+        public void BackToMenuButton()
+        {
+            //Go back to menu scene
+            SceneManager.LoadScene("MainMenu");
+        }
+
+        public void RetryButton()
+        {
+            // directly go to playing scene --- A CHANGER AVEC LA SCENE FINALE
+            SceneManager.LoadScene("Game/Scene/Proto/Léane/Level");
         }
     }
 }

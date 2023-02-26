@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Transitions:
   - DestinationState: 0
-    ParentStates: 03000000040000000600000000000000
+    ParentStates: 0300000004000000060000000000000002000000
   - DestinationState: 1
     ParentStates: 00000000
   - DestinationState: 2
