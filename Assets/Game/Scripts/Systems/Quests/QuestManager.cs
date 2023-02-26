@@ -30,6 +30,7 @@ namespace Game.Scripts.Quests
         [SerializeField] private int activeQuestSample = 3;
         
         public event Action<Quest> OnQuestCompleted;
+        public event Action<Quest> OnQuestSetActive;
         public event Action OnAllGoodQuestCompleted;
         private List<Quest> _completedQuests;
         private List<Quest> _activeQuests;
@@ -51,6 +52,7 @@ namespace Game.Scripts.Quests
         public void AddQuest(Quest quest)
         {
             _activeQuests.Add(quest);
+            OnQuestSetActive?.Invoke(quest);
             HUDManager.Instance.AddQuest(quest);
         }
 
