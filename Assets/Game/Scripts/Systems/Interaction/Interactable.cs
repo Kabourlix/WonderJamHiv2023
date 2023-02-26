@@ -28,6 +28,7 @@ namespace Game.Scripts.Systems.Interaction
         
         private void ActivateQuest(Quest q)
         {
+            Debug.Log($"Actrive quest {q.name} with rq {relatedQuest.name}, layer is {gameObject.layer}");
             if (!q.name.Equals(relatedQuest.name)) return;
             gameObject.layer = _interactLayer;
         }
@@ -36,6 +37,7 @@ namespace Game.Scripts.Systems.Interaction
 
         public virtual void OnInteractionSuccess()
         {
+            Debug.Log("Interact Success with " + gameObject.name);
             gameObject.layer = 0;
             if(relatedQuest !=null) QuestManager.Instance.OnQuestSetActive -= ActivateQuest;
             PlayerController.Instance.IsSuspect = true;
