@@ -38,6 +38,7 @@ namespace Game.Scripts.Systems.Interaction
         {
             gameObject.layer = 0;
             if(relatedQuest !=null) QuestManager.Instance.OnQuestSetActive -= ActivateQuest;
+            
         }
     }
 }
