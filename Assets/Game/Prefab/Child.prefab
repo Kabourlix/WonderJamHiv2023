@@ -232,7 +232,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8985220441947222351}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4733192778310439058, guid: d552497fea30b0644ae9ba5bfd9a7bd8,
     type: 2}
@@ -526,6 +526,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60357c46a159754eba03905357f7e16, type: 3}
+--- !u!1 &2446591106779016453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6532363894264428037, guid: c60357c46a159754eba03905357f7e16,
+    type: 3}
+  m_PrefabInstance: {fileID: 8886613599175744256}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5875356586031711095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2446591106779016453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!4 &6541688718896071156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2421574060677634804, guid: c60357c46a159754eba03905357f7e16,
