@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
-  m_Name: InvokeMonster
+  m_Name: FlowersForBIlly
   m_EditorClassIdentifier: 
-  title: Invoke a monster at the altar
+  title: Bring flowers to Billeye
   description: 
   conditions:
-  - stat: {fileID: 11400000, guid: c9d5651a057cb0c40a178c6b14daa7ed, type: 2}
+  - stat: {fileID: 11400000, guid: 9c477e9fdcaa21144aa9004eeac0e82b, type: 2}
+    target: 5
+  - stat: {fileID: 11400000, guid: f065f7b222a7892459de65843f742c48, type: 2}
     target: 1
-  questType: 1
-  rewardXp: 15
+  questType: 0
+  rewardXp: 0

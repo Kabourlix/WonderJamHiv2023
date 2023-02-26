@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0682523fd20048b08a0af235bf6acd40, type: 3}
-  m_Name: MakeMimic
+  m_Name: GetSword
   m_EditorClassIdentifier: 
-  title: Interact with the treasure chest
+  title: Get the sword from the stump
   priorCondition:
     stat: {fileID: 0}
     target: 0

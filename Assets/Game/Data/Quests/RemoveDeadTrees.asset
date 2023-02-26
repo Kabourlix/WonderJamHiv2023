@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0682523fd20048b08a0af235bf6acd40, type: 3}
-  m_Name: PommesBrought
+  m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
+  m_Name: RemoveDeadTrees
   m_EditorClassIdentifier: 
-  title: Bring back apple
-  priorCondition:
-    stat: {fileID: 11400000, guid: 4d6efb8f1467cfc4a9d560bdb09af2b8, type: 2}
-    target: 1
+  title: Remove dead
+  description: 
+  conditions:
+  - stat: {fileID: 11400000, guid: c3acd18fb885a7047a3b30759b67218a, type: 2}
+    target: 3
+  questType: 0
+  rewardXp: 0

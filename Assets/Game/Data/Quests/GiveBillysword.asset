@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
-  m_Name: EvilMaster
+  m_Name: GiveBillysword
   m_EditorClassIdentifier: 
-  title: Evil Master
-  description: 'Be an evil master : collect 3 flowers and eat one goat.'
+  title: Take the sword to Billeye
+  description: 
   conditions:
-  - stat: {fileID: 11400000, guid: 9c477e9fdcaa21144aa9004eeac0e82b, type: 2}
-    target: 3
-  - stat: {fileID: 11400000, guid: 7a918e6b7dfdadb439a5a675d4388b2a, type: 2}
+  - stat: {fileID: 11400000, guid: 8065999344df6c24c8577dc40cbb1d91, type: 2}
     target: 1
-  questType: 1
+  - stat: {fileID: 11400000, guid: cc20b84b927a2354fb6be62805cfc55b, type: 2}
+    target: 1
+  questType: 0
+  rewardXp: 0

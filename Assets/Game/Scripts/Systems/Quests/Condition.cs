@@ -1,5 +1,4 @@
 ﻿using System;
-using Game.Scripts.UI;
 using UnityEngine;
 
 namespace Game.Scripts.Quests

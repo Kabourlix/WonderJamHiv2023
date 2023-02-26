@@ -57,6 +57,7 @@ namespace Game.Scripts.Quests
         public void RemoveQuest(Quest quest)
         {
             _activeQuests.Remove(quest);
+            SampleQuests(1);
             if(AllMainQuestCompleted()) OnAllGoodQuestCompleted?.Invoke();
         }
         

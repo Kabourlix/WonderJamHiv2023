@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Transform chest into mimic
   description: 
   conditions:
-  - stat: {fileID: 0}
-    target: 0
-  questType: 0
-  rewardXp: 0
+  - stat: {fileID: 11400000, guid: f645250158b97414db685561880efbcf, type: 2}
+    target: 1
+  questType: 1
+  rewardXp: 25
