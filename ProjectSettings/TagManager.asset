@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - Fire
+  - New tag
   layers:
   - Default
   - TransparentFX

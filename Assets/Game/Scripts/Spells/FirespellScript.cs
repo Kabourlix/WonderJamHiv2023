@@ -8,6 +8,9 @@ public class FirespellScript : MonoBehaviour
     [Header("Property of spawner")]
     [SerializeField] private float _minTimeBetweenSpawn;
     [SerializeField] private float _maxTimeBetweenSpawn;
+
+    [SerializeField] private float _initialDelay = 3f;
+
     [SerializeField] private float _minSpawnDistance;
     [SerializeField] private float _maxSpawnDistance;
     [Header("The radius of the ring of fire, where the child will end its course")]
@@ -19,8 +22,7 @@ public class FirespellScript : MonoBehaviour
 
     private void Start()
     {
-        float timeUntilNextSpawn = Random.Range(_minTimeBetweenSpawn/2, _maxTimeBetweenSpawn/2);
-        StartCoroutine(TimedSpawn(timeUntilNextSpawn));
+        StartCoroutine(TimedSpawn(_initialDelay));
     }
 
     private void Spawn()

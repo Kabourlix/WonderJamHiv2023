@@ -37,6 +37,7 @@ namespace Game.Inputs
         public static event Action OnTest1Event;
         public static event Action OnTest2Event;
         public static event Action OnTest3Event;
+        public static event Action OnTest4Event;
 
         public void EnableControls(bool b)
         {
@@ -76,6 +77,7 @@ namespace Game.Inputs
         private void OnTest3()
         {
             //OnTest3Event?.Invoke();
+            OnTest4Event?.Invoke();
         }
 
         private void OnGrab()

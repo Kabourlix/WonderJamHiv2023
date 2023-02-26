@@ -41,7 +41,8 @@ AudioSource:
   m_GameObject: {fileID: 4822060980267862371}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4733192778310439058, guid: d552497fea30b0644ae9ba5bfd9a7bd8,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 3c914a6df23fbc64791bc95fe3c16636, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.284
@@ -324,6 +325,7 @@ MonoBehaviour:
     type: 3}
   _minTimeBetweenSpawn: 5
   _maxTimeBetweenSpawn: 10
+  _initialDelay: 3
   _minSpawnDistance: 10
   _maxSpawnDistance: 20
   _spellRadius: 1.5
