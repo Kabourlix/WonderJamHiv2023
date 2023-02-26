@@ -158,6 +158,23 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         //Enable controls
         InputManager.Instance.EnableControls(true);
+
+        //pause
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            Debug.Log("pause");
+            ChangeState(GameState.PauseState);
+        }
+        //win
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            ChangeState(GameState.WinState);
+        }
+        //lose
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            ChangeState(GameState.GameOverState);
+        }
         
     }
 

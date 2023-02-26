@@ -50,7 +50,7 @@ namespace Aurore.MainMenu
             if (_mustStopTime)
             {
                 _cachedTimeScale = Time.timeScale;
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
             }
             _isPaused = true;
             _pauseMenu.gameObject.SetActive(true);

@@ -1,17 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Game.Inputs;
+using Aurore.MainMenu;
 using Game.Scripts.Quests;
 using Game.Scripts.Systems.UI;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using InputManager = Game.Inputs.InputManager;
 
 namespace Game.Scripts.UI
 {
     public class HUDManager : MonoBehaviour
     {
         public static HUDManager Instance;
+        
         private void Awake()
         {
             if(Instance != null && Instance != this)
@@ -140,7 +143,7 @@ namespace Game.Scripts.UI
         public void ShowPause()
         {
             //TODO
-            throw new NotImplementedException();
+            PauseManager.Instance.EnablePause();
         }
     }
 }
