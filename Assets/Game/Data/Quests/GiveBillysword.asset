@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61957cf283a34ec28f10324bbe3fe09f, type: 3}
-  m_Name: EvilMaster
+  m_Name: GiveBillysword
   m_EditorClassIdentifier: 
-  title: Evil Master
-  description: 'Be an evil master : collect 3 flowers and eat one goat.'
-  conditions:
-  - stat: {fileID: 11400000, guid: 9c477e9fdcaa21144aa9004eeac0e82b, type: 2}
-    target: 3
-  - stat: {fileID: 11400000, guid: 7a918e6b7dfdadb439a5a675d4388b2a, type: 2}
-    target: 1
-  questType: 1
+  title: 
+  description: 
+  conditions: []
+  questType: 0
+  rewardXp: 0
