@@ -21,7 +21,6 @@ namespace Game.Scripts.Interaction
             Debug.Log("Interacting with" + gameObject.name);
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(1).gameObject.SetActive(true);
-            transform.GetComponent<CapsuleCollider>().isTrigger = false;
         }
 
         public void Interact()
