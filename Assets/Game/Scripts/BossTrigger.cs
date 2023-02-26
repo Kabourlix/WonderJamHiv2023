@@ -1,11 +1,12 @@
 using Game.Inputs;
+using Game.Scripts.Enemies;
 using Game.Scripts.Quests;
+using MBT;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using static UnityEditor.Progress;
 
 public class BossTrigger : MonoBehaviour
 {
@@ -77,16 +78,17 @@ public class BossTrigger : MonoBehaviour
     public IEnumerator TeleportBoss()
     {
         yield return new WaitForSeconds(3);
-        bossGo.transform.position=bossPosition.transform.position;
-        
-        
+         
         bossGo.GetComponentInChildren<NavMeshAgent>().enabled = false;
         bossGo.GetComponentInChildren<Animator>().SetTrigger("BossFight");
+        bossGo.transform.position = bossPosition.transform.position;
 
         foreach (var item in bossItems)
         {
             item.SetActive(true);
         }
+
+        Destroy(bossGo.GetComponentInChildren<MBTExecutorEnhanced>().gameObject);
     }
 
     public IEnumerator Win()
