@@ -97,6 +97,6 @@ public class BossTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToSurvive);
         _onWin.Invoke();
-        GameManager.Instance.ChangeState(GameState.WinState);
+        GameManager.Instance.ChangeState(GameState.EndLevel);
     }
 }
