@@ -1,25 +1,28 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts.Quests
 {
     public class StatTriggerComponent : QuestTrigger
     {
-        [SerializeField] private QuestStat statTargeted;
+        [FormerlySerializedAs("statTargeted")] [SerializeField] private QuestStat property;
+        public QuestStat Property => property;
+        [FormerlySerializedAs("_audioSource")]
         [Tooltip("Sound source will be played when Target is triggered ")]
-        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource audioSource;
 
 
         [ContextMenu("Trigger Stat")]
         public override bool Trigger()
         {
-            if (statTargeted == null) throw new NullReferenceException("StatTargeted is null");
+            if (property == null) throw new NullReferenceException("StatTargeted is null");
                 
-            var success = statTargeted.Increment();
+            var success = property.Increment();
 
-            if (_audioSource != null)
+            if (audioSource != null)
             {
-                _audioSource.Play();
+                audioSource.Play();
             }
 
             return success;

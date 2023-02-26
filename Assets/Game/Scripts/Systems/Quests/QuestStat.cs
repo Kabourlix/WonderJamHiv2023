@@ -14,13 +14,17 @@ namespace Game.Scripts.Quests
 
         public void Link()
         {
-            if(priorCondition.Stat is not null) 
+            if(priorCondition.Stat is not null)
+            {
                 priorCondition.LinkEvent();
+                priorCondition.OnConditionCompleted += () => OnPriorConditionCompleted?.Invoke(this);
+            }
         }
 
         public int count { get; private set; }
         
-        public event Action OnCountChanged; 
+        public event Action OnCountChanged;
+        public event Action<QuestStat> OnPriorConditionCompleted;
 
         public bool Increment()
         {
@@ -29,6 +33,8 @@ namespace Game.Scripts.Quests
             OnCountChanged?.Invoke();
             return true;
         }
+
+        public bool IsPriorConditionCompleted => priorCondition.Stat is null || priorCondition.IsCompleted;
         
         public void Reset() => count = 0;
 

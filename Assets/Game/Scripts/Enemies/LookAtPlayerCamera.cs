@@ -8,11 +8,14 @@ public class LookAtPlayerCamera : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private Transform questIndicatorObject;
+    
     private LayerMask maskCollide;
     private bool isActivated = true;
     private void Awake()
     {
         maskCollide = LayerMask.NameToLayer("Interactable");
+        questIndicatorObject.gameObject.SetActive(false);
+        GetComponent<StatTriggerComponent>().Property.OnPriorConditionCompleted += (s) => questIndicatorObject.gameObject.SetActive(true);
     }
 
     private void Desactivate()

@@ -36,6 +36,8 @@ public class InteracterScript : MonoBehaviour
         OtherCollidersCounter++;
     }
 
+    
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<IInteractable>() == null) return;
