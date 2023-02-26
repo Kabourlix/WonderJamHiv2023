@@ -20,4 +20,4 @@ MonoBehaviour:
   - stat: {fileID: 11400000, guid: f065f7b222a7892459de65843f742c48, type: 2}
     target: 1
   questType: 0
-  rewardXp: 0
+  rewardXp: 1
