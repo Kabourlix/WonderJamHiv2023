@@ -21,6 +21,7 @@ namespace Game.Scripts.Interaction
             _statTriggerComponent.Trigger();
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(2).gameObject.SetActive(true);
             transform.GetComponent<CapsuleCollider>().isTrigger = false;
             Instantiate(sound, transform);
         }

@@ -45,6 +45,8 @@ public class InteracterScript : MonoBehaviour
     public LeashFollowScript SpawnNewLeash(Rigidbody attachedRigidbody)
     {
         GameObject go=Instantiate(_leashPrefab);
+        go.transform.position = transform.position;
+        attachedRigidbody.position=go.transform.position;
         go.GetComponent<LeashFollowScript>().Init(gameObject, attachedRigidbody);
 
         return go.GetComponent<LeashFollowScript>();
