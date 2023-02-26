@@ -28,7 +28,7 @@ namespace Game.Scripts.Systems.Interaction
         
         private void ActivateQuest(Quest q)
         {
-            if (q != relatedQuest) return;
+            if (!q.name.Equals(relatedQuest.name)) return;
             gameObject.layer = _interactLayer;
         }
 
