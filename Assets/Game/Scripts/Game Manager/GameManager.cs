@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
             hud.ShowWinGood();
     }
 
-    private void HandlePlayState(GameState oldState)
+    void HandlePlayState(GameState oldState)
     {
         if(_firstStart)
         {
@@ -219,6 +219,8 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    
+    public void LostAChild() => stats.LostAChild();
 }
 
 [Serializable]
