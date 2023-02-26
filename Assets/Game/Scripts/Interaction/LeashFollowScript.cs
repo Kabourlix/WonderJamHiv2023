@@ -54,9 +54,7 @@ public class LeashFollowScript : MonoBehaviour
         _timeElapsedSinceUse += Time.deltaTime/_timeToReachTarget;
 
         Vector3 newScale=Vector3.Lerp(_scaleWhenUsed, Vector3.zero, _timeElapsedSinceUse);
-        Vector3 newPosition=Vector3.Lerp(_positionWhenUsed, _target.transform.position, _timeElapsedSinceUse);
 
-        _attachedRigidbody.gameObject.transform.position = newPosition;
         _attachedRigidbody.gameObject.transform.localScale = newScale;
         
         if(_timeElapsedSinceUse>=1)
@@ -66,14 +64,16 @@ public class LeashFollowScript : MonoBehaviour
         }
     }
 
-    public void OnUse(GameObject target)
+    public void OnUse()
     {
         _used = true;
-        _target = target;
 
         _positionWhenUsed = _attachedRigidbody.gameObject.transform.position;
         _scaleWhenUsed = _attachedRigidbody.gameObject.transform.localScale;
         _attachedRigidbody.isKinematic= true;
+        _attachedRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+        _attachedRigidbody.mass = 5;
+        _attachedRigidbody.drag = 2f;
         _attachedRigidbody.GetComponent<Collider>().enabled=false;
     }
 }
