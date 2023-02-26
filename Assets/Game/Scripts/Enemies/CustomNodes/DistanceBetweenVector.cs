@@ -23,7 +23,7 @@ namespace MBTExample
             Vector2 self = transform1.Value.position.xz();
             Vector2 target = transform2.Value.xz();
             float magnitude = (target - self).magnitude;
-            Debug.Log(magnitude);
+            //Debug.Log(magnitude);
             float dist = distance.Value;
             if (comparator == Comparator.GreaterThan)
             {
