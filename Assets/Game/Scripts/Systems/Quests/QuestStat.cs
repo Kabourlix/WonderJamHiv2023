@@ -19,6 +19,10 @@ namespace Game.Scripts.Quests
                 priorCondition.LinkEvent();
                 priorCondition.OnConditionCompleted += () => OnPriorConditionCompleted?.Invoke(this);
             }
+            else
+            {
+                OnPriorConditionCompleted?.Invoke(this);
+            }
         }
 
         public int count { get; private set; }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 487517823033578536}
   - component: {fileID: 7159555877396136193}
   - component: {fileID: 1383755566147499969}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: QuestIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
