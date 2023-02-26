@@ -24425,7 +24425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 546927495}
   maxHealth: 5
-  maxKillableChildren: 5
+  maxKillableChildren: 3
 --- !u!1001 &1210285770
 PrefabInstance:
   m_ObjectHideFlags: 0
