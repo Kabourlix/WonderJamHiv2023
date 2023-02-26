@@ -57,12 +57,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private HUDManager hud;
 
     #endregion
-    
-    
+
+    private bool _firstStart = true;
+    private IAManager _iaManager;
+
+    private void Reset()
+    {
+        _firstStart = true;
+    }
+
     public GameState CurrentState { get; private set; }
     private PlayerController _playerController;
     private void Start()
     {
+        _iaManager = IAManager.Instance;
         PlayerController.OnEvolveEnd += () => ChangeState(player.GetComponent<XPManager>().IsFullyEvolved ? GameState.WinState : GameState.PlayState);
         ChangeState(GameState.PlayState);
         
@@ -194,6 +202,12 @@ public class GameManager : MonoBehaviour
 
     private void HandlePlayState(GameState oldState)
     {
+        if(_firstStart)
+        {
+            _firstStart = false;
+            _iaManager.StartAllIa();
+            return;
+        }
         if(oldState == GameState.CaughtState) //Respawn
             player.position = stats.SpawnPosition.position;
         

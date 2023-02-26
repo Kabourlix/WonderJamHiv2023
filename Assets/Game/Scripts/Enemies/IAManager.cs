@@ -7,8 +7,15 @@ public class IAManager : MonoBehaviour
 {
     private MBTExecutorEnhanced[] _allIa;
     
+    public static IAManager Instance { get; private set; }
     private void Awake()
     {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
+        
         _allIa = FindObjectsOfType<MBTExecutorEnhanced>();
         Debug.Log($"We have {_allIa.Length} IA in the scene");
     }
