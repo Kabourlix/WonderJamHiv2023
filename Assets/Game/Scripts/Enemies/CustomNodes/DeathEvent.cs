@@ -20,7 +20,8 @@ namespace MBTExample
             if (playerControl == null) { throw new System.Exception("No playerController found"); }
             if (playerControl.IsSuspect)
             {
-                Debug.Log("<color=red>Player has been caught</color>");
+                GameManager.Instance.ChangeState(GameState.CaughtState);
+                //Debug.Log("<color=red>Player has been caught</color>");
                 return NodeResult.success;
             }
             else
