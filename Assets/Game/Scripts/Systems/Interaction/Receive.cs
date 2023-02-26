@@ -1,11 +1,12 @@
 ﻿using System;
 using Game.Scripts.Quests;
+using Game.Scripts.Systems.Interaction;
 using UnityEngine;
 
 namespace Game.Scripts.Interaction
 {
     [RequireComponent(typeof(StatTriggerComponent))]
-    public class Receive : MonoBehaviour, IInteractable
+    public class Receive : Interactable
     {
         private StatTriggerComponent _statTriggerComponent;
         
@@ -22,17 +23,11 @@ namespace Game.Scripts.Interaction
           
         }
 
-        public void Interact()
+        public override void Interact()
         {
             if (!_statTriggerComponent.Trigger()) return;
             VFX();
             OnInteractionSuccess();
-            
-        }
-
-        public void OnInteractionSuccess()
-        {
-            gameObject.layer = 0;
         }
     }
 }
