@@ -111,7 +111,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -124,7 +124,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 360da06e76395d74cad051a724d418d5, type: 2}
 --- !u!1 &1499607
 GameObject:
   m_ObjectHideFlags: 0
@@ -11049,6 +11049,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543449928}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &546927494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546927495}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &546927495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546927494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.7, y: 100, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561831126
 GameObject:
   m_ObjectHideFlags: 0
@@ -22234,6 +22265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1207946530}
   - component: {fileID: 1207946529}
+  - component: {fileID: 1207946531}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -22253,9 +22285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245b30433915ed54d9a2b6bbe92724e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitions: {fileID: 0}
+  transitions: {fileID: 11400000, guid: ea49d6b0d8138994ba18226ac22d7433, type: 2}
   player: {fileID: 1263786177}
-  stats: {fileID: 0}
+  stats: {fileID: 1207946531}
   hud: {fileID: 1119507828}
 --- !u!4 &1207946530
 Transform:
@@ -22272,6 +22304,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1207946531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207946528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2e36d83a6b490080172403d182dd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPosition: {fileID: 546927495}
+  maxHealth: 5
 --- !u!1001 &1210285770
 PrefabInstance:
   m_ObjectHideFlags: 0
