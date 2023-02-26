@@ -1,4 +1,5 @@
 using Game.Inputs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,6 +26,7 @@ public class DialogueSystem : MonoBehaviour
     private void Start()
     {
         InputManager.OnSkipDialogueEvent += DeleteFirstMessage;
+        Instance._dialogueWindow.SetActive(Instance._messageCount > 0);
     }
 
     [SerializeField] private GameObject _dialogueWindow;
@@ -69,5 +71,10 @@ public class DialogueSystem : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(time);
         DeleteMessage(go);
+    }
+
+    internal static void AddMessage(string completionMessage)
+    {
+        throw new NotImplementedException();
     }
 }
