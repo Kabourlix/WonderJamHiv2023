@@ -11,7 +11,7 @@ using UnityEngine.Serialization;
 public class XPManager : MonoBehaviour
 {
     private int _currentXp, _level;
-    [SerializeField] private int targetXp = 30;
+    [SerializeField] private int[] targetLvl;
     
     private PlayerController _playerController;
     private QuestManager _questManager;
@@ -53,14 +53,14 @@ public class XPManager : MonoBehaviour
    
     private void AddXP(int xp)
     {
+        var targetXp = targetLvl[_level];
         _currentXp += xp;
         _hud.UpdateExpBar(Mathf.InverseLerp(0, targetXp, _currentXp));
 
         if (_currentXp < targetXp) return;
         
-        _currentXp = targetXp - _currentXp; // Better to reset to 0 ?
         _level++;
-        _playerController.EvolveBegin();
+        if(_level < 2) GameManager.Instance.ChangeState(GameState.EvolveState);
     }
 
    

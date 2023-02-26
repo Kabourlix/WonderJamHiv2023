@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
         {
             _linksDict.Add(link.DestinationState, link.ParentStates);
         }
+        
+        _playerController = player.GetComponent<PlayerController>();
     }
 
     #endregion
@@ -59,9 +61,10 @@ public class GameManager : MonoBehaviour
     
     public GameState CurrentState { get; private set; }
     public static event Action<GameState> OnGameStateChanged;
-
+    private PlayerController _playerController;
     private void Start()
     {
+        PlayerController.OnEvolveEnd += () => ChangeState(player.GetComponent<XPManager>().IsFullyEvolved ? GameState.WinState : GameState.PlayState);
         ChangeState(GameState.PlayState);
     }
 
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         if(_linksDict[newState].Contains(CurrentState) == false) //Prevent forbidden transitions
             throw new Exception($"Cannot transition from {CurrentState} to {newState}.");
+        ExitState(CurrentState); 
         var old = CurrentState;
         CurrentState = newState;
         switch (newState)
@@ -100,6 +104,37 @@ public class GameManager : MonoBehaviour
 
         OnGameStateChanged?.Invoke(newState);
     }
+    
+    private void ExitState(GameState old)
+    {
+        switch (old)
+        {
+            case GameState.PlayState:
+                
+                break;
+            case GameState.WinState:
+                
+                break;
+            case GameState.GameOverState:
+                
+                break;
+            case GameState.CaughtState:
+                
+                break;
+            case GameState.EvolveState:
+                //Unfreeze enemies
+                //Input already dealt with
+                break;
+            case GameState.PauseState:
+                
+                break;
+            case GameState.EndLevel:
+                
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(old), old, null);
+        }
+    }
 
     private void HandleEndLevelState(GameState old)
     {
@@ -107,7 +142,7 @@ public class GameManager : MonoBehaviour
         //If not, go to game over state
         //If yes, go to win state
         ChangeState(player.GetComponent<XPManager>().IsFullyEvolved 
-            ? GameState.WinState 
+            ? GameState.EvolveState 
             : GameState.GameOverState);
     }
 
@@ -122,6 +157,8 @@ public class GameManager : MonoBehaviour
 
     private void HandleEvolveState(GameState oldState)
     {
+        InputManager.Instance.EnableControls(false);
+        Player.GetComponent<PlayerController>().EvolveBegin();
         //Nothing really
         //Pause all IA Logic.
     }
@@ -146,6 +183,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleWinState(GameState oldState)
     {
+        Player.GetComponent<PlayerController>().EvolveBegin();
         if(hud is not null) hud.ShowWin();
         //Disable controls or switch to ui controls
         InputManager.Instance.EnableControls(false);

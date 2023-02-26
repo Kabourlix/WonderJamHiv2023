@@ -168,7 +168,6 @@ public class PlayerController : MonoBehaviour
     public void EvolveBegin()
     {
         OnEvolve?.Invoke();
-        InputManager.Instance.EnableControls(false);
     }
     
     public void EvolveEnd()
