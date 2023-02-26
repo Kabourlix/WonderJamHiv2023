@@ -30,6 +30,7 @@ namespace Game.Scripts.Quests
         [SerializeField] private int activeQuestSample = 3;
         
         public event Action<Quest> OnQuestCompleted;
+        public event Action OnAllGoodQuestCompleted;
         private List<Quest> _completedQuests;
         private List<Quest> _activeQuests;
         private List<Quest> _unusedQuests; 
@@ -56,6 +57,13 @@ namespace Game.Scripts.Quests
         public void RemoveQuest(Quest quest)
         {
             _activeQuests.Remove(quest);
+            if(AllMainQuestCompleted()) OnAllGoodQuestCompleted?.Invoke();
+        }
+        
+        private bool AllMainQuestCompleted()
+        {
+            return _activeQuests.Count(quest => quest.QuestType == QuestType.Main) == 0;
+            
         }
 
 
@@ -63,7 +71,7 @@ namespace Game.Scripts.Quests
         {
             Debug.Log($"<color=orange>Quest {quest.Title} completed!</color>");
             _completedQuests.Add(quest);
-            _activeQuests.Remove(quest);
+            RemoveQuest(quest);
             OnQuestCompleted?.Invoke(quest);
         }
 
