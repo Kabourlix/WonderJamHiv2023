@@ -84,6 +84,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CapsuleCollider interactCollider;
     [SerializeField] private LayerMask interactLayerMask;
 
+    [Header("External")]
+    [SerializeField] Transform _movementReferential;
+
     public bool IsSuspect { get; set; }
     
     
@@ -133,7 +136,9 @@ public class PlayerController : MonoBehaviour
 
     void ApplyMovement()
     {
-        _targetMovementVelocity = _movementInput * _speed;
+        //First we rotate the movement input
+        Vector3 movementInput=_movementInput.x*_movementReferential.right+_movementInput.z*_movementReferential.forward;
+        _targetMovementVelocity = movementInput * _speed;
         _movementVelocity = Vector3.Lerp(_movementVelocity, _targetMovementVelocity, Time.deltaTime * _accelerationRate);
     }
 
@@ -143,7 +148,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat(_walkingSpeedHash, _movementInput.magnitude);
         if (_movementInput.sqrMagnitude <= 0.01f) return;
         _orientation = Mathf.MoveTowardsAngle(_orientation, Vector2.SignedAngle(new Vector2(_movementInput.x, _movementInput.z), Vector2.up), 1000 * Time.deltaTime);
-        gameObject.transform.rotation = Quaternion.Euler(0, _orientation, 0);
+        gameObject.transform.rotation = Quaternion.Euler(0, _movementReferential.eulerAngles.y+_orientation, 0);
     }
 
     void ApplyGravity()
