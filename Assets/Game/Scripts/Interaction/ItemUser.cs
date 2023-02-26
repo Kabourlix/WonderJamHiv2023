@@ -1,10 +1,7 @@
 using Game.Scripts.Interaction;
 using Game.Scripts.Quests;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(StatTriggerComponent))]
 public class ItemUser : MonoBehaviour, IInteractable
