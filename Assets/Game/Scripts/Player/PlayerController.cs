@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour
     private float _gravityMultiplier;
 
     [Header("Push")]
+    [SerializeField] private LayerMask pushLayerMask;
+    [SerializeField] private CapsuleCollider pushCollider;
+    private List<PushResolution> _pushResolutions;
     [SerializeField] private float _pushDistance = 5f;
     [SerializeField] private float _pushDuration = 0.5f;
 
@@ -79,8 +82,6 @@ public class PlayerController : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private CapsuleCollider interactCollider;
     [SerializeField] private LayerMask interactLayerMask;
-    [SerializeField] private LayerMask pushLayerMask;
-    private List<PushResolution> _pushResolutions;
 
     public bool IsSuspect { get; private set; }
     
@@ -180,8 +181,8 @@ public class PlayerController : MonoBehaviour
     void OnPush()
     {
         Debug.Log("Interact");
-        var bounds = interactCollider.bounds;
-        var colliders = Physics.OverlapCapsule(bounds.center, bounds.center + new Vector3(0, interactCollider.height, 0), interactCollider.radius, pushLayerMask);
+        var bounds = pushCollider.bounds;
+        var colliders = Physics.OverlapCapsule(bounds.center, bounds.center + new Vector3(0, pushCollider.height, 0), pushCollider.radius, pushLayerMask);
         foreach (var c in colliders)
         {
             if (c.GetComponent<Pushable>() == null) continue;
