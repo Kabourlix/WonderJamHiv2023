@@ -14,13 +14,12 @@ namespace MBTExample
         public Comparator comparator = Comparator.GreaterThan;
         public FloatReference distance = new FloatReference(10f);
         [Space]
-        public TransformReference transform1;
         public Vector3Reference transform2;
 
         public override NodeResult Execute()
         {
             //calculate distance between two transforms
-            Vector2 self = transform1.Value.position.xz();
+            Vector2 self = transform.position.xz();
             Vector2 target = transform2.Value.xz();
             float magnitude = (target - self).magnitude;
             //Debug.Log(magnitude);

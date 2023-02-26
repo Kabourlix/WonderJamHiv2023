@@ -31,6 +31,7 @@ namespace Game.Inputs
         public static event Action OnGrabEvent;
         public static event Action OnPushEvent;
         public static event Action OnSkipDialogueEvent;
+        public static event Action<float> OnMoveCameraEvent;
 
         public static event Action OnShowHideQuestEvent;
         public static event Action OnTest1Event;
@@ -64,17 +65,17 @@ namespace Game.Inputs
 
         private void OnTest1()
         {
-            OnTest1Event?.Invoke();
+            //OnTest1Event?.Invoke();
         }
 
         private void OnTest2()
         {
-            OnTest2Event?.Invoke();
+            //OnTest2Event?.Invoke();
         }
 
         private void OnTest3()
         {
-            OnTest3Event?.Invoke();
+            //OnTest3Event?.Invoke();
         }
 
         private void OnGrab()
@@ -90,6 +91,11 @@ namespace Game.Inputs
         private void OnShowHideQuest()
         {
             OnShowHideQuestEvent?.Invoke();
+        }
+
+        private void OnMoveCamera(InputValue value)
+        {
+            OnMoveCameraEvent?.Invoke(value.Get<float>());
         }
     }
 }

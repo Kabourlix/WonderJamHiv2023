@@ -1,6 +1,8 @@
 ﻿using System;
+using Game.Scripts.Enemies;
 using Game.Scripts.Quests;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Scripts.Interaction
 {
@@ -8,7 +10,7 @@ namespace Game.Scripts.Interaction
     public class KillAnimal : MonoBehaviour, IInteractable
     {
         private StatTriggerComponent _statTriggerComponent;
-        
+        [SerializeField] private GameObject[] vfx;
 
         private void Awake()
         {
@@ -19,12 +21,25 @@ namespace Game.Scripts.Interaction
 
         public void VFX()
         {
+            GetComponentInChildren<MBTExecutorEnhanced>().Freeze();
+            //Stop the navMeshAgent
+            GetComponent<NavMeshAgent>().isStopped = true;
+            
+            for(var i = 0 ; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false); 
+            }
+
+            foreach (var go in vfx)
+            {
+                go.SetActive(true);
+            }
+            
             Debug.Log("Interacting with" + gameObject.name);
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(1).gameObject.SetActive(false);
-            transform.GetChild(2).gameObject.SetActive(false);
-            transform.GetChild(3).gameObject.SetActive(true);
-            transform.GetChild(4).gameObject.SetActive(true);
+            LeanTween.value(gameObject,0,1, 1.5f)
+                .setOnComplete(() => { gameObject.SetActive(false); });
+            
+            
         }
 
         public void Interact()

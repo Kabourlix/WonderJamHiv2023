@@ -7,6 +7,7 @@ using UnityEngine;
 public class LookAtPlayerCamera : MonoBehaviour
 {
     [SerializeField] private Camera cam;
+    [SerializeField] private Transform questIndicatorObject;
     private LayerMask maskCollide;
     private bool isActivated = true;
     private void Awake()
@@ -17,7 +18,7 @@ public class LookAtPlayerCamera : MonoBehaviour
     private void Desactivate()
     {
         isActivated = false;
-        gameObject.SetActive(false);
+        questIndicatorObject.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class LookAtPlayerCamera : MonoBehaviour
         if (!isActivated) return;
         
         if (cam == null) return;
-        transform.LookAt(cam.transform.position);
+        questIndicatorObject.LookAt(cam.transform.position);
             
         if(maskCollide != gameObject.layer)
             Desactivate();
