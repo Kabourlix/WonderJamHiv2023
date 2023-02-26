@@ -112,6 +112,7 @@ public class AIChild : MonoBehaviour
     {
         if(IsDead) return;
         IsDead = true;
+        GetComponent<Pushable>().CanBePushed = false;
         _onDie.Invoke();
         _animatorOfWizard.SetTrigger(_burnTriggerHash);
         _animatorWithFire.SetTrigger(_burnTriggerHash);
@@ -120,7 +121,16 @@ public class AIChild : MonoBehaviour
 
         DialogueSystem.AddMessage("Villager: " + _possibleDialoguesOnDeath[Random.Range(0,_possibleDialoguesOnDeath.Count)],10);
 
-        Destroy(gameObject, _timeFromBurnToDestroy);    
+        StartCoroutine(TeleportBeforeDying(_timeFromBurnToDestroy));    
+    }
+
+    //If I destroy the game object before it leaves the trigger it doesn't call "OnTriggerLeave", so instead, I send it in the sky before deleting it
+    public IEnumerator TeleportBeforeDying(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _characterController.Move(Vector3.up * 100);
+        _gravityMultiplier = 0;
+        Destroy(gameObject, 1);
     }
 
     public void Stun(float time)

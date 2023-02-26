@@ -36,11 +36,13 @@ public class PushScript : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Pushable>() == null) return;
         PushableOtherCollidersCounter++;
+        Debug.Log("OnTriggerEnter");
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<Pushable>() == null) return;
         PushableOtherCollidersCounter--;
+        Debug.Log("OnTriggerExit");
     }
 }
