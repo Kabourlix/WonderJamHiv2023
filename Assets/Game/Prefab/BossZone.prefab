@@ -240,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 8636595359246728146, guid: b631eaa82cde51146a95ff4d6497380f,
         type: 3}
       propertyPath: _maxTimeBetweenSpawn
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8636595359246728146, guid: b631eaa82cde51146a95ff4d6497380f,
         type: 3}

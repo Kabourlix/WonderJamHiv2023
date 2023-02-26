@@ -3,6 +3,7 @@ using Game.Scripts.UI;
 using Game.Scripts.Utility;
 using MBT;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MBTExample
 {
@@ -11,7 +12,8 @@ namespace MBTExample
     public class LookForPlayer : Leaf
     {
 
-        public LayerMask playerLayer;
+        public LayerMask playerLayer; 
+            public LayerMask ignoreRaycastLayer;
         [Min(0)]
         public float range = 5;
 
@@ -20,6 +22,7 @@ namespace MBTExample
         private void Start()
         {
             _hud = HUDManager.Instance;
+            
             if(_hud == null)
                 throw new NullReferenceException("HUDManager not found");
         }
@@ -40,7 +43,7 @@ namespace MBTExample
                 if (angleToPlayer < angle * 0.5f)
                 {
                     var dir3 = new Vector3(direction.x, 0, direction.y);
-                    if (Physics.Raycast(transform.position, range*dir3.normalized, out var hit, range))
+                    if (Physics.Raycast(transform.position, range*dir3.normalized, out var hit, range, ~ignoreRaycastLayer))
                     {
                         if (hit.collider.gameObject == colliders[0].gameObject)
                         {

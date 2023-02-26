@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0682523fd20048b08a0af235bf6acd40, type: 3}
   m_Name: FlowerPickup
   m_EditorClassIdentifier: 
-  title: Flower Picked up
+  title: Pick up 5 pink flowers
+  priorCondition:
+    stat: {fileID: 0}
+    target: 0

@@ -24,6 +24,6 @@ MonoBehaviour:
   - DestinationState: 4
     ParentStates: 00000000
   - DestinationState: 5
-    ParentStates: 0600000001000000
+    ParentStates: 060000000100000000000000
   - DestinationState: 6
     ParentStates: 00000000
