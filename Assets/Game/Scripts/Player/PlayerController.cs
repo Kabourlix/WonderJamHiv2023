@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using CartoonFX;
 using Game.Inputs;
 using Game.Scripts.Interaction;
 using UnityEngine;
 using UnityEngine.Serialization;
-
 public class PlayerController : MonoBehaviour
 {
     #region Structs
@@ -52,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movementInput;
     private CharacterController _characterController;
     private Collider _collider;
+    
     private Animator _animator;
     private Forms _currentForm;
     private float _accelerationRate;
@@ -72,10 +71,12 @@ public class PlayerController : MonoBehaviour
     private List<PushResolution> _pushResolutions;
     [SerializeField] private float _pushDistance = 5f;
     [SerializeField] private float _pushDuration = 0.5f;
+    [SerializeField] private Animator _pushAnimator;
 
     #region AnimatorHashes
     private int _isWalkingHash;
     private int _walkingSpeedHash;
+    private int _pushHash;
     #endregion
 
 
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
         _isWalkingHash = Animator.StringToHash("IsWalking");
         _walkingSpeedHash = Animator.StringToHash("WalkingSpeed");
+        _pushHash = Animator.StringToHash("Push");
 
         _pushResolutions = new List<PushResolution>();
     }
@@ -182,12 +184,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Interact");
         var bounds = pushCollider.bounds;
         var colliders = Physics.OverlapCapsule(bounds.center, bounds.center + new Vector3(0, pushCollider.height, 0), pushCollider.radius, pushLayerMask);
+        bool pushedOnce = false;
         foreach (var c in colliders)
         {
             if (c.GetComponent<Pushable>() == null) continue;
             
             Vector3 targetPosition = c.transform.position + transform.forward * _pushDistance;
             c.GetComponent<Pushable>().Push(targetPosition,_pushDuration);
+            _pushAnimator.SetTrigger(_pushHash);
         }
     }
 

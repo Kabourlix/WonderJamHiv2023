@@ -22,6 +22,8 @@ public class LeashFollowScript : MonoBehaviour
     [Tooltip("The time it takes for the object to reach the target when used")]
     public float _timeToReachTarget=0.5f;
 
+    public GameObject _grabVfx;
+
     public void Init(GameObject target, Rigidbody attachedRigidbody)
     {
         _attachedRigidbody = attachedRigidbody;
@@ -29,6 +31,8 @@ public class LeashFollowScript : MonoBehaviour
         GetComponent<Joint>().connectedBody = _attachedRigidbody;
         _selfRigidbody = gameObject.GetComponent<Rigidbody>();
         attachedRigidbody.gameObject.layer=LayerMask.NameToLayer(_pickedObjectLayer);
+        GameObject newGo=Instantiate(_grabVfx, attachedRigidbody.transform);
+        newGo.transform.localPosition = Vector3.zero;
     }
 
     private void FixedUpdate()
