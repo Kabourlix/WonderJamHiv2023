@@ -42,10 +42,15 @@ namespace Game.Scripts.UI
             winEvilScreen.SetActive(false);
             winGoodScreen.SetActive(false);
             audioSrc = GetComponent<AudioSource>();
-            
+
+            QuestManager.Instance.OnAllGoodQuestCompleted += GoodQuestCompleted;
         }
 
-        
+        public void GoodQuestCompleted()
+        {
+            normalQuests.SetActive(false);
+            finalQuest.SetActive(true);
+        }
 
         [SerializeField] private GameObject questPanel;
         [SerializeField] private GameObject questPrefab;
@@ -74,6 +79,10 @@ namespace Game.Scripts.UI
         [SerializeField] private AudioClip evolveSound;
         [SerializeField] private AudioClip gainXpSound;
         [SerializeField] private AudioClip questCompletedSound;
+
+        [Tooltip("Endgame")]
+        [SerializeField] private GameObject normalQuests;
+        [SerializeField] private GameObject finalQuest;
 
 
         #region Tweeners

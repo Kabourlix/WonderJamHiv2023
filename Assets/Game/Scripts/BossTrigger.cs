@@ -1,6 +1,7 @@
 using Game.Inputs;
 using Game.Scripts.Enemies;
 using Game.Scripts.Quests;
+using Game.Scripts.UI;
 using MBT;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ public class BossTrigger : MonoBehaviour
     public void GoodQuestCompleted()
     {
         goodQuestCompleted = true;
+        HUDManager.Instance.GoodQuestCompleted();
         TryToSpawnBoss();
     }
 
