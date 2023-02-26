@@ -21,6 +21,12 @@ public class BossTrigger : MonoBehaviour
         InputManager.OnTest4Event += GoodQuestCompleted;
     }
 
+    private void OnDestroy()
+    {
+        QuestManager.Instance.OnAllGoodQuestCompleted -= GoodQuestCompleted;
+        InputManager.OnTest4Event -= GoodQuestCompleted;
+    }
+
     [SerializeField] private GameObject bossGo;
 
     [SerializeField] private GameObject bossPosition;
