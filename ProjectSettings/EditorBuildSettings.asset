@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scene/Finale/MainMenu.unity
     guid: d7b9c536f9514874584e4cfd89d1c36d
+  - enabled: 1
+    path: Assets/Game/Scene/Proto/Léane/Level 1.unity
+    guid: ffb04080ee685fb4c969af34e3ed4f39
   m_configObjects: {}
