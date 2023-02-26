@@ -8,8 +8,6 @@ namespace Game.Scripts.Interaction
     public class CollectAndPickupItem : MonoBehaviour, IInteractable
     {
         private StatTriggerComponent _statTriggerComponent;
-        [Tooltip("When this stat is reached, the object is used (basically destroyed)")]
-        [SerializeField] private QuestStat _usedOn;
         [HideInInspector]
         public bool PickedUp = false;
         private LeashFollowScript _followScript;
