@@ -48,4 +48,9 @@ public class ItemUser : MonoBehaviour, IInteractable
         if (_messageOnComplete == null || _messageOnComplete == "") return;
         DialogueSystem.AddMessage(_messageOnComplete, 5f);
     }
+
+    public void OnInteractionSuccess()
+    {
+        throw new System.NotImplementedException();
+    }
 }

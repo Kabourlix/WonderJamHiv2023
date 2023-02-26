@@ -5,22 +5,36 @@ using UnityEngine;
 namespace Game.Scripts.Interaction
 {
     [RequireComponent(typeof(StatTriggerComponent))]
-    public class PoisonWell : MonoBehaviour
+    public class PoisonWell : MonoBehaviour, IInteractable
     {
         private StatTriggerComponent _statTriggerComponent;
+        private Collider _collider;
 
         private void Awake()
         {
             _statTriggerComponent = GetComponent<StatTriggerComponent>();
+            _collider = GetComponent<Collider>();
         }
 
-        public void OnInteract()
+        public void VFX()
         {
             Debug.Log("Interacting with" + gameObject.name);
-            _statTriggerComponent.Trigger();
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(1).gameObject.SetActive(true);
             transform.GetComponent<CapsuleCollider>().isTrigger = false;
+        }
+
+        public void Interact()
+        {
+            if (!_statTriggerComponent.Trigger()) return;
+            VFX();
+            OnInteractionSuccess();
+            
+        }
+
+        public void OnInteractionSuccess()
+        {
+            gameObject.layer = 0;
         }
     }
 }

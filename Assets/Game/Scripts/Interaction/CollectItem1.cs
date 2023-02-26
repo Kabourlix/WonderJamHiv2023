@@ -20,5 +20,10 @@ namespace Game.Scripts.Interaction
             _statTriggerComponent.Trigger();
             gameObject.SetActive(false);
         }
+
+        public void OnInteractionSuccess()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

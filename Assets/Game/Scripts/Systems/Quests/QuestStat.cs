@@ -22,11 +22,12 @@ namespace Game.Scripts.Quests
         
         public event Action OnCountChanged; 
 
-        public void Increment()
+        public bool Increment()
         {
-            if(priorCondition.Stat != null && !priorCondition.IsCompleted) return;
+            if(priorCondition.Stat != null && !priorCondition.IsCompleted) return false;
             count++;
             OnCountChanged?.Invoke();
+            return true;
         }
         
         public void Reset() => count = 0;

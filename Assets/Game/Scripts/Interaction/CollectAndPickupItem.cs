@@ -31,6 +31,11 @@ namespace Game.Scripts.Interaction
             PickedUp = true;
         }
 
+        public void OnInteractionSuccess()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Use(GameObject user)
         {
             if (!PickedUp) return;

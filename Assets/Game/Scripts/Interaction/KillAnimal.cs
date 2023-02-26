@@ -25,5 +25,10 @@ namespace Game.Scripts.Interaction
             transform.GetComponent<CapsuleCollider>().isTrigger = false;
             Instantiate(sound, transform);
         }
+
+        public void OnInteractionSuccess()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

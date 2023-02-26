@@ -7,9 +7,10 @@ namespace Game.Scripts.Quests
     {
         [SerializeField] private Quest questTargeted;
         
-        public override void Trigger()
+        public override bool Trigger()
         {
            questTargeted.QuestCompleted();
+           return true;
         }
     }
     
