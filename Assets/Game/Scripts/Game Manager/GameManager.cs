@@ -67,44 +67,7 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.PlayState);
         
     }
-
-    private void Update()
-    {
-
-        #region Win/Lose Debug
-        //pause
-        if(Input.GetKeyDown(KeyCode.P))
-            ChangeState(GameState.EndLevel);
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            Debug.Log("pause");
-            hud.ShowPause();
-        }
-        //win good
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            Debug.Log("win good");
-            if(hud is not null) hud.ShowWinGood();
-        }
-        //win evil
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            Debug.Log("win evil");
-            if(hud is not null) hud.ShowWinEvil();
-        }
-        //lose
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            Debug.Log("lose");
-            if(hud is not null) hud.ShowGameOver();
-        }
-
-        #endregion    
-        
-        //TODO - change state conditions
-        //if()
-    }
-
+    
     public void ChangeState(GameState newState)
     {
         if(_linksDict[newState].Contains(CurrentState) == false) //Prevent forbidden transitions
