@@ -35,6 +35,7 @@ namespace Game.Scripts.Interaction
             QuestManager.Instance.OnQuestCompleted += OnQuestCompleted;
             gameObject.layer = 0; //!Pas sur de moi
             _physicColliderToActivate.enabled = true;
+            InteracterScript.Instance.OtherCollidersCounter = 0;
             foreach(Collider c in _additionalColliders)
             {
                 c.enabled = false;
