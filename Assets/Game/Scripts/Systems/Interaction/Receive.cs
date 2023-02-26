@@ -22,9 +22,12 @@ namespace Game.Scripts.Interaction
             if (!_statTriggerComponent.Trigger()) return;
             VFX();
             OnInteractionSuccess();
+
             
         }
 
         
+
+
     }
 }

@@ -60,7 +60,8 @@ MonoBehaviour:
   conditionsContainer: {fileID: 2632561048045661149}
   conditionPrefab: {fileID: 6642625351690608641, guid: 03d22d3a4a37bef47bae04aceb6f1025,
     type: 3}
-  highlightTime: 2
+  highlightExposedTime: 2
+  highlightSmoothTime: 0.3
   highlightAlpha: 0.5
 --- !u!114 &6746380271591633717
 MonoBehaviour:
@@ -337,8 +338,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a0bb8c2b20d7c3d4eb762e545986fa91, type: 2}
+  m_sharedMaterial: {fileID: -1847862649856333202, guid: a0bb8c2b20d7c3d4eb762e545986fa91,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
